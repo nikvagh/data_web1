@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\models\Product;
+use App\Models\Product;
 use Session;
 
 class ProductController extends Controller

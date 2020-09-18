@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/clear-config', function() {
     Artisan::call('cache:clear');
@@ -24,7 +24,7 @@ Route::get('/clear-config', function() {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/player', 'PlayerController@index')->name('player')->middleware('player');
 // Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
