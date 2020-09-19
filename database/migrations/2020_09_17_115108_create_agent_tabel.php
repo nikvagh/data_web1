@@ -17,8 +17,13 @@ class CreateAgentTabel extends Migration
             Schema::create('agent', function (Blueprint $table) {
                 $table->id();
                 $table->integer('agent_id');
+                $table->string('business_name');
+                $table->string('abn');
+                $table->string('type_of_industry');
                 $table->timestamps();
             });
+
+            $table->foreign('agent_id')->references('id')->on('users');
         }
     }
 

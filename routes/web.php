@@ -29,13 +29,17 @@ Auth::routes();
 Route::get('/player', 'PlayerController@index')->name('player')->middleware('player');
 // Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 // Route::get('/admin', 'AdminController@index');
-
 Route::get('/player', [App\Http\Controllers\PlayerController::class, 'index'])->name('player')->middleware('player');
 
 Route::get('/client', [App\Http\Controllers\ClientController::class, 'index'])->name('client')->middleware('client');
 Route::get('/agent', [App\Http\Controllers\AgentController::class, 'index'])->name('agent')->middleware('agent');
-
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('admin');
+
+Route::get('/agent_register', [App\Http\Controllers\HomeController::class, 'agent_register'])->name('agent_register');
+Route::POST('/agent_register_save', [App\Http\Controllers\HomeController::class, 'agent_register_save'])->name('agent_register_save');
+
+Route::get('/customer_register/{agent_id?}', [App\Http\Controllers\HomeController::class, 'customer_register'])->name('customer_register');
+Route::POST('/customer_register_save', [App\Http\Controllers\HomeController::class, 'customer_register_save'])->name('customer_register_save');
 
 Route::middleware('adminAuth')->group(function () {
     Route::get('/admin/customer', [App\Http\Controllers\AdminController::class, 'customer'])->name('customer');
