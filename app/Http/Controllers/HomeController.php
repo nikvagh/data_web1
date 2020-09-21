@@ -29,7 +29,7 @@ class HomeController extends Controller
     }
 
     public function agent_register(){
-
+        echo "nikul";
         return view('agent_register');
     }
 
