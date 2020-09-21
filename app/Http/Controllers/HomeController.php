@@ -25,13 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        echo "index_nik123";
-        echo "string";
+
         return view('home');
     }
 
     public function agent_register(){
-        echo "nikul";
+      
         return view('agent_register');
     }
 
