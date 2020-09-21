@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         echo "index_nik123";
+        echo "string";
         return view('home');
     }
 
