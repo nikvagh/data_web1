@@ -16,7 +16,8 @@ class AdminController extends Controller
     // }
 
     public function index()
-    {
+    {   
+        // User::factory()->count(10)->create();
         return view('admin.dashboard');
     }
 
