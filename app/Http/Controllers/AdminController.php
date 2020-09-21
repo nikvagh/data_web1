@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\models\User;
+use App\models\sale;
+
 use Auth;
 
 class AdminController extends Controller
@@ -43,14 +45,17 @@ class AdminController extends Controller
     }
 
     public function agent(){
+
         $data['title'] = 'Agents';
         return view('admin.agent_list')->with($data);
     }
 
     public function agent_data(){
-        $builder = User::query()->select('*')->where('role',3);
+        // $builder =  DB::table('sales')->join('customer', 'customer.customer_id', '=', 'sales.customer_id')->get();
 
-        return datatables()->eloquent($builder)
+        $builder = sale::query();
+        
+        return datatables($builder)
                         //   ->editColumn('id', function ($user) {
                         //       return $user->id;
                         //   })
@@ -61,20 +66,20 @@ class AdminController extends Controller
                             //     return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
                             // })
                             ->addColumn('action', function ($user) {
-                                return '<a href="'.url('/admin/agent/sales/').'/'.$user->id.'" class="btn btn-sm btn-primary">Sales</a>';
+                                return '<a href="'.url('/admin/agent/sales/view/').'/'.$user->id.'" class="btn btn-sm btn-primary">View</a>';
                             })
                         //   ->rawColumns([1,2])
                           ->make();
     }
 
     public function agent_sales(){
+
         $data['title'] = 'Agents';
         return view('admin.agent_list')->with($data);
     }
 
     public function agent_sales_data(){
-        $builder = User::query()->select('*')->where('role',3);
-
+        // $builder = User::query()->select('*')->where('role',3);
         return datatables()->eloquent($builder)
                         //   ->editColumn('id', function ($user) {
                         //       return $user->id;
@@ -107,6 +112,14 @@ class AdminController extends Controller
 
         // echo "<pre>";
         // print_r($users);
+    }
+    public function salesview($id)
+    {
+       $salesdata = DB::table('sales')->where('id', $id)->get();    
+
+       // print_r($salesdata[0]);
+       // exit();
+       return view('admin.sales_view',['salesdata' => $salesdata]);
     }
 
 }

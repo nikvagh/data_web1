@@ -287,7 +287,7 @@
             </li>
             <!-- Control Sidebar Toggle Button -->
             <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              <a href="{{url('admin/settings')}}" ><i class="fa fa-gears"></i></a>
             </li>
           </ul>
         </div>
@@ -406,7 +406,11 @@
   <!-- <script src="{{ asset('back_asset/dist/js/pages/dashboard.js') }}"></script> -->
   <!-- AdminLTE for demo purposes -->
   <!-- <script src="{{ asset('back_asset/dist/js/demo.js') }}"></script> -->
-
+<script type="text/javascript">
+    setTimeout(function () {
+        $("#msg").fadeOut("fast");
+    }, 5000); // <-- time in milliseconds
+</script>
   @yield('js')
 
 </body>

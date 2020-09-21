@@ -22,10 +22,10 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>Agent ID</th>
+                                <th>Customer ID</th>
+                                <th>Amount </th>
+                                <th>Viwe</th>
                             </tr>
                         </thead>
                     </table>
@@ -54,9 +54,9 @@
                 ajax: '{!! route('agent_data') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'created_at', name: 'created_at' },
+                    { data: 'agent_id', name: 'agent_id' },
+                    { data: 'customer_id', name: 'customer_id' },
+                    { data: 'amount', name: 'amount' },
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

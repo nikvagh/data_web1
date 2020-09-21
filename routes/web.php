@@ -48,6 +48,7 @@ Route::middleware('adminAuth')->group(function () {
     Route::get('/admin/agent', [App\Http\Controllers\AdminController::class, 'agent'])->name('agent');
     Route::get('agent_data', [App\Http\Controllers\AdminController::class, 'agent_data'])->name('agent_data');
     Route::get('/admin/agent/sales/{agent_id}', [App\Http\Controllers\AdminController::class, 'agent_sales'])->name('agent_sales');
+    Route::get('/admin/agent/sales/view/{agent_id}', [App\Http\Controllers\AdminController::class, 'salesview'])->name('salesview');
 
     Route::get('/admin/deposite', [App\Http\Controllers\AdminController::class, 'deposite'])->name('deposite');
     Route::get('/admin/withdraw', [App\Http\Controllers\AdminController::class, 'withdraw'])->name('withdraw');
@@ -59,6 +60,11 @@ Route::middleware('adminAuth')->group(function () {
     Route::get('/admin/product/edit/{product_id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('edit_product');
     Route::post('/admin/product/update/{product_id}', [App\Http\Controllers\ProductController::class, 'update'])->name('update_product');
     Route::get('/admin/product/delete/{product_id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('delete_product');
+
+    Route::get('/admin/settings', [App\Http\Controllers\settings::class, 'show'])->name('settings');
+    Route::post('/admin/settings', [App\Http\Controllers\settings::class, 'updatedata'])->name('settings');
+
+
 });
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');

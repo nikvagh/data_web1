@@ -13,7 +13,7 @@ class CreateCustomerTabel extends Migration
      */
     public function up()
     {
-        // if (!Schema::hasTable('customer')) {
+        if (!Schema::hasTable('customer')) {
             Schema::create('customer', function (Blueprint $table) {
                 $table->id();
                 $table->integer('customer_id');
@@ -26,7 +26,7 @@ class CreateCustomerTabel extends Migration
 
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('agent_id')->references('agent_id')->on('agent');
-        // }
+        }
     }
 
     /**
