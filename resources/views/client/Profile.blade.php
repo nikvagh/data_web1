@@ -55,8 +55,10 @@
 
 
                         <div class="form-group">
+                            <a href="{{url('PDF',$users[0]->customer_id)}}" class="btn btn-warning">PDF</a>
                             <input type="submit" name="submit" style="float: right;" class="btn btn-primary" value="Updata" />
                         </div>
+
                     </div>
                 </div>
             </div>

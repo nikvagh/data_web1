@@ -73,6 +73,8 @@ Route::get('/profile', [App\Http\Controllers\customer::class, 'profile'])->name(
 Route::post('/Submitprofile', [App\Http\Controllers\customer::class, 'Submitprofile'])->name('Submitprofile');
 Route::get('/fuser', [App\Http\Controllers\Fack::class, 'fuser']);
 
+Route::get('/PDF/{id}', [App\Http\Controllers\customer::class, 'PDF']);
+
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');
 // Route::get('/scout', 'ScoutController@index')->name('scout')->middleware('scout');

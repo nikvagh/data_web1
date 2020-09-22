@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\users;
 use Storage;
 use DB;
-
+use PDF;
 use Auth;
 
 class customer extends Controller
@@ -67,8 +67,20 @@ class customer extends Controller
             ->update($data);
          return redirect('/customer')->with('success', 'Record inserted successfully.');
             
-
-
     }
-    
+    public function PDF($id)
+    {
+
+        $pro = DB::table('customer')
+             ->where('customer_id', $id)
+            ->get();
+               
+                // print_r($pro[0]);
+                // return view('client.pdf',['pro' => $pro]);
+                // exit();
+            
+        $pdf = PDF::loadView('client.pdf',['pro' => $pro]);
+  
+        return $pdf->download('1.pdf');
+    }
 }
