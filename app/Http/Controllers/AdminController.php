@@ -24,6 +24,7 @@ class AdminController extends Controller
     }
 
     public function customer(){
+       
         // $users = DB::table('users')->where('role', 4)->get();
         $data['title'] = 'Customers';
         return view('admin.customer_list')->with($data);

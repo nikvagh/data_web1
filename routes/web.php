@@ -67,6 +67,13 @@ Route::middleware('adminAuth')->group(function () {
 
 });
 
+Route::get('/customer', [App\Http\Controllers\customer::class, 'index'])->name('customer');
+Route::get('/profile', [App\Http\Controllers\customer::class, 'profile'])->name('profile');
+
+Route::post('/Submitprofile', [App\Http\Controllers\customer::class, 'Submitprofile'])->name('Submitprofile');
+Route::get('/fuser', [App\Http\Controllers\Fack::class, 'fuser']);
+
+
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');
 // Route::get('/scout', 'ScoutController@index')->name('scout')->middleware('scout');
 // Route::get('/team', 'TeamController@index')->name('team')->middleware('team');
