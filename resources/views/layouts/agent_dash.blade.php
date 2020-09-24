@@ -263,7 +263,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{url('/agent/profile')}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
 
@@ -503,7 +503,11 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script type="text/javascript">
+    setTimeout(function () {
+        $("#msg").fadeOut("fast");
+    }, 5000); // <-- time in milliseconds
+</script>
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('back_asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->

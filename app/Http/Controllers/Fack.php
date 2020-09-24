@@ -10,8 +10,8 @@ class fack extends Controller
 {
     public function fuser()
     {
-    	// User::factory()->count(10)->create();
-    	Customer::factory()->count(10)->create();
+    	User::factory()->count(10)->create();
+    	// Customer::factory()->count(10)->create();
 
     }
 }

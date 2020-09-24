@@ -19,8 +19,8 @@ class CreateSettingsTable extends Migration
             $table->string('company_name');
             $table->string('Email');
             $table->string('mobile_number');
-            
             $table->text('address');
+            $table->string('agentcommission');
             $table->text('terms_conditions');
 
         });
