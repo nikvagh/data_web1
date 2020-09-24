@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/clear-config', function() {
     Artisan::call('cache:clear');
@@ -67,18 +67,38 @@ Route::middleware('adminAuth')->group(function () {
 
 });
 
+
+//customer
 Route::get('/customer', [App\Http\Controllers\customer::class, 'index'])->name('customer');
 Route::get('/profile', [App\Http\Controllers\customer::class, 'profile'])->name('profile');
 
 Route::post('/Submitprofile', [App\Http\Controllers\customer::class, 'Submitprofile'])->name('Submitprofile');
-Route::get('/fuser', [App\Http\Controllers\Fack::class, 'fuser']);
 
 Route::get('/PDF/{id}', [App\Http\Controllers\customer::class, 'PDF']);
+
+Route::get('/deposit', [App\Http\Controllers\Depositcontroller::class, 'index']);
+Route::get('/card', [App\Http\Controllers\Depositcontroller::class, 'carddetails']);
+Route::post('/card', [App\Http\Controllers\Depositcontroller::class, 'cardinsert']);
+Route::get('/taranjeson', [App\Http\Controllers\Depositcontroller::class, 'taranjeson']);
+Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'gettaranjeson'])->name('gettaranjeson');
+Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
+Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
+Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
+
+//Agent
+
+Route::get('/agent/profile', [App\Http\Controllers\AgentController::class, 'profile'])->name('profile');
+Route::post('/agentprofile', [App\Http\Controllers\AgentController::class, 'Submitprofile'])->name('agentprofile');
+Route::get('/agentprofilepdf/{id}', [App\Http\Controllers\AgentController::class, 'agentprofilepdf'])->name('agentprofilepdf');
+
+Route::get('/addcustomary', [App\Http\Controllers\AgentController::class, 'addcustomary'])->name('addcustomary');
 
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');
 // Route::get('/scout', 'ScoutController@index')->name('scout')->middleware('scout');
 // Route::get('/team', 'TeamController@index')->name('team')->middleware('team');
 // Route::get('/academy', 'AcademicController@index')->name('academy')->middleware('academy');
+Route::get('/fuser', [App\Http\Controllers\Fack::class, 'fuser']);
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Route::get('/home', 'AcademicController@index')->name('home');

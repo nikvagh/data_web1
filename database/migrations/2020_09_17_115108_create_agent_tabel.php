@@ -13,18 +13,22 @@ class CreateAgentTabel extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('agent')) {
+        // if (!Schema::hasTable('agent')) {
             Schema::create('agent', function (Blueprint $table) {
                 $table->id();
                 $table->integer('agent_id');
                 $table->string('business_name');
                 $table->string('abn');
                 $table->string('type_of_industry');
+                $table->string('commission');
+                $table->text('profile_pic');
+                $table->text('address');
+                
                 $table->timestamps();
             });
 
             $table->foreign('agent_id')->references('id')->on('users');
-        }
+        // }
     }
 
     /**

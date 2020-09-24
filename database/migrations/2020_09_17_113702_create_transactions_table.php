@@ -15,11 +15,15 @@ class CreateTransactionsTable extends Migration
     {   
         if (!Schema::hasTable('transactions')) {
             Schema::create('transactions', function (Blueprint $table) {
-                $table->id();
+                $table->id('transactions_id');
                 $table->integer('customer_id');
                 $table->integer('agent_id');
                 $table->double('amount', 20, 2);
                 $table->enum('type', ['d', 'w']);
+                $table->enum('deposittype',['1', '2','3','4','5']);
+                $table->string('agentcommission');
+                $table->string('commission');
+
                 $table->timestamps();
             });
         }
