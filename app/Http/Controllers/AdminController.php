@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\models\User;
+use App\models\Customer;
 use App\models\sale;
 
 use Auth;
@@ -20,6 +21,7 @@ class AdminController extends Controller
     public function index()
     {   
         // User::factory()->count(10)->create();
+        // Customer::factory()->count(10)->make();
         return view('admin.dashboard');
     }
 

@@ -1,8 +1,6 @@
 @extends('layouts.customer_dash') @section('content')
 @section('css')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+<link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
 @endsection
 <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
 <section class="content-header"> <h1>Transaction  List</h1> </section>

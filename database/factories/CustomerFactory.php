@@ -25,10 +25,10 @@ class CustomerFactory extends Factory
     {
         return [
            'customer_id' => factory(Customer::class)->create()->id,
-                'agent_id' => factory()->create()->id,
-                'address' =>'address',
-                'abn' => 'abn',
-                'name' => $faker->Name(),
+            'agent_id' => factory()->create()->id,
+            'address' =>'address',
+            'abn' => 'abn',
+            'name' => $faker->Name(),
         ];
     }
 }
