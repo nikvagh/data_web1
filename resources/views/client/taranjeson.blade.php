@@ -1,16 +1,16 @@
 @extends('layouts.customer_dash') @section('content')
 @section('css')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+<link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
 @endsection
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-<section class="content-header"> <h1>Taranjeson List</h1> </section>
+<!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
+<section class="content-header">
+    <h1>Taranjeson List</h1>
+</section>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box box-">
-               <!--  <div class="box-header">
+                <!--  <div class="box-header">
                     <h3 class="box-title"></h3>
                 </div> -->
                 <a class="btn btn-primary" style="float: right; margin: 10px;" href="{{url('deposit')}}">ADD</a>
@@ -73,14 +73,16 @@
         <!-- /.col -->
     </div>
 </section>
-   @endsection
-    <!-- /.row -->
-    @section('js')
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+@endsection
+<!-- /.row -->
+@section('js')
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
+<script src="{{ asset('back_asset/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 <script type="text/javascript">
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
 </script>
 
 @endsection
