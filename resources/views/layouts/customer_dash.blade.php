@@ -311,21 +311,17 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="{{ (request()->segment(1) == 'customer') ? 'active' : '' }} treeview">
           <a href="{{url('customer')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            
           </a>
         </li>
-        <li class="treeview">
-          <a href="{{url('taranjeson')}}">
+        <li class="{{ (request()->segment(1) == 'transaction') ? 'active' : '' }} treeview">
+          <a href="{{url('transaction')}}">
             <i class="fa fa-money"></i>
-            <span>Taranjeson</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
+            <span>Taranjeson </span>
+           
           </a>
          
         </li>
@@ -335,10 +331,7 @@
      
        
        
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        
       </ul>
     </section>
     <!-- /.sidebar -->

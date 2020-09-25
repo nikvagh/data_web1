@@ -49,6 +49,12 @@ class Kernel extends HttpKernel
         'adminAuth' => [
             \App\Http\Middleware\Admin::class,
         ],
+        'ClientAuth' => [
+            \App\Http\Middleware\Client::class,
+        ],
+         'AgentAuth' => [
+            \App\Http\Middleware\Agent::class,
+        ],
     ];
 
     /**

@@ -42,7 +42,7 @@ Route::get('/customer_register/{agent_id?}', [App\Http\Controllers\HomeControlle
 Route::POST('/customer_register_save', [App\Http\Controllers\HomeController::class, 'customer_register_save'])->name('customer_register_save');
 
 Route::middleware('adminAuth')->group(function () {
-    Route::get('/admin/customer', [App\Http\Controllers\AdminController::class, 'customer'])->name('customer');
+    Route::get('/admin/customer', [App\Http\Controllers\AdminController::class, 'customer'])->name('admin_customer');
     Route::get('customer_data', [App\Http\Controllers\AdminController::class, 'customer_data'])->name('customer_data');
 
     Route::get('/admin/agent', [App\Http\Controllers\AdminController::class, 'agent'])->name('agent');
@@ -63,11 +63,9 @@ Route::middleware('adminAuth')->group(function () {
 
     Route::get('/admin/settings', [App\Http\Controllers\settings::class, 'show'])->name('settings');
     Route::post('/admin/settings', [App\Http\Controllers\settings::class, 'updatedata'])->name('settings');
-
-
 });
 
-
+Route::middleware('ClientAuth')->group(function () {
 //customer
 Route::get('/customer', [App\Http\Controllers\customer::class, 'index'])->name('customer');
 Route::get('/profile', [App\Http\Controllers\customer::class, 'profile'])->name('profile');
@@ -79,19 +77,37 @@ Route::get('/PDF/{id}', [App\Http\Controllers\customer::class, 'PDF']);
 Route::get('/deposit', [App\Http\Controllers\Depositcontroller::class, 'index']);
 Route::get('/card', [App\Http\Controllers\Depositcontroller::class, 'carddetails']);
 Route::post('/card', [App\Http\Controllers\Depositcontroller::class, 'cardinsert']);
-Route::get('/taranjeson', [App\Http\Controllers\Depositcontroller::class, 'taranjeson']);
+Route::get('/transaction', [App\Http\Controllers\Depositcontroller::class, 'transaction'])->name('transaction');
 Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'gettaranjeson'])->name('gettaranjeson');
 Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
 Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
+});
 
+
+Route::middleware('AgentAuth')->group(function () {
 //Agent
-
 Route::get('/agent/profile', [App\Http\Controllers\AgentController::class, 'profile'])->name('profile');
 Route::post('/agentprofile', [App\Http\Controllers\AgentController::class, 'Submitprofile'])->name('agentprofile');
 Route::get('/agentprofilepdf/{id}', [App\Http\Controllers\AgentController::class, 'agentprofilepdf'])->name('agentprofilepdf');
 
-Route::get('/addcustomary', [App\Http\Controllers\AgentController::class, 'addcustomary'])->name('addcustomary');
+Route::get('/addcustomer', [App\Http\Controllers\AgentController::class, 'addcustomer'])->name('addcustomer');
+Route::post('/addcustomer', [App\Http\Controllers\AgentController::class, 'submitcustomer'])->name('addcustomer');
+Route::get('/customerlist', [App\Http\Controllers\AgentController::class, 'customerlist'])->name('customerlist');
+
+Route::get('customer_data', [App\Http\Controllers\AgentController::class, 'customer_data'])->name('customer_data');
+Route::get('/agent/customer/edit/{id}', [App\Http\Controllers\AgentController::class, 'customeredit'])->name('customeredit');
+Route::get('/agent/customer/delete/{id}', [App\Http\Controllers\AgentController::class, 'customerdelete'])->name('customerdelete');
+Route::post('/customerupdate', [App\Http\Controllers\AgentController::class, 'customerupdate'])->name('customerupdate');
+
+Route::get('/taranjesonlist', [App\Http\Controllers\AgentController::class, 'taranjesonlist'])->name('taranjesonlist');
+Route::get('taranjeson_data', [App\Http\Controllers\AgentController::class, 'taranjeson_data'])->name('taranjeson_data');
+Route::get('/agent/taranjeson/view/{id}', [App\Http\Controllers\AgentController::class, 'agenttaranjesonview'])->name('agenttaranjesonview');
+Route::get('/withdraw', [App\Http\Controllers\AgentController::class, 'withdraw'])->name('withdraw');
+Route::post('/withdraw', [App\Http\Controllers\AgentController::class, 'addwithdraw'])->name('addwithdraw');
+Route::get('/membershiprenew', [App\Http\Controllers\AgentController::class, 'membershiprenew'])->name('membershiprenew');
+
+});
 
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');

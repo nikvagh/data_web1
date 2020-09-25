@@ -326,7 +326,7 @@
         </li> -->
 
           <li class="{{ (request()->segment(2) == 'customer') ? 'active' : '' }}">
-            <a href="{{ route('customer') }}">
+            <a href="{{ route('admin_customer') }}">
               <!-- <i class="fa fa-users"></i>  -->
               <span>Customers</span>
             </a>

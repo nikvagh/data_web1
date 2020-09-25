@@ -11,7 +11,7 @@ use DB;
 use PDF;
 use Auth;
 
-class customer extends Controller
+class Customer extends Controller
 {
     public function index()
     {

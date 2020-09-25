@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class sale extends Model
+class Sale extends Model
 {
     use HasFactory;
     protected $fillable = [

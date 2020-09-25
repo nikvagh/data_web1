@@ -23,11 +23,15 @@ class CreateAgentTabel extends Migration
                 $table->string('commission');
                 $table->text('profile_pic');
                 $table->text('address');
-                
+                $table->enum('membership_status',['enable', 'disable']);
+                $table->date('membership_end');
+                $table->string('wallet');
                 $table->timestamps();
             });
-
-            $table->foreign('agent_id')->references('id')->on('users');
+            $table->foreign('agent_id')
+                ->references('id')
+                ->on('users');
+            // $table->foreign('agent_id')->references('id')->on('users');
         // }
     }
 

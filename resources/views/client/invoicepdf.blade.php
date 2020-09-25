@@ -108,7 +108,7 @@
 
         <!-- /.col -->
         <div class="col-xs-6" style="float: right;">
-          <p class="lead">Amount Due 2/22/2014</p>
+          <!-- <p class="lead">Amount Due 2/22/2014</p> -->
 
           <div class="table-responsive">
             <div style="width: 50%;"></div>

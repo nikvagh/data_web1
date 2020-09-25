@@ -7,10 +7,10 @@
   <img src="{{ public_path('uploads/Profile/'.$pro[0]->profile_pic) }}"  style="max-width: 25vh;max-height: 25vh;">
   <div class="container">
   	<div align="left">
-    <h3><b>Name: </b><label>{{$pro[0]->name}}</label></h3> 
-    <h3><b>Customer ID: </b><label>{{$pro[0]->customer_id}}</label></h3> 
+    <p><b>Name: </b><label>{{$pro[0]->name}}</label></p> 
+    <p><b>Customer ID: </b><label>{{$pro[0]->customer_id}}</label></p> 
     <p>Address:<label>{{$pro[0]->address}}</label></p> 
-    <h3><b>ABN: </b><label>{{$pro[0]->abn}}</label></h3> 
+    <p><b>ABN: </b><label>{{$pro[0]->abn}}</label></p> 
 </div>
 
   </div>

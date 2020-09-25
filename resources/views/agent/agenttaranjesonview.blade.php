@@ -5,7 +5,7 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Transaction  </h3>
+                        <h3 class="box-title">Taranjeson</h3>
                     </div>
                     
                     	<div class="form-group container-fluid">
@@ -20,6 +20,9 @@
                                     @elseif($data[0]->deposittype==4)<b>Western Union</b>
                                     @elseif($data[0]->deposittype==5)<b>Bank Deposit</b>
                                     @endif</b></p>
+                            <p><span>Agent Commission:  </span><b>{{$data[0]->agentcommission}}</b></p>
+                            <p><span>commission(%):  </span><b>{{$data[0]->commission}}</b></p>
+
                     		<p><span>phone:  </span><b>{{$data[0]->phone}}</b></p>
                     		<p><span>email:  </span><b>{{$data[0]->email}}</b></p>	
 

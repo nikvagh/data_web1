@@ -7,8 +7,9 @@
   <img src="{{ public_path('uploads/Profile/'.$pro[0]->profile_pic) }}"  style="max-width: 25vh;max-height: 25vh;">
   <div class="container">
   	<div align="left">
-    <p><b>Name: </b><label>{{$pro[0]->name}}</label></p> 
-    <p><b>Customer ID: </b><label>{{$pro[0]->customer_id}}</label></p> 
+    <p><b>Name: </b><label>{{$pro[0]->business_name}}</label></p> 
+    <p><b>Customer ID: </b><label>{{$pro[0]->agent_id}}</label></p> 
+    <p><b>Type of Industry: </b><label>{{$pro[0]->type_of_industry}}</label></p> 
     <p>Address:<label>{{$pro[0]->address}}</label></p> 
     <p><b>ABN: </b><label>{{$pro[0]->abn}}</label></p> 
 </div>
