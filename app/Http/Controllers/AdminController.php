@@ -124,5 +124,60 @@ class AdminController extends Controller
        // exit();
        return view('admin.sales_view',['salesdata' => $salesdata]);
     }
+    public function GalleryVideos()
+    {
+       
+
+       return view('admin.Gallery_Videos_list');
+        
+    }
+    public function video_data()
+   {
+        $builder = DB::table('galleryvideos')->get();
+
+
+        return datatables($builder)
+                       
+                           ->addColumn('action', function ($user) {
+                                return '<a href="'.url('/admin/agent/sales/view/').'/'.$user->video_id.'" class="btn btn-sm btn-danger">Delete</a>';
+                            })
+                       
+                          ->make();
+    }
+    public function video_delete($id)
+    {
+          DB::table('galleryvideos')
+            ->where('video_id', $id)
+            ->delete();
+        return redirect('/Gallery/Videos')->with('success', 'Record Delete successfully.');
+
+
+    }
+    public function addVideos()
+    {
+       return view('admin.GalleryVideos');
+       
+    }
+    public function addVideossubmit(Request $request)
+    {
+         $this->validate($request, [
+            'Videos' => 'required',]);
+
+              $file=$request->file('Videos');
+
+                    $Videos=time().rand(1,100).'.'.$file->extension();
+                    $file->move('uploads/Videos',$Videos);
+                     $date=date("Y-m-d h:i:s");
+              DB::table('galleryvideos')->insert(
+                         ['video' => $Videos,
+                         'created_at' =>$date,
+                         ]);
+              return redirect('/Gallery/Videos')->with('success', 'Record inserted successfully.');
+
+    }
+     public function Trading_screenshots()
+    {
+        echo "Trading_screenshots";
+    }
 
 }

@@ -359,6 +359,20 @@
               <span>Products</span>
             </a>
           </li>
+           <li class="{{ (request()->segment(1) == 'Gallery') ? 'active' : '' }}">
+            <a href="#">
+            
+              <span>Gallery </span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('Gallery/Videos') }}"></i> Videos </a></li>
+            <li><a href="{{ route('Gallery/Trading_screenshots') }}"></i> Trading screenshots</a></li>
+           
+          </ul>
+        </li>
 
         </ul>
       </section>

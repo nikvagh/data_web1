@@ -13,7 +13,7 @@ class CreateAgentTabel extends Migration
      */
     public function up()
     {
-        // if (!Schema::hasTable('agent')) {
+        if (!Schema::hasTable('agent')) {
             Schema::create('agent', function (Blueprint $table) {
                 $table->id();
                 $table->integer('agent_id');
@@ -32,7 +32,7 @@ class CreateAgentTabel extends Migration
                 ->references('id')
                 ->on('users');
             // $table->foreign('agent_id')->references('id')->on('users');
-        // }
+        }
     }
 
     /**

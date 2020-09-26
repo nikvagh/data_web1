@@ -19,7 +19,7 @@
                     <div class="image-upload" align="center">
                     <label for="file-input">
                        
-                    <img src="{{url('uploads/Profile',$users[0]->profile_pic)}}" id="preview" style="  border-radius: 50% ;padding: 5px;border: 1px  solid; height: 20vh;width: 20vh;">
+                    <img src="{{ url('uploads/Profile/',$users[0]->profile_pic) }}" id="preview" style="  border-radius: 50% ;padding: 5px;border: 1px  solid; height: 20vh;width: 20vh;">
                     
                     </label>
                     <input type="hidden" name="id" value="{{Auth::user()->id}}">

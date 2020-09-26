@@ -97,7 +97,7 @@ class AgentController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required|email',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => 'required',
             'confirm_password' => 'required|same:password',
             'abn' => 'required',
@@ -320,14 +320,36 @@ class AgentController extends Controller
        // exit();
 
          }
-    public function membershiprenew()
+         public function renewmembership()
+         {
+             return view('agent.renewmembership');
+         }
+    public function membershiprenew(Request $request)
     {
+          $this->validate($request, [
+            'amount' => 'required', 
+        ]);
+          $date=date("Y-m-d h:i:s");
+          DB::table('transactions')->insert(
+                         [  'customer_id'=>'0',
+                            'agent_id'=>Auth::user()->id,
+                            'type'=>'d',
+                            'amount' => $request->input('amount'),
+                            'deposittype'=>'3',
+                            'agentcommission'=>'0',
+                            'commission'=>'0',
+                            'created_at'=>$date,
+                            ]);
+
+        echo "Record inserted successfully.<br/>";
+
+
         $oneYearOn = date('Y-m-d',strtotime(date("Y-m-d", ) . " + 365 day"));
                 DB::table('agent')
             ->where('agent_id', Auth::user()->id)
              ->update(['membership_end' => $oneYearOn]);
 
-             return redirect('/agent');
+             return redirect('/agent')->with('success', 'Your Membership is Renew for one year.');
 
     }
 }

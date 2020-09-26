@@ -33,7 +33,7 @@
 
         <p><b>Note:</b> Your Account Validity Has Expired Renew Membership.</p>
       </div>
-      <a href="{{url('membershiprenew')}}" class="btn btn-danger">Membership Renew </a>
+      <a href="{{url('renewmembership')}}" class="btn btn-danger">Membership Renew </a>
         <!-- ./col -->
     </div>
 

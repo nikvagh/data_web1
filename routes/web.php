@@ -63,6 +63,15 @@ Route::middleware('adminAuth')->group(function () {
 
     Route::get('/admin/settings', [App\Http\Controllers\settings::class, 'show'])->name('settings');
     Route::post('/admin/settings', [App\Http\Controllers\settings::class, 'updatedata'])->name('settings');
+
+    Route::get('/Gallery/Videos', [App\Http\Controllers\AdminController::class, 'GalleryVideos'])->name('Gallery/Videos');
+Route::get('/Gallery/Trading_screenshots', [App\Http\Controllers\AdminController::class, 'Trading_screenshots'])->name('Gallery/Trading_screenshots');
+Route::get('/Gallery/Videos/addVideos', [App\Http\Controllers\AdminController::class, 'addVideos'])->name('Gallery/Videos/addVideos');
+Route::post('/addVideos', [App\Http\Controllers\AdminController::class, 'addVideossubmit'])->name('addVideos');
+Route::get('/video_data', [App\Http\Controllers\AdminController::class, 'video_data'])->name('video_data');
+Route::get('/Gallery/Videos/delete/{id}', [App\Http\Controllers\AdminController::class, 'video_delete'])->name('video_delete');
+
+
 });
 
 Route::middleware('ClientAuth')->group(function () {
@@ -82,6 +91,7 @@ Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'ge
 Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
 Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
+
 });
 
 
@@ -105,9 +115,16 @@ Route::get('taranjeson_data', [App\Http\Controllers\AgentController::class, 'tar
 Route::get('/agent/taranjeson/view/{id}', [App\Http\Controllers\AgentController::class, 'agenttaranjesonview'])->name('agenttaranjesonview');
 Route::get('/withdraw', [App\Http\Controllers\AgentController::class, 'withdraw'])->name('withdraw');
 Route::post('/withdraw', [App\Http\Controllers\AgentController::class, 'addwithdraw'])->name('addwithdraw');
-Route::get('/membershiprenew', [App\Http\Controllers\AgentController::class, 'membershiprenew'])->name('membershiprenew');
+Route::get('/renewmembership', [App\Http\Controllers\AgentController::class, 'renewmembership'])->name('renewmembership');
+
+Route::post('/membershiprenew', [App\Http\Controllers\AgentController::class, 'membershiprenew'])->name('membershiprenew');
 
 });
+Route::view('/About_us', 'About_us')->name('About_us');
+Route::view('/Product', 'Product')->name('Product');
+Route::view('/contact_us', 'contact_us')->name('contact_us');
+Route::post('/contact_us', [App\Http\Controllers\HomeController::class, 'contact_us']);
+
 
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');
