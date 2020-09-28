@@ -26,7 +26,7 @@
                 <div class="box-header">
                     <!-- <h3 class="box-title">Hover Data Table</h3> -->
                     <div class="pull-right">
-                        <a href="{{ route('Gallery/Videos/addVideos') }}" class="btn btn-sm btn-primary">Add Videos</a>
+                        <a href="{{ route('Gallery/screenshots/addscreenshots') }}" class="btn btn-sm btn-primary">Add screenshots</a>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -35,7 +35,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
+                                <th>Image</th>
                                
                                 <th>Action</th>
                             </tr>
@@ -43,6 +43,7 @@
                     </table>
                 </div>
                 <!-- /.box-body -->
+
             </div>
             <!-- /.box -->
         </div>
@@ -64,21 +65,35 @@
             $('#example1').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('video_data') !!}',
+                ajax: '{!! route('screenshot_data') !!}',
                 columns: [
                     { data: 'video_id', name: 'video_id' },
-                   
                     {
-                        "name": "video",
-                        "data": "video",
+                        "name": "image",
+                        "data": "image",
                         "render": function (data, type, full, meta) {
-                            return "<video src=\"" + data + "\" height=\"50\"/></video>";
+                            return "<img src=\"" + data + "\" height=\"50\"/>";
                         },
-                        "title": "video",
+                        "title": "Image",
                         "orderable": true,
                         "searchable": true
                     },
+                    // { data: 'image', name: 'image' },
+                     // {
+                     //    "name": "video",
+                     //    "data": "video",
+                     //    "render": function (data, type, full, meta) {
+                     //        console.log('data');
+                     //        // return "<img >";
+                     //    },
+                     //    "title": "video",
+                     //    "orderable": true,
+                     //    "searchable": true
+                     // },
                     { data: 'action', name: 'action' },
+
+                    
+
                     
                 ]
             });

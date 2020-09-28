@@ -161,8 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-          Barryvdh\DomPDF\ServiceProvider::class,
-          
+ 
         /*
          * Package Service Providers...
          */
@@ -177,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
 
     ],
 
@@ -231,7 +232,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
          'PDF' => Barryvdh\DomPDF\Facade::class,
         // 'Datatables' => Yajra\Datatables\DatatablesServiceProvider::class,
-        'Datatables' => Yajra\DataTables\Facades\DataTables::class
+        'Datatables' => Yajra\DataTables\Facades\DataTables::class,
+          'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+
+        
     ],  
 
 ];

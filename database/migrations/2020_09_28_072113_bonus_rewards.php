@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Galleryvideos extends Migration
+class BonusRewards extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Galleryvideos extends Migration
      */
     public function up()
     {
-         Schema::create('Galleryvideos', function (Blueprint $table) {
-            $table->id('video_id');
-            $table->text('video');
-            $table->enum('type', ['v', 's']);
+         Schema::create('BonusRewards', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('name');
+            $table->string('amount');
+            $table->string('time');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class Galleryvideos extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('Galleryvideos');
+          Schema::dropIfExists('BonusRewards');
     }
 }

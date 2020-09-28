@@ -37,6 +37,7 @@
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
+                <input type="hidden" name="customer_r" value="123">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('Login') }}</button>
             </div>
             <!-- /.col -->

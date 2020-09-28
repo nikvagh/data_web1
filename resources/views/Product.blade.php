@@ -25,14 +25,13 @@
               <h3>{{$value->name}}</h3>
               <h4><sup>$</sup>{{$value->amount}} <!-- <span> / month</span> --></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
+                <!-- <li>Aida dere</li>
+                <li>Nec feugiat nisl</li> -->
                 <!-- <li>Nulla at volutpat dola</li> -->
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+               
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="{{url('product_details',$value->id )}}" class="btn-buy">Buy Now</a>
               </div>
             </div>
           </div>

@@ -26,7 +26,8 @@
   <link href="{{asset('front_asset/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <!-- <link href="front_asset/assets/vendor/owl.carousel/front_asset/assets/owl.carousel.min.css" rel="stylesheet"> -->
+  <!-- C:\wamp64\www\data_web1\public\front_asset\assets\vendor\owl.carousel\assets -->
+  <link href="{{asset('front_asset/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/aos/aos.css')}}" rel="stylesheet">
 
@@ -64,7 +65,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>
+      <h1 class="logo mr-auto"><a href="index.html">Data Web<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="{{asset('front_asset/assets/img/logo.png')}}" alt=""></a>-->
 
@@ -74,7 +75,8 @@
           <li class="{{ (request()->segment(1) == 'About_us') ? 'active' : '' }}"><a href="{{URL('About_us')}}">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
+         
+           <li  class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery/screenshot')}}">Gallery</a></li>
           <li class="{{ (request()->segment(1) == 'Product') ? 'active' : '' }}"><a href="{{URL('Product')}}">Product</a></li>
           <li class="drop-down"><a href="">Drop Down</a>
             <ul>
@@ -93,7 +95,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li  class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -135,10 +137,10 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Accounts</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url('agent_register')}}">Agent Register</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url('customer_register')}}">Customer Register</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>

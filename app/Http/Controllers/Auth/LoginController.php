@@ -32,6 +32,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         // echo "11";
+        // print_r($request);
         // exit;
         switch(Auth::user()->role){
             case 2:

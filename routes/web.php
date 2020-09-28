@@ -71,6 +71,11 @@ Route::post('/addVideos', [App\Http\Controllers\AdminController::class, 'addVide
 Route::get('/video_data', [App\Http\Controllers\AdminController::class, 'video_data'])->name('video_data');
 Route::get('/Gallery/Videos/delete/{id}', [App\Http\Controllers\AdminController::class, 'video_delete'])->name('video_delete');
 
+Route::get('/screenshot_data', [App\Http\Controllers\AdminController::class, 'screenshot_data'])->name('screenshot_data');
+Route::get('/Gallery/screenshots/addscreenshots', [App\Http\Controllers\AdminController::class, 'addscreenshots'])->name('Gallery/screenshots/addscreenshots');
+Route::post('/addScreenshots', [App\Http\Controllers\AdminController::class, 'addScreenshotssubmit'])->name('addScreenshots');
+Route::get('/Gallery/Screenshot/delete/{id}', [App\Http\Controllers\AdminController::class, 'Screenshot_delete'])->name('Screenshot_delete');
+
 
 });
 
@@ -91,7 +96,12 @@ Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'ge
 Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
 Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
-
+Route::get('/product_details/{id}', [App\Http\Controllers\front::class, 'product_details'])->name('/product_details{id}');
+Route::get('/order_user/{id}', [App\Http\Controllers\front::class, 'order_user'])->name('/order_user{id}');
+Route::post('/order_user', [App\Http\Controllers\front::class, 'order_usersubmit'])->name('/order_user');
+Route::get('/addcart/{id}', [App\Http\Controllers\addcart::class, 'addcart'])->name('/addcart/{id}');
+Route::get('/getcart', [App\Http\Controllers\addcart::class, 'getcart'])->name('getcart');
+Route::get('/clear_cart', [App\Http\Controllers\addcart::class, 'clear_cart'])->name('clear_cart');
 });
 
 
@@ -124,6 +134,14 @@ Route::view('/About_us', 'About_us')->name('About_us');
 Route::view('/Product', 'Product')->name('Product');
 Route::view('/contact_us', 'contact_us')->name('contact_us');
 Route::post('/contact_us', [App\Http\Controllers\HomeController::class, 'contact_us']);
+
+Route::get('/gallery/screenshot', [App\Http\Controllers\front::class, 'screenshots'])->name('/gallery/screenshot');
+Route::get('/gallery/Video', [App\Http\Controllers\front::class, 'Videosgallery'])->name('/gallery/Video');
+
+
+
+
+
 
 
 
