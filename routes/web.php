@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/clear-config', function() {
+Route::get('/config_clear', function() {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
 });
+
+Route::get('/view_clear', function() {
+    Artisan::call('view:clear');
+});
+
 
 Auth::routes();
 
