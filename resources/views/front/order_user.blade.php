@@ -8,7 +8,7 @@
                 <div class="col-md-10">
                     <div class="woocommerce-billing-fields">
                         <h3>Billing details</h3>
-                        <input type="hidden" name="id" value="{{$id}}">
+                      
                         <div class="woocommerce-billing-fields__field-wrapper">
                           <div class="flex">
                             <div class="form-group with50">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 28, 2020 at 01:05 PM
+-- Generation Time: Sep 29, 2020 at 01:10 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -511,7 +511,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -532,7 +532,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (68, '2020_09_26_120955_galleryvideos', 4),
 (69, '2020_09_28_072113_bonus_rewards', 5),
 (70, '2020_09_28_090548_order_user', 6),
-(71, '2020_09_28_102356_package_user', 7);
+(72, '2020_09_28_102356_package_user', 7);
 
 -- --------------------------------------------------------
 
@@ -555,14 +555,21 @@ CREATE TABLE IF NOT EXISTS `order_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_user`
 --
 
 INSERT INTO `order_user` (`id`, `fname`, `lname`, `country`, `address`, `State`, `City`, `Postcode/ZIP`, `Phone`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'patel', 'meet', 99, 'testing', 'guj', 'surat', '123456', '123456790', 'test@gmail.com', '2020-09-28 04:50:22', NULL);
+(1, 'patel', 'meet', 99, 'testing', 'guj', 'surat', '123456', '123456790', 'test@gmail.com', '2020-09-28 04:50:22', NULL),
+(2, 'patel', 'meet', 99, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 06:32:02', NULL),
+(3, 'patel', 'meet', 12, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 06:34:23', NULL),
+(4, 'patel', 'meet', 12, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 06:34:40', NULL),
+(5, 'patel', 'meet', 12, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 06:57:26', NULL),
+(6, 'patel', 'meet', 12, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 06:58:33', NULL),
+(7, 'patel', 'meet', 14, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 07:01:09', NULL),
+(8, 'patel', 'meet', 14, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-09-29 07:04:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -575,17 +582,31 @@ CREATE TABLE IF NOT EXISTS `package_user` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `Package_id` int NOT NULL,
   `user_id` int NOT NULL,
+  `quality` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_user`
 --
 
-INSERT INTO `package_user` (`id`, `Package_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 2, '2020-09-28 04:58:51', NULL);
+INSERT INTO `package_user` (`id`, `Package_id`, `user_id`, `quality`, `created_at`, `updated_at`) VALUES
+(1, 3, 2, '3', '2020-09-29 06:32:02', NULL),
+(2, 4, 2, '7', '2020-09-29 06:32:02', NULL),
+(3, 3, 2, '3', '2020-09-29 06:34:23', NULL),
+(4, 4, 2, '7', '2020-09-29 06:34:23', NULL),
+(5, 3, 2, '3', '2020-09-29 06:34:40', NULL),
+(6, 4, 2, '7', '2020-09-29 06:34:40', NULL),
+(7, 3, 2, '3', '2020-09-29 06:57:26', NULL),
+(8, 4, 2, '7', '2020-09-29 06:57:26', NULL),
+(9, 3, 2, '3', '2020-09-29 06:58:33', NULL),
+(10, 4, 2, '7', '2020-09-29 06:58:33', NULL),
+(11, 3, 2, '3', '2020-09-29 07:01:09', NULL),
+(12, 4, 2, '7', '2020-09-29 07:01:09', NULL),
+(13, 3, 2, '3', '2020-09-29 07:04:19', NULL),
+(14, 4, 2, '7', '2020-09-29 07:04:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -692,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`transactions_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -723,7 +744,21 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (25, 0, 3, 20.00, 'w', '3', '0', '0', '2020-09-24 20:17:52', NULL),
 (26, 0, 3, 1000.00, 'd', '3', '0', '0', '2020-09-25 23:13:13', NULL),
 (27, 0, 3, 1000.00, 'd', '3', '0', '0', '2020-09-25 23:18:02', NULL),
-(28, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-28 05:18:28', NULL);
+(28, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-28 05:18:28', NULL),
+(29, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 06:32:02', NULL),
+(30, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 06:32:02', NULL),
+(31, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 06:34:23', NULL),
+(32, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 06:34:23', NULL),
+(33, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 06:34:40', NULL),
+(34, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 06:34:40', NULL),
+(35, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 06:57:26', NULL),
+(36, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 06:57:26', NULL),
+(37, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 06:58:33', NULL),
+(38, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 06:58:33', NULL),
+(39, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 07:01:09', NULL),
+(40, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 07:01:09', NULL),
+(41, 2, 1, 4500.00, 'd', '4', '500', '10', '2020-09-29 07:04:19', NULL),
+(42, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-09-29 07:04:19', NULL);
 
 -- --------------------------------------------------------
 

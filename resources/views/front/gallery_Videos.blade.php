@@ -89,7 +89,7 @@
           </div>
         <div class="container col-md-12">
      
-          @foreach ($data as $key)
+          @foreach ($video as $key)
 
 <video src="{{ asset('/uploads/Videos/').'/'.$key->video }}" controls class="imggallery">
 

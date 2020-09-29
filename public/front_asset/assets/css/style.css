@@ -53,6 +53,22 @@ h1, h2, h3, h4, h5, h6 {
 .flex{
   display: flex;
 }
+.padding10{
+  padding: 10px;
+}
+.caeticon{
+  font-size: 1.5rem;
+}
+.warning{
+  font-size: 1.5rem;
+    padding: 10px;
+}
+.flortright{
+  float: right;
+}
+.displaynone{
+  display: none;
+}
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/

@@ -76,7 +76,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
          
-           <li  class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery/screenshot')}}">Gallery</a></li>
+           <li  class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
           <li class="{{ (request()->segment(1) == 'Product') ? 'active' : '' }}"><a href="{{URL('Product')}}">Product</a></li>
           <li class="drop-down"><a href="">Drop Down</a>
             <ul>
@@ -96,7 +96,7 @@
             </ul>
           </li>
           <li  class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
-
+         <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger">{{Cart::getContent()->count()}}</span></i></a></li>
         </ul>
       </nav><!-- .nav-menu -->
 

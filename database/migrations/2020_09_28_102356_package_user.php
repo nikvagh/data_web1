@@ -17,6 +17,7 @@ class PackageUser extends Migration
             $table->id('id');
             $table->integer('Package_id');
             $table->integer('user_id');
+            $table->string('quality');
             $table->timestamps();
         });
     }

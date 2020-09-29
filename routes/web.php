@@ -97,11 +97,16 @@ Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::cla
 Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
 Route::get('/product_details/{id}', [App\Http\Controllers\front::class, 'product_details'])->name('/product_details{id}');
-Route::get('/order_user/{id}', [App\Http\Controllers\front::class, 'order_user'])->name('/order_user{id}');
+Route::get('/order_user/', [App\Http\Controllers\front::class, 'order_user'])->name('/order_user');
 Route::post('/order_user', [App\Http\Controllers\front::class, 'order_usersubmit'])->name('/order_user');
 Route::get('/addcart/{id}', [App\Http\Controllers\addcart::class, 'addcart'])->name('/addcart/{id}');
 Route::get('/getcart', [App\Http\Controllers\addcart::class, 'getcart'])->name('getcart');
-Route::get('/clear_cart', [App\Http\Controllers\addcart::class, 'clear_cart'])->name('clear_cart');
+Route::get('/clear_cart/{id}', [App\Http\Controllers\addcart::class, 'clear_cart'])->name('clear_cart');
+Route::get('/pluscart/{id}', [App\Http\Controllers\addcart::class, 'pluscart'])->name('pluscart/{id}');
+Route::get('/minuscart/{id}', [App\Http\Controllers\addcart::class, 'minuscart'])->name('minuscart');
+Route::get('load_cart_block', [App\Http\Controllers\addcart::class, 'load_cart_block'])->name('load_cart_block');
+Route::get('payment_successful', [App\Http\Controllers\addcart::class, 'payment_successful'])->name('payment_successful');
+
 });
 
 
@@ -135,8 +140,8 @@ Route::view('/Product', 'Product')->name('Product');
 Route::view('/contact_us', 'contact_us')->name('contact_us');
 Route::post('/contact_us', [App\Http\Controllers\HomeController::class, 'contact_us']);
 
-Route::get('/gallery/screenshot', [App\Http\Controllers\front::class, 'screenshots'])->name('/gallery/screenshot');
-Route::get('/gallery/Video', [App\Http\Controllers\front::class, 'Videosgallery'])->name('/gallery/Video');
+Route::get('/gallery', [App\Http\Controllers\front::class, 'screenshots'])->name('/gallery');
+
 
 
 
