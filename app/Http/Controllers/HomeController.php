@@ -125,37 +125,6 @@ class HomeController extends Controller
 
         // return view('agent_register_save');
     }
-    public function contact_us(request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
-        ]);
-        $date=date("Y-m-d h:i:s");
-        $alldata=['name' => $request->input('name'),
-                         'email' => $email=$request->input('email'),
-                         'subject' => $request->input('subject'),
-                         'message' => $request->input('message'),
-                         'created_at' => $date,];
-        DB::table('contactus')->insert( $alldata);
-        // echo "string";
-        // exit();
-        $data = array('name'=>$request->input('name'),
-                         
-                         'subject' => $request->input('subject'),
-                         'message' => $request->input('message'),
-                         'created_at' => $date,);
     
-      // Mail::send('mail', $data, function($message,$email) {
-      //    $message->to('php.devloper666@gmail.com', 'BizLand')->subject
-      //       ('Contact Us');
-      //    $message->from('$email','Virat Gandhi');
-      // });
-      // echo "HTML Email Sent. Check your inbox.";
-        return redirect('/contact_us')->with('success', 'Your Message Has Been Sent.');
-
-    }
     
 }

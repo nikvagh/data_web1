@@ -1,5 +1,20 @@
 @extends('layouts.front')
+ @section('Breadcrumbs')
+<section class="breadcrumbs">
 
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Agent Register </h2>
+          <ol>
+            <li><a href="{{url('/')}}">Home</a></li>
+             <li>Agent Register</li>  
+
+          </ol>
+        </div>
+      </div>
+
+    </section><!-- End Breadcrumbs -->
+@endsection
 @section('content')
     
 <!-- ======= Pricing Section ======= -->

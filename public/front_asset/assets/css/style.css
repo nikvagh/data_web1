@@ -66,8 +66,14 @@ h1, h2, h3, h4, h5, h6 {
 .flortright{
   float: right;
 }
+.flortleft{
+  float: left;
+}
 .displaynone{
   display: none;
+}
+.margin10{
+  margin: 10px;
 }
 /*--------------------------------------------------------------
 # Preloader
@@ -625,14 +631,14 @@ section {
 }
 .white-bg {
   background-color: #f9f9f96b;
-  padding-top: 17vh;
+  
 }
 .topsp{
    padding-top: 17vh !important;
 }
 .section-bg {
   background-color: #f6f9fe;
-  padding-top: 17vh;
+  
 }
 
 .section-title {

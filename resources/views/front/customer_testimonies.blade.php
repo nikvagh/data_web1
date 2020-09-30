@@ -1,4 +1,5 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front')
+  @section('content')
  
  <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact white-bg">

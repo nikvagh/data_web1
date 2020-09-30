@@ -48,15 +48,21 @@
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-        <i class="icofont-phone"></i> +1 5589 55488 55
+        <?php $settings = DB::table('settings')
+            ->where('settings_id', '1')
+            ->get()->first(); ?>
+        <label class="displaynone">
+          
+        </label>
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com"> {{ $settings->Email }}</a>
+        <i class="icofont-phone"></i> {{ $settings->mobile_number }}
       </div>
       <div class="social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href="{{ url($settings->twitter)  }}" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="{{ url($settings->facebook) }}" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="{{ url($settings->instagram) }}" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="{{ url($settings->skype) }}" class="skype"><i class="icofont-skype"></i></a>
+        <a href="{{ url($settings->linkedin) }}" class="linkedin"><i class="icofont-linkedin"></i></i></a>
       </div>
     </div>
   </div>
@@ -71,7 +77,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="{{ (request()->segment(1) == 'home') ? 'active' : '' }}"><a href="index.html">Home</a></li>
+          <li class="{{ (request()->segment(1) == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
           <li class="{{ (request()->segment(1) == 'About_us') ? 'active' : '' }}"><a href="{{URL('About_us')}}">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
@@ -96,12 +102,27 @@
             </ul>
           </li>
           <li  class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
-         <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger">{{Cart::getContent()->count()}}</span></i></a></li>
+          @if (isset(Auth::user()->id))
+         <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger">          {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></i></a></li>
+         @else
+         <li><a href="{{url('login')}}">Login</a></li>
+          @endif
         </ul>
       </nav><!-- .nav-menu -->
 
     </div>
   </header><!-- End Header -->
+  <!-- ======= Breadcrumbs ======= -->
+@yield('Breadcrumbs')
+  @if(session()->get('cart'))
+     <div class="container-fluid section-bg" id="msg">
+  <div class="alert-warning padding10">{{ session()->get('cart') }} </div>
+ </div>
+                   
+               
+    
+  @endif
+
   @yield('content')
 
 
@@ -116,12 +137,9 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>BizLand<span>.</span></h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+            <p>{{$settings->address}}</p><br>
+              <strong>Phone:</strong>{{$settings->Email}}<br>
+              <strong>Email:</strong> {{$settings->mobile_number}}<br>
             </p>
           </div>
 
@@ -141,9 +159,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{url('agent_register')}}">Agent Register</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{url('customer_register')}}">Customer Register</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+          
             </ul>
           </div>
 
@@ -151,11 +167,11 @@
             <h4>Our Social Networks</h4>
             <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="{{ url($settings->twitter)  }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="{{ url($settings->facebook)  }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="{{ url($settings->instagram)  }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="{{ url($settings->skype)  }}" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="{{ url($settings->linkedin)  }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
 

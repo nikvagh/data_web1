@@ -1,4 +1,21 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front')
+@section('Breadcrumbs')
+<section class="breadcrumbs">
+
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Gallery </h2>
+          <ol>
+            <li><a href="{{url('/')}}">Home</a></li>
+             <li>Gallery</li>  
+
+          </ol>
+        </div>
+      </div>
+
+    </section><!-- End Breadcrumbs -->
+@endsection
+ @section('content')
     
  <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact white-bg">
@@ -6,7 +23,7 @@
   <div class="container aos-init aos-animate" data-aos="fade-up">
   <div class="section-title">
           
-          <h3>Screenshot </h3>
+          <h3>Trading screen shot </h3>
          <!--  <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
         </div>
 
@@ -37,7 +54,7 @@
 
           <div class="section-title">
         
-          <h3>video </h3>
+          <h3>Trading videos recording </h3>
        <!--    <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
         </div>
 
@@ -69,7 +86,7 @@
  <!-- ======= Testimonials Section ======= -->
           <div class="section-title">
         
-          <h3>testimonials </h3>
+          <h3>Customer testimonies </h3>
        <!--    <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
         </div>
     <section id="testimonials" class="testimonials topsp">

@@ -13,7 +13,7 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('settings')) {
+        // if (!Schema::hasTable('settings')) {
         Schema::create('settings', function (Blueprint $table) {
             $table->id('settings_id');
             $table->string('company_name');
@@ -22,9 +22,16 @@ class CreateSettingsTable extends Migration
             $table->text('address');
             $table->string('agentcommission');
             $table->text('terms_conditions');
-
+            $table->string('twitter');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('skype');
+            $table->string('linkedin');
+            $table->string('map_key');
+            $table->string('map_ip1');
+            $table->string('map_ip2');
         });
-        }
+        // }
     }
 
     /**

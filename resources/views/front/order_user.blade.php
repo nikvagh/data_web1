@@ -1,4 +1,21 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front')
+@section('Breadcrumbs')
+<section class="breadcrumbs">
+
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Checkout </h2>
+          <ol>
+            <li><a href="{{url('/')}}">Home</a></li>
+             <li>Checkout</li>  
+
+          </ol>
+        </div>
+      </div>
+
+    </section><!-- End Breadcrumbs -->
+@endsection
+ @section('content')
 
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing section-bg">

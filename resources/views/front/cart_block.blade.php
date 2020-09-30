@@ -1,4 +1,8 @@
-
+ @if(count($data)=='0')
+            <div class="alert alert-warning" role="alert"><i class="icofont-warning warning"></i>Cart Is empty</div>
+            @else
+            
+            
  <table id="tblid"  class="table">
                     <thead>
                         <tr>
@@ -44,19 +48,19 @@
                   
                 </table>
                 <div class="flortright">
-                    <table>
+                    <table class="table-bordered" >
                         <tr>
-                            <th class="flortright">SubTotal : </th>
+                            <th >SubTotal : </th>
                             <td>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</td>
                         </tr>
                       
                          <tr>
-                            <th class="flortright">Delivery Charges  : </th>
-                            <td>{{ $dc=10}}</td>
+                            <th >Delivery Charges  : </th>
+                            <td>{{ $dc=0}}</td>
                         </tr>
 
                         <tr>
-                            <th class="flortright">Total : </th>
+                            <th >Total : </th>
                             <td><b>{{ Cart::session(Auth::user()->id)->getSubTotal() + $dc}}</b></td>
                         </tr>
                         
@@ -64,3 +68,16 @@
                   
 
                 </div>
+                <div class="checkout-right">
+               <div id="cart_box"></div>
+
+                                <div class="checkout-left">
+                                    <div class="checkout-left-basket" >
+                                        
+                                        <a href="{{url('checkout')}}" class="btn btn-primary">checkout</a>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+             </div>
+              @endif

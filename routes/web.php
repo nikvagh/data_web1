@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+    
+// });
+Route::get('/', [App\Http\Controllers\front::class, 'home'])->name('/');
 Route::get('/config_clear', function() {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
@@ -66,7 +67,7 @@ Route::middleware('adminAuth')->group(function () {
     Route::post('/admin/product/update/{product_id}', [App\Http\Controllers\ProductController::class, 'update'])->name('update_product');
     Route::get('/admin/product/delete/{product_id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('delete_product');
 
-    Route::get('/admin/settings', [App\Http\Controllers\settings::class, 'show'])->name('settings');
+    Route::get('/admin/settings', [App\Http\Controllers\settings::class, 'adminsettings'])->name('settings');
     Route::post('/admin/settings', [App\Http\Controllers\settings::class, 'updatedata'])->name('settings');
 
     Route::get('/Gallery/Videos', [App\Http\Controllers\AdminController::class, 'GalleryVideos'])->name('Gallery/Videos');
@@ -102,15 +103,17 @@ Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::cla
 Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
 Route::get('/product_details/{id}', [App\Http\Controllers\front::class, 'product_details'])->name('/product_details{id}');
-Route::get('/order_user/', [App\Http\Controllers\front::class, 'order_user'])->name('/order_user');
+Route::get('/checkout/', [App\Http\Controllers\front::class, 'order_user'])->name('/checkout');
 Route::post('/order_user', [App\Http\Controllers\front::class, 'order_usersubmit'])->name('/order_user');
-Route::get('/addcart/{id}', [App\Http\Controllers\addcart::class, 'addcart'])->name('/addcart/{id}');
-Route::get('/getcart', [App\Http\Controllers\addcart::class, 'getcart'])->name('getcart');
-Route::get('/clear_cart/{id}', [App\Http\Controllers\addcart::class, 'clear_cart'])->name('clear_cart');
-Route::get('/pluscart/{id}', [App\Http\Controllers\addcart::class, 'pluscart'])->name('pluscart/{id}');
-Route::get('/minuscart/{id}', [App\Http\Controllers\addcart::class, 'minuscart'])->name('minuscart');
-Route::get('load_cart_block', [App\Http\Controllers\addcart::class, 'load_cart_block'])->name('load_cart_block');
-Route::get('payment_successful', [App\Http\Controllers\addcart::class, 'payment_successful'])->name('payment_successful');
+Route::post('/addcart/{id}', [App\Http\Controllers\Carts::class, 'addcart'])->name('/addcart/{id}');
+Route::get('/getcart', [App\Http\Controllers\Carts::class, 'getcart'])->name('getcart');
+Route::get('/clear_cart/{id}', [App\Http\Controllers\Carts::class, 'clear_cart'])->name('clear_cart');
+Route::get('/pluscart/{id}', [App\Http\Controllers\Carts::class, 'pluscart'])->name('pluscart/{id}');
+Route::get('/minuscart/{id}', [App\Http\Controllers\Carts::class, 'minuscart'])->name('minuscart');
+Route::get('load_cart_block', [App\Http\Controllers\Carts::class, 'load_cart_block'])->name('load_cart_block');
+Route::get('payment_successful', [App\Http\Controllers\Carts::class, 'payment_successful'])->name('payment_successful');
+Route::get('remove_cart', [App\Http\Controllers\Carts::class, 'remove_cart'])->name('remove_cart');
+
 
 });
 
@@ -140,13 +143,16 @@ Route::get('/renewmembership', [App\Http\Controllers\AgentController::class, 're
 Route::post('/membershiprenew', [App\Http\Controllers\AgentController::class, 'membershiprenew'])->name('membershiprenew');
 
 });
-Route::view('/About_us', 'About_us')->name('About_us');
-Route::view('/Product', 'Product')->name('Product');
-Route::view('/contact_us', 'contact_us')->name('contact_us');
-Route::post('/contact_us', [App\Http\Controllers\HomeController::class, 'contact_us']);
+Route::view('/About_us', 'front.About_us')->name('About_us');
+Route::view('/Product', 'front.Product')->name('Product');
+
+Route::get('/contact_us', [App\Http\Controllers\front::class, 'contact'])->name('contact_us');
+Route::post('/contact_us', [App\Http\Controllers\front::class, 'contact_us']);
 
 Route::get('/gallery', [App\Http\Controllers\front::class, 'screenshots'])->name('/gallery');
 
+Route::get('/Charity', [App\Http\Controllers\Charity::class, 'index'])->name('Charity');
+Route::post('/Charity', [App\Http\Controllers\Charity::class, 'Charity'])->name('Charity');
 
 
 

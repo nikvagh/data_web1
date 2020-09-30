@@ -11,12 +11,18 @@ use DB;
 use Auth;
 use Cart;
 
-class Addcart extends Controller
+class Carts extends Controller
 {
-   public function addcart($id)
+ 
+   public function addcart(Request $request,$id)
     {
+        $path=$request->input('path');
+             // return redirect($path)->with('cart', 'Product been Added to your Cart.');
+             // exit();
+        $products_id=$request->input('id');
+
            $data = DB::table('products')
-            ->where('id', $id)
+            ->where('id', $products_id)
             ->get()->first();   
             // print_r($data);
             // exit();
@@ -27,8 +33,9 @@ class Addcart extends Controller
                 'quantity' => 1,
                 'attributes' => array()
             ));
+            
             // print_r($data->id);
-             return redirect('/Product')->with('success', 'Product successfully Add in Cart.');
+             return redirect($path)->with('cart', 'Product been Added to your Cart.');
 
     }
     public function getcart()
@@ -54,7 +61,7 @@ class Addcart extends Controller
 
     public function clear_cart($id)
     {
-    	Cart::session(Auth::user()->id)->remove($id);
+        Cart::session(Auth::user()->id)->remove($id);
         // Cart::clear();
         // Cart::session(Auth::user()->id)->clear();  
        // return redirect('/getcart')->with('success', 'Product successfully Add in Cart.');
@@ -74,9 +81,9 @@ class Addcart extends Controller
 
         echo json_encode(true);
 
-  //   	Cart::session(Auth::user()->id)->update($id, array(
-		//   'quantity' => +1, 
-		// ));	
+  //    Cart::session(Auth::user()->id)->update($id, array(
+        //   'quantity' => +1, 
+        // ));  
 
         
 
@@ -87,9 +94,9 @@ class Addcart extends Controller
     public function minuscart($id)
     {
 
-    	Cart::session(Auth::user()->id)->update($id, array(
-		  'quantity' => -1, 
-		));	
+        Cart::session(Auth::user()->id)->update($id, array(
+          'quantity' => -1, 
+        )); 
         echo json_encode(true);
            
              // return redirect('/getcart');
@@ -120,12 +127,25 @@ class Addcart extends Controller
         if($id){
         $data = DB::table('order_user')
             ->where('id', $id)
-            ->get()->first();   
-        // print_r($get);
+            ->get()->first();  
+
+
+        $carts = Cart::session(Auth::user()->id)->getContent();
+        $cart = $carts->toArray();   
+        // print_r($cart);
         // exit();  
 
-       return view('front.payment_successful',['data'=>$data]);
+       return view('front.payment_successful',['data'=>$data,'cart'=>$cart]);
    }
     return redirect('/');
+    // return redirect('order_user');
+
+    
     }
-}
+    public function remove_cart()
+    {
+         Cart::clear();
+        Cart::session(Auth::user()->id)->clear();  
+       return redirect('/');
+    }
+   }

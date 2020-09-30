@@ -1,35 +1,38 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front')
+ @section('Breadcrumbs')
+<section class="breadcrumbs">
 
-<!-- breadcrumbs -->
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Cart </h2>
+          <ol>
+            <li><a href="{{url('/')}}">Home</a></li>
+             <li>Cart</li>  
 
+          </ol>
+        </div>
+      </div>
+
+    </section><!-- End Breadcrumbs -->
+@endsection
+ @section('content')
 
 <section id="pricing" class="cart section-bg">
 <div class="checkout">
     <div class="container">
-        <h2>Your shopping cart contains: <span>{{count($cart)}} Products</span></h2>
+        <h2>Cart </h2>
   
-            @csrf
-            @if(count($cart)=='0')
-            <div class="alert alert-warning" role="alert"><i class="icofont-warning warning"></i>Fist Add Cart</div>
-            @else
-            <div class="checkout-right">
-               <div id="cart_box"></div>
-
-                                <div class="checkout-left">
-                                    <div class="checkout-left-basket" >
-                                        
-                                        <a href="{{url('order_user')}}" class="btn btn-primary">checkout</a>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-
-           	 </div>
-           	 @endif
-       
+            
+         
+       <div id="cart_box"></div>
     </div>
-</div></div></div></section>
+</div>
+</div>
+</div>
+</section>
 
  @endsection
+
  @section('js')
  <script type="text/javascript">
   $(document).ready(function(){

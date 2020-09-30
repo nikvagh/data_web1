@@ -1,4 +1,5 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front') 
+@section('content')
  
 
     <!-- ======= Testimonials Section ======= -->

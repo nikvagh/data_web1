@@ -1,4 +1,21 @@
-@extends('layouts.front') @section('content')
+@extends('layouts.front')
+ @section('Breadcrumbs')
+<section class="breadcrumbs">
+
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Contact Us </h2>
+          <ol>
+            <li><a href="{{url('/')}}">Home</a></li>
+             <li>Contact Us</li>  
+
+          </ol>
+        </div>
+      </div>
+
+    </section><!-- End Breadcrumbs -->
+@endsection
+ @section('content')
  
  <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact white-bg">
@@ -16,7 +33,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>{{$settings->address}}</p>
             </div>
           </div>
 
@@ -24,7 +41,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>contact@example.com</p>
+              <p>{{$settings->Email}}</p>
             </div>
           </div>
 
@@ -32,7 +49,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>{{$settings->mobile_number}}</p>
             </div>
           </div>
 
@@ -41,7 +58,12 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+
+
+          <iframe frameborder="0" style="border:0; width: 100%; height: 384px;" src="https://www.google.com/maps/embed/v1/place?q={{$settings->map_ip1}},{{$settings->map_ip2}}&amp;key={{$settings->map_key}}" allowfullscreen></iframe>
+
+
+
           </div>
 
           <div class="col-lg-6">
