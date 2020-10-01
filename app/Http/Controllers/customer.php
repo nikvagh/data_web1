@@ -68,7 +68,7 @@ class Customer extends Controller
          return redirect('/customer')->with('success', 'Record inserted successfully.');
             
     }
-    public function PDF($id)
+    public function idcardPDF($id)
     {
 
         $pro = DB::table('customer')
@@ -80,7 +80,7 @@ class Customer extends Controller
                 // exit();
             
         $pdf = PDF::loadView('client.pdf',['pro' => $pro]);
-  
-        return $pdf->download('1.pdf');
+      $pdf->setPaper('A5', 'Landscape');
+        return $pdf->download('client Card.pdf');
     }
 }

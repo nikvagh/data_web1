@@ -71,7 +71,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Data Web<span>.</span></a></h1>
+      <h1 class="logo mr-auto"><a href="index.html">{{$settings->company_name}}<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="{{asset('front_asset/assets/img/logo.png')}}" alt=""></a>-->
 
@@ -79,11 +79,13 @@
         <ul>
           <li class="{{ (request()->segment(1) == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
           <li class="{{ (request()->segment(1) == 'About_us') ? 'active' : '' }}"><a href="{{URL('About_us')}}">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+         <!--  <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li> -->
          
            <li  class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
           <li class="{{ (request()->segment(1) == 'Product') ? 'active' : '' }}"><a href="{{URL('Product')}}">Product</a></li>
+          <li class="{{ (request()->segment(1) == 'Charity') ? 'active' : '' }}"><a href="{{URL('Charity')}}">Charity</a></li>
+          
           <li class="drop-down"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -136,7 +138,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>BizLand<span>.</span></h3>
+            <h3>{{$settings->company_name}}<span>.</span></h3>
             <p>{{$settings->address}}</p><br>
               <strong>Phone:</strong>{{$settings->Email}}<br>
               <strong>Email:</strong> {{$settings->mobile_number}}<br>

@@ -44,7 +44,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>customary Name</th>
+                                <th>Customer Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>ABN</th>

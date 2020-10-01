@@ -1,11 +1,12 @@
-@extends('layouts.customer_dash') @section('content')
+@extends('layouts.agent_dash')
+ @section('content')
 <section class="content">
     <div class="row">
         <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Taranjeson</h3>
+                        <h3 class="box-title">Transaction</h3>
                     </div>
                     
                     	<div class="form-group container-fluid">

@@ -169,6 +169,8 @@ class front extends Controller
         }
         // echo "Record inserted successfully.<br/>";
         // $order_user="8";
+          Cart::clear();
+        Cart::session(Auth::user()->id)->clear();  
         return redirect('/payment_successful')->with('payment_successful', $order_user);
         
 

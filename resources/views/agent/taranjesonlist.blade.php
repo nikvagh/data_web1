@@ -45,7 +45,7 @@
                     <table id="example1" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>customary Name</th>
+                                <th>Customer Name</th>
                              
                                 <th>phone</th>
                                 <th>Email</th>

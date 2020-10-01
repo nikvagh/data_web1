@@ -311,7 +311,7 @@
         <li class="{{ (request()->segment(1) == 'transaction') ? 'active' : '' }} treeview">
           <a href="{{url('transaction')}}">
             <i class="fa fa-money"></i>
-            <span>Taranjeson </span>
+            <span>Transaction  </span>
            
           </a>
          

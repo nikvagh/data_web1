@@ -63,12 +63,12 @@
 						<tr>
 							<td colspan="6"><b>product </b></td>
 						</tr>
-							 @foreach($cart as $valu)
+							 @foreach($products as $valu)
 						     <tr >
 					
-                                <td colspan="3">{{$valu['name']}}</td>  
-								<td colspan="1">{{$valu['price']}}</td> 
-								<td colspan="2">{{$valu['quantity']}}</td> 											
+                                <td colspan="3">{{$valu->name}}</td>  
+								<td colspan="1">{{$valu->amount}}</td> 
+								<td colspan="2">{{$valu->quality}}</td> 											
                             </tr>
                             @endforeach
 

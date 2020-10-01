@@ -16,7 +16,7 @@ class Depositcontroller extends Controller
     public function transaction()
     {
         $data = DB::table('users')
-            // ->where('transactions.customer_id', Auth::user()->id)
+            ->where('transactions.customer_id', Auth::user()->id)
             ->join('transactions', 'users.id', '=', 'transactions.customer_id')
             ->join('agent', 'transactions.agent_id', '=', 'agent.agent_id')
             ->get();

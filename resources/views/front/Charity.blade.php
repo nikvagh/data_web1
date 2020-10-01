@@ -18,12 +18,21 @@
 @endsection
  @section('content')
 
+
+ 
+
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing white-bg">
     <div class="container" data-aos="fade-up">
+
         <div class="section-title">
             <div class="col-lg-6">
                 <div class="contact">
+                    @if(session()->get('success'))
+                      <div class="alert alert-success" id="msg" role="alert">
+                         {{ session()->get('success') }} 
+                        </div>
+                     @endif
                          <form method="post" class="form" action="{{ route('Charity') }}">
                          @csrf
                         <div class="form-row">
@@ -75,7 +84,27 @@
                             </div>
                         </div>
 
-                         <div class="form-row">
+                   
+
+
+                       @if($errors->all())
+                         <?php
+                            $Member_names= old('Member_names');
+                         ?>
+                            <div class="appending_div"></div>
+                           @foreach($Member_names as $value)
+                                 <div class="form-row">
+                                <div class="form-group fullwith">
+                               
+                                <input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names" class="form-control" value="{{$value}}" />
+                                 </div>
+                           </div>
+                           @endforeach
+                            <i class="icofont-plus btn btn-primary add flortright"></i>
+
+                      
+                           @else
+                            <div class="form-row">
                             <div class="form-group fullwith">
                             <div class="appending_div"></div>
                                 <input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names" class="form-control" value="" />
@@ -85,12 +114,11 @@
                             @enderror
                             </div>
                         </div>
-
-
+                       @endif
                          <div class="form-row ">
                             <div class="form-group fullwith text-left">
                                 <label>Background Check</label><br>
-                             <input type="checkbox" value="yes" name="background_check"  class="form-check-inline"><label class="form-check-label" for="exampleCheck1">Yes</label>
+                             <input type="checkbox" value="yes" name="background_check"   class="form-check-inline"><label class="form-check-label" for="exampleCheck1">Yes</label>
                               <input type="checkbox" value="no" name="background_check"  class="form-check-inline"><label class="form-check-label" for="exampleCheck1">No</label>
                          </div>
                                   

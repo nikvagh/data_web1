@@ -107,22 +107,14 @@ class Carts extends Controller
         $carts = Cart::session(Auth::user()->id)->getContent();
           $data = $carts->toArray();
        
-            // $data['empty_msg'] = "Cart is empty!";
-            // $total = $subtotal + $delivery_fee - $discount;
-            // $data['total_data'] = (object) array();
-            // $data['total_data']->subtotal = $subtotal;
-            // $data['total_data']->delivery_fee = $delivery_fee;
-            // $data['total_data']->discount = $discount;
-            // $data['total_data']->total = $total;
-            // print_r($data);
-
-         
-
+          
         $data['view_data'] = view('front.cart_block',['data'=>$data])->render();
         return response()->json($data);
     }
     public function payment_successful()
     {
+       
+       
         $id=session()->get('payment_successful');
         if($id){
         $data = DB::table('order_user')
@@ -130,13 +122,20 @@ class Carts extends Controller
             ->get()->first();  
 
 
-        $carts = Cart::session(Auth::user()->id)->getContent();
-        $cart = $carts->toArray();   
-        // print_r($cart);
+        // $carts = Cart::session(Auth::user()->id)->getContent();
+        // $cart = $carts->toArray(); 
+        $products = DB::table('package_user')
+            ->where('package_user.created_at', $data->created_at)
+             ->leftJoin('products', 'package_user.Package_id', '=', 'products.id')
+            ->get();   
+            
+
+        // print_r($products);
         // exit();  
 
-       return view('front.payment_successful',['data'=>$data,'cart'=>$cart]);
-   }
+       return view('front.payment_successful',['data'=>$data,'products'=>$products]);
+
+        }
     return redirect('/');
     // return redirect('order_user');
 

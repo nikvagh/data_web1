@@ -92,7 +92,7 @@ Route::get('/profile', [App\Http\Controllers\customer::class, 'profile'])->name(
 
 Route::post('/Submitprofile', [App\Http\Controllers\customer::class, 'Submitprofile'])->name('Submitprofile');
 
-Route::get('/PDF/{id}', [App\Http\Controllers\customer::class, 'PDF']);
+Route::get('/PDF/{id}', [App\Http\Controllers\customer::class, 'idcardPDF']);
 
 Route::get('/deposit', [App\Http\Controllers\Depositcontroller::class, 'index']);
 Route::get('/card', [App\Http\Controllers\Depositcontroller::class, 'carddetails']);
@@ -120,6 +120,7 @@ Route::get('remove_cart', [App\Http\Controllers\Carts::class, 'remove_cart'])->n
 
 Route::middleware('AgentAuth')->group(function () {
 //Agent
+    
 Route::get('/agent/profile', [App\Http\Controllers\AgentController::class, 'profile'])->name('profile');
 Route::post('/agentprofile', [App\Http\Controllers\AgentController::class, 'Submitprofile'])->name('agentprofile');
 Route::get('/agentprofilepdf/{id}', [App\Http\Controllers\AgentController::class, 'agentprofilepdf'])->name('agentprofilepdf');
