@@ -11,7 +11,7 @@ use DB;
 use Auth;
 use Cart;
 
-class Carts extends Controller
+class CartsController extends Controller
 {
  
    public function addcart(Request $request,$id)
@@ -114,6 +114,7 @@ class Carts extends Controller
     public function payment_successful()
     {
         $id = session()->get('payment_successful');
+        // $id=8;
         if($id){
             $data = DB::table('order_user')
                 ->where('id', $id)
@@ -128,7 +129,7 @@ class Carts extends Controller
                 ->get();   
                 
 
-            // print_r($products);
+            // print_r($products->sum('amount'));
             // exit();
             return view('front.payment_successful',['data'=>$data,'products'=>$products]);
         }

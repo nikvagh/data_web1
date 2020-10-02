@@ -10,7 +10,7 @@ use Storage;
 use DB;
 
 
-class Charity extends Controller
+class CharityController extends Controller
 {
     public function index()
     {

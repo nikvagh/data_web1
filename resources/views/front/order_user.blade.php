@@ -30,7 +30,7 @@
                           <div class="flex">
                             <div class="form-group with50">
                                 <label for="fname" class="">First name&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" value="{{ old('fname') }}" autocomplete="given-name" />
+                                <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" value=" {{Auth::user()->name}}" autocomplete="given-name" />
                              @error('fname')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
@@ -44,7 +44,17 @@
                             @enderror
                             </div>
                           </div>
+                          
+
                             <div class="form-group">
+                                <label for="billing_address_1" class="">Street address&nbsp;<abbr class="required" title="required">*</abbr></label>
+                               <textarea class="form-control" name="address" placeholder="Street Address">{{ old('address') }}</textarea>
+                            </div>
+                             @error('address')
+                            <small class=" form-text text-danger"> {{ $message }}</small>
+                            @enderror
+
+                              <div class="form-group">
                                 <label for="country" class="">Country&nbsp;<abbr class="required" title="required">*</abbr></label>
 
                                 <select name="country" id="country" class="form-control" autocomplete="country">
@@ -59,15 +69,7 @@
                             @enderror
 
                             <div class="form-group">
-                                <label for="billing_address_1" class="">Street address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                               <textarea class="form-control" name="address" placeholder="Street Address">{{ old('address') }}</textarea>
-                            </div>
-                             @error('address')
-                            <small class=" form-text text-danger"> {{ $message }}</small>
-                            @enderror
-
-                            <div class="form-group">
-                                <label for="State" class="">State / County&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                <label for="State" class="">State &nbsp;<abbr class="required" title="required">*</abbr></label>
                                  <input type="text" class="form-control" name="State" id="State" placeholder="State / County" value="{{ old('State') }}" autocomplete="address-level2" />
                                 </div>
                              @error('State')
@@ -91,7 +93,7 @@
 
                             <div iv class="form-group">
                                 <label for="Phone" class="">Phone&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="{{ old('Phone') }}" autocomplete="tel" />
+                                <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="{{Auth::user()->phone}}" autocomplete="tel" />
                             </div>
                              @error('Phone')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
@@ -99,7 +101,7 @@
 
                             <div class="form-group">
                                 <label for="email" class="">Email address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="{{ old('email') }}" autocomplete="email username" />
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="{{Auth::user()->email}}" autocomplete="email username" />
                             </div>
                              @error('email')
                                 <small class=" form-text text-danger"> {{ $message }}</small>

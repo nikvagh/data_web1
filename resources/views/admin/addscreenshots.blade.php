@@ -1,11 +1,6 @@
 @extends('layouts.admin_dash')
 
-@section('css')
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
-@endsection
+
 
 @section('content')
 
@@ -49,11 +44,5 @@
     </div>
     <!-- /.row -->
 </section>
-
-@endsection
-
-@section('js')
-
-
 
 @endsection

@@ -4,10 +4,10 @@
 
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Checkout Successful </h2>
+          <h2>Order Successful </h2>
           <ol>
             <li><a href="{{url('/')}}">Home</a></li>
-             <li>Checkout Successful</li>  
+             <li>Order Successful</li>  
 
           </ol>
         </div>
@@ -19,7 +19,7 @@
 
     <div class="container">
 	<div class="row">
-		<h2>checkout Successful</h2>	
+		<h2>Order Successful</h2>	
 			<div class="table-responsive">
                 <div class="table-responsive custom_datatable">	
                
@@ -61,7 +61,7 @@
 									<br>{{$data->City}}
 								</td>
 								<td>Total</td>
-								<td>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</td>
+								<td>{{ $products->sum('amount') }}</td>
 								<td></td>
 							</tr>
 						</tbody>

@@ -10,7 +10,7 @@ use Storage;
 use DB;
 
 
-class Settings extends Controller
+class SettingsController extends Controller
 {
        public function adminsettings()
     {

@@ -123,7 +123,7 @@
                          </div>
                                   
                            @error('background_check')
-                            <small class="form-text text-left required" > {{ $message }}</small>
+                            <small class="form-text text-left required" > The Back ground check will be carried out by local police and local representative field is required.</small>
                             @enderror
                            
                         </div>

@@ -10,9 +10,9 @@ use Storage;
 use DB;
 use Auth;
 use Cart;
-
-class front extends Controller
-{   
+class Frontcontroller extends Controller
+{
+     
     public function contact()
     {
        $settings = DB::table('settings')
@@ -175,8 +175,6 @@ class front extends Controller
         
 
     }
-
-    
 
     
 }

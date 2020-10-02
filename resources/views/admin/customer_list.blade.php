@@ -19,14 +19,14 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered">
+                    <table id="example" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Created At</th>
-                                <th>Action</th>
+                                <!-- <th>Action</th> -->
                             </tr>
                         </thead>
                     </table>
@@ -50,10 +50,10 @@
     <script>
         $(function () {
             // $("#example1").DataTable();
-            $('#example1').DataTable({
+            $('#example').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('customer_data') !!}',
+                ajax: '{!! route('admincustomer_data') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },

@@ -258,13 +258,13 @@
                 <li class="user-body">
                   <div class="row">
                     <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
+                   <!--    <a href="#">Followers</a> -->
                     </div>
                     <div class="col-xs-4 text-center">
                       <a href="#">Sales</a>
                     </div>
                     <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
+                      <!-- <a href="#">Friends</a> -->
                     </div>
                   </div>
                   <!-- /.row -->
@@ -339,19 +339,19 @@
             </a>
           </li>
 
-          <li class="{{ (request()->segment(2) == 'deposite') ? 'active' : '' }}">
-            <a href="{{ route('deposite') }}">
+     <!--      <li class="{{ (request()->segment(2) == 'deposite') ? 'active' : '' }}">
+            <a href="{{ route('deposite') }}"> -->
               <!-- <i class="fa fa-users"></i>  -->
-              <span>Deposite</span>
+    <!--           <span>Deposite</span>
             </a>
-          </li>
+          </li> -->
 
-          <li class="{{ (request()->segment(2) == 'withdraw') ? 'active' : '' }}">
-            <a href="{{ route('withdraw') }}">
+        <!--   <li class="{{ (request()->segment(2) == 'withdraw') ? 'active' : '' }}">
+            <a href="{{ route('withdraw') }}"> -->
               <!-- <i class="fa fa-users"></i>  -->
-              <span>Withdraw</span>
+           <!--    <span>Withdraw</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="{{ (request()->segment(2) == 'product') ? 'active' : '' }}">
             <a href="{{ route('product') }}">

@@ -30,12 +30,18 @@ class AdminController extends Controller
     public function customer(){
        
         // $users = DB::table('users')->where('role', 4)->get();
+
         $data['title'] = 'Customers';
         return view('admin.customer_list')->with($data);
     }
 
     public function customer_data(){
+        // echo "string";
+        // exit();
+        
         $builder = User::query()->select('*')->where('role',4);
+        // print_r($builder);
+        // exit();
 
         return datatables()->eloquent($builder)
                         //   ->editColumn('id', function ($user) {
