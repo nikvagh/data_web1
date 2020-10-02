@@ -27,50 +27,44 @@
 
                 </label>					
 					<table class="table table-bordered" style="width:100%;margin:auto;text-align:left;">
-                        <tbody>										
-							
-
-							
+                        <tbody>
 							<tr>
-                                <td rowspan="2" colspan="2"><h3 style="margin:8px 0 0 63px;">
-                                	<label>Name:{{Auth::user()->name}}</label>
-                                </h3></td>
-                                <td>Challan NO</td>
-								<td colspan="2">00{{$data->id}} </td>
-                            </tr>									
-                            <tr>
-                                <td>Date</td>  
-								<td colspan="2">{{$data->created_at}}</td>  											
-                            </tr>
-                           
+								<td colspan="2">
+									<h3 style="">
+										<label>Name:{{Auth::user()->name}}</label>
+									</h3>
+								</td>
+								<td>Order NO</td>
+								<td >#{{$data->id}} </td>
+							</tr>									
 							<tr>
-								<td rowspan="6">Santhosh Poojary Keyyur</td>
-								<td rowspan="6" width="50%">{{$data->address}}
+								<td colspan="2"></td>
+								<td>Date</td>
+								<td>{{$data->created_at}}</td>  											
+							</tr>
+							<tr>
+								<td colspan="2"><b>Product </b></td>
+								<td><b>Amount </b></td>
+								<td><b>Qty </b></td>
+							</tr>
+							@foreach($products as $valu)
+								<tr>
+									<td colspan="2">{{$valu->name}}</td>  
+									<td>{{$valu->amount}}</td> 
+									<td>{{$valu->quality}}</td> 											
+								</tr>
+							@endforeach
+							<tr>
+								<td>
+									{{$data->address}}
 									<br>{{$data->State}}
 									<br>{{$data->City}}
 								</td>
 								<td>Total</td>
-								<td>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</td>	
-								<td>00</td>
+								<td>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</td>
+								<td></td>
 							</tr>
-							<tr>
-								
-								<td><!-- Office Manager signature --></td>
-								<td colspan="2"><!-- Cashier Signature --> <br><br></td>
-							</tr>
-
 						</tbody>
-						<tr>
-							<td colspan="6"><b>product </b></td>
-						</tr>
-							 @foreach($products as $valu)
-						     <tr >
-					
-                                <td colspan="3">{{$valu->name}}</td>  
-								<td colspan="1">{{$valu->amount}}</td> 
-								<td colspan="2">{{$valu->quality}}</td> 											
-                            </tr>
-                            @endforeach
 
 					</table>
 				</div>

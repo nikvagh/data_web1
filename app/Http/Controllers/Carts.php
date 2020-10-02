@@ -113,28 +113,24 @@ class Carts extends Controller
     }
     public function payment_successful()
     {
-       
-       
-        $id=session()->get('payment_successful');
+        $id = session()->get('payment_successful');
         if($id){
-        $data = DB::table('order_user')
-            ->where('id', $id)
-            ->get()->first();  
+            $data = DB::table('order_user')
+                ->where('id', $id)
+                ->get()->first();  
 
 
-        // $carts = Cart::session(Auth::user()->id)->getContent();
-        // $cart = $carts->toArray(); 
-        $products = DB::table('package_user')
-            ->where('package_user.created_at', $data->created_at)
-             ->leftJoin('products', 'package_user.Package_id', '=', 'products.id')
-            ->get();   
-            
+            // $carts = Cart::session(Auth::user()->id)->getContent();
+            // $cart = $carts->toArray(); 
+            $products = DB::table('package_user')
+                ->where('package_user.created_at', $data->created_at)
+                ->leftJoin('products', 'package_user.Package_id', '=', 'products.id')
+                ->get();   
+                
 
-        // print_r($products);
-        // exit();  
-
-       return view('front.payment_successful',['data'=>$data,'products'=>$products]);
-
+            // print_r($products);
+            // exit();
+            return view('front.payment_successful',['data'=>$data,'products'=>$products]);
         }
     return redirect('/');
     // return redirect('order_user');

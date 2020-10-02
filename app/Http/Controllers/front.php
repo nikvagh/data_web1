@@ -102,14 +102,14 @@ class front extends Controller
         $this->validate($request, [
             'fname' => 'required',
             'lname' => 'required',
-             'country' => 'required',
-              'address' => 'required',
-               'State' => 'required',
-                'City' => 'required',
-                 'Postcode/ZIP' => 'required',
-                  'Phone' => 'required',
-                   'email' => 'required',
-                 ]);
+            'country' => 'required',
+            'address' => 'required',
+            'State' => 'required',
+            'City' => 'required',
+            'Postcode/ZIP' => 'required',
+            'Phone' => 'required',
+            'email' => 'required',
+        ]);
        
 //  //order_user     
         $date=date("Y-m-d h:i:s");
@@ -169,7 +169,7 @@ class front extends Controller
         }
         // echo "Record inserted successfully.<br/>";
         // $order_user="8";
-          Cart::clear();
+        Cart::clear();
         Cart::session(Auth::user()->id)->clear();  
         return redirect('/payment_successful')->with('payment_successful', $order_user);
         
