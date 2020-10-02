@@ -20,7 +20,7 @@
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing section-bg">
     <div class="container" data-aos="fade-up">
-        <form name="checkout" method="post" action="{{url('order_user')}}" enctype="multipart/form-data">@csrf
+        <form name="checkout" method="post" action="{{url('checkout')}}" enctype="multipart/form-data">@csrf
             <div class="col2-set" id="customer_details">
                 <div class="col-md-10">
                     <div class="woocommerce-billing-fields">
@@ -30,7 +30,7 @@
                           <div class="flex">
                             <div class="form-group with50">
                                 <label for="fname" class="">First name&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" value=" {{Auth::user()->name}}" autocomplete="given-name" />
+                                <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" value="@if(old('fname')){{ old('fname') }}@else{{Auth::user()->name}}@endif" autocomplete="given-name" />
                              @error('fname')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
@@ -93,7 +93,7 @@
 
                             <div iv class="form-group">
                                 <label for="Phone" class="">Phone&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="{{Auth::user()->phone}}" autocomplete="tel" />
+                                <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="@if(old('Phone')){{ old('Phone') }}@else{{Auth::user()->phone}}@endif" autocomplete="tel" />
                             </div>
                              @error('Phone')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
@@ -101,7 +101,7 @@
 
                             <div class="form-group">
                                 <label for="email" class="">Email address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="{{Auth::user()->email}}" autocomplete="email username" />
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="@if(old('email')){{ old('email') }}@else{{Auth::user()->email}}@endif" autocomplete="email username" />
                             </div>
                              @error('email')
                                 <small class=" form-text text-danger"> {{ $message }}</small>

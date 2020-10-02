@@ -22,17 +22,35 @@ class AgentController extends Controller
 
     public function index()
     {
-        $users = Transactions::select(\DB::raw("sum(amount) as total"))
 
-                    // ->whereYear('created_at', date('Y'))
+        // $users = Transactions::select(\DB::raw("SUM(amount) as total"))
+        //             // ->whereYear('created_at', date('Y'))
+        //             ->groupBy(\DB::raw("Month(created_at)"))
+        //             ->pluck('total')->toArray();
 
-                    ->groupBy(\DB::raw("Month(created_at)"))
 
-                    ->pluck('total');
-                    // print_r($users);
+         $users_res = DB::table('Transactions')
+                ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_at') ,\DB::raw("sum(amount) as total"))
+                ->groupBy(\DB::raw("Month(created_at)"))
+                ->orderBy(\DB::raw("created_at"))
+                 ->pluck('total','created_at')->toArray();  
+
+                    // echo "<pre>";
+                    // print_r(compact('users_res'));
+                    // echo "</pre>";
+
+                    $users = array();
+                
+                    foreach($users_res as $key=>$val){
+                        $graph_time = strtotime($key)*1000;
+                        $users[] = "[$graph_time, $val]";
+                    }
+                    
+                    // print_r(compact('users'));
                     // exit();
 
         return view('agent.dashboard', compact('users'));
+        // return view('agent.dashboard')->with($data);
     }
    
     public function profile()

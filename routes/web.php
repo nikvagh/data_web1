@@ -104,7 +104,7 @@ Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Inv
 Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
 Route::get('/product_details/{id}', [App\Http\Controllers\Frontcontroller::class, 'product_details'])->name('/product_details{id}');
 Route::get('/checkout/', [App\Http\Controllers\Frontcontroller::class, 'order_user'])->name('/checkout');
-Route::post('/order_user', [App\Http\Controllers\Frontcontroller::class, 'order_usersubmit'])->name('/order_user');
+Route::post('/checkout', [App\Http\Controllers\Frontcontroller::class, 'order_usersubmit'])->name('/checkout');
 Route::post('/addcart/{id}', [App\Http\Controllers\CartsController::class, 'addcart'])->name('/addcart/{id}');
 Route::get('/getcart', [App\Http\Controllers\CartsController::class, 'getcart'])->name('getcart');
 Route::get('/clear_cart/{id}', [App\Http\Controllers\CartsController::class, 'clear_cart'])->name('clear_cart');

@@ -10,6 +10,7 @@ use Storage;
 use DB;
 use Auth;
 use Cart;
+use Mail;
 
 class CartsController extends Controller
 {
@@ -128,9 +129,22 @@ class CartsController extends Controller
                 ->leftJoin('products', 'package_user.Package_id', '=', 'products.id')
                 ->get();   
                 
-
-            // print_r($products->sum('amount'));
+        // return view('front.payment_successful_mail',['data'=>$data,'products'=>$products]);
             // exit();
+            // print_r($products->sum('amount'));
+                $datas['data']=$data;
+                $datas['products']=$products;
+// send mail
+                // if (Auth::user()->email) {
+                //   $data = array('name'=>Auth::user()->name);
+                //      Mail::send('front.payment_successful_mail',$datas, function($message) {
+                //      $message->to('abc@gmail.com', 'web_data')->subject
+                //       ('Order Successful');
+                //      $message->from(Auth::user()->email, Auth::user()->name);
+                //     });
+                // }
+                 
+
             return view('front.payment_successful',['data'=>$data,'products'=>$products]);
         }
     return redirect('/');

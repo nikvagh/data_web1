@@ -1,20 +1,4 @@
-@extends('layouts.front')
-@section('Breadcrumbs')
-<section class="breadcrumbs">
 
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Order Successful </h2>
-          <ol>
-            <li><a href="{{url('/')}}">Home</a></li>
-             <li>Order Successful</li>  
-
-          </ol>
-        </div>
-      </div>
-
-    </section><!-- End Breadcrumbs -->
-@endsection @section('content')
   <section id="contact" class="contact white-bg">
 
     <div class="container">
@@ -26,7 +10,7 @@
 
 
                 </label>					
-					<table class="table table-bordered" style="width:100%;margin:auto;text-align:left;">
+					<table class="table table-bordered" border="1" >
                         <tbody>
 							<tr>
 								<td colspan="2">
@@ -60,8 +44,8 @@
 									<br>{{$data->State}}
 									<br>{{$data->City}}
 								</td>
-								<td><b>Total</b></td>
-								<td><b>{{ $products->sum('amount') }}</b></td>
+								<td>Total</td>
+								<td>{{ $products->sum('amount') }}</td>
 								<td></td>
 							</tr>
 						</tbody>
@@ -72,7 +56,6 @@
 			</div> 
 		</div>
 		
-		<a href="{{url('remove_cart')}}" class="btn btn-dark flortright margin10">Back To Home</a>
+		
 	</div>	</section>
 
-@endsection
