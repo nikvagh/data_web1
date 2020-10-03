@@ -23,6 +23,7 @@
     
   @endif
 <!-- Main content -->
+<div id="container"></div>
 <section class="content">
     <!-- Small boxes (Stat box) -->
     
@@ -30,7 +31,38 @@
     </div>
     <!-- /.row -->
 
+
 </section>
 <!-- /.content -->
+
+@endsection
+@section('js')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript">
+   $(function () {
+var data_deposit = <?php echo $deposit; ?>;
+var data_year = <?php echo $year; ?>;
+$('#container').highcharts({
+     // chart: {
+     //   type: 'column'
+     // },
+    
+       xAxis: {
+       categories: data_year
+     },
+     yAxis: {
+        title: {
+        text: 'Rate'
+       }
+     },
+    series: [
+    {
+       name: 'Deposit',
+       data: data_deposit
+    }]
+  });
+});
+</script>
 
 @endsection

@@ -35,7 +35,17 @@ class Client
         }
 
         if (Auth::user()->role == 4) {
+           print_r(url()->previous());
+           // exit();
+            // if (url()->previous()) {
+            // redirect(url()->previous());
+            // }
+            // else{
+            // return $next($request);
+            //  }
+
             return $next($request);
+
         }
         
     }

@@ -15,8 +15,27 @@ class CustomerController extends Controller
 {
     public function index()
     {
-    	 
-    	 return view('client.dashboard');
+    	   $deposit =  DB::table('Transactions')
+             ->where('type', 'd')
+            ->select(DB::raw("SUM(amount) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $deposit = array_column($deposit, 'count');
+
+            $year =  DB::table('Transactions')
+                ->select(DB::raw("created_at as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $year = array_column($year, 'count');
+
+            // print_r($deposit);
+            // print_r($year);
+            // exit();
+    	 return view('client.dashboard')
+        ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
+        ->with('deposit',json_encode($deposit,JSON_NUMERIC_CHECK));
        
     }
     public function Profile()

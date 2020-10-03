@@ -23,14 +23,54 @@ class AgentController extends Controller
     public function index()
     {
 
+            $viewer =  DB::table('Transactions')
+                ->where('agent_id', Auth::user()->id)
+            ->select(DB::raw("SUM(amount) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $viewer = array_column($viewer, 'count');
+
+            $click =  DB::table('Transactions')
+                ->select(DB::raw("SUM(agentcommission) as count"))
+                ->where('agent_id', Auth::user()->id)
+                
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $click = array_column($click, 'count');
+
+            $year =  DB::table('Transactions')
+                ->where('agent_id', Auth::user()->id)
+                ->select(DB::raw("created_at as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $year = array_column($year, 'count');
+
+
+        return view('agent.dashboard')
+         ->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK))
+        ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
+        ->with('click',json_encode($click,JSON_NUMERIC_CHECK));
+    }
+    public function dashboard()
+    {
+ // line chart testing
         // $users = Transactions::select(\DB::raw("SUM(amount) as total"))
         //             // ->whereYear('created_at', date('Y'))
         //             ->groupBy(\DB::raw("Month(created_at)"))
         //             ->pluck('total')->toArray();
 
 
-         $users_res = DB::table('Transactions')
+         $users = DB::table('Transactions')
                 ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_at') ,\DB::raw("sum(amount) as total"))
+                ->groupBy(\DB::raw("Month(created_at)"))
+                ->orderBy(\DB::raw("created_at"))
+                 ->pluck('total','created_at')->toArray();  
+
+             $commission = DB::table('Transactions')
+                ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_at') ,\DB::raw("sum(agentcommission) as total"))
                 ->groupBy(\DB::raw("Month(created_at)"))
                 ->orderBy(\DB::raw("created_at"))
                  ->pluck('total','created_at')->toArray();  
@@ -39,18 +79,22 @@ class AgentController extends Controller
                     // print_r(compact('users_res'));
                     // echo "</pre>";
 
-                    $users = array();
+                    // $users = array();
                 
-                    foreach($users_res as $key=>$val){
-                        $graph_time = strtotime($key)*1000;
-                        $users[] = "[$graph_time, $val]";
-                    }
+                    // foreach($users_res as $key=>$val){
+                    //     $graph_time = strtotime($key)*1000;
+                    //     $users[] = "[$graph_time, $val]";
+                    // }
                     
-                    // print_r(compact('users'));
+                    // print_r(compact('commission'));
                     // exit();
 
-        return view('agent.dashboard', compact('users'));
-        // return view('agent.dashboard')->with($data);
+
+        return view('agent.dashboard1', compact('users'),compact('commission'));
+
+
+        
+        
     }
    
     public function profile()

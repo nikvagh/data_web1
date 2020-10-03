@@ -106,8 +106,13 @@
           <li  class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
           @if (isset(Auth::user()->id))
          <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger">          {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></i></a></li>
+         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
+           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form></li>
          @else
-         <li><a href="{{url('login')}}">Login</a></li>
+         <li><a  href="{{url('login')}}">login</a></li>
+        <li><a href="{{url('customer_register')}}">Register</a></li>
           @endif
         </ul>
       </nav><!-- .nav-menu -->

@@ -23,12 +23,54 @@
     
   @endif
    
-
+<div id="container"></div>
 <section class="content">
     
    
     </div>
 
 </section>
+@endsection
+@section('js')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript">
+   $(function () {
+var data_Commission = <?php echo $agent_commission; ?>;
+var data_withdraw = <?php echo $withdraw; ?>;
+var data_deposit = <?php echo $deposit; ?>;
+var data_Transactions = <?php echo $Transactions; ?>;
+var data_year = <?php echo $year; ?>;
+$('#container').highcharts({
+     // chart: {
+     //   type: 'column'
+     // },
+    
+       xAxis: {
+       categories: data_year
+     },
+     yAxis: {
+        title: {
+        text: 'Rate'
+       }
+     },
+    series: [{
+       name: 'Agent Commission',
+       data: data_Commission
+     }, {
+       name: 'Transactions',
+       data: data_Transactions
+    }, {
+       name: 'Withdraw',
+       data: data_withdraw
+    },
+    {
+       name: 'Deposit',
+       data: data_deposit
+    }]
+  });
+});
+</script>
 
 @endsection
+

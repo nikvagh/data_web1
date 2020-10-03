@@ -24,11 +24,61 @@ class AdminController extends Controller
     {   
         // User::factory()->count(10)->create();
         // Customer::factory()->count(10)->make();
-        return view('admin.dashboard');
+
+            $Transactions =  DB::table('Transactions')
+             
+            ->select(DB::raw("SUM(amount) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $Transactions = array_column($Transactions, 'count');
+
+            $agent_commission =  DB::table('Transactions')
+                ->select(DB::raw("SUM(agentcommission) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $agent_commission = array_column($agent_commission, 'count');
+
+             $withdraw =  DB::table('Transactions')
+             ->where('type', 'w')
+            ->select(DB::raw("SUM(amount) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $withdraw = array_column($withdraw, 'count');
+
+             $deposit =  DB::table('Transactions')
+             ->where('type', 'd')
+            ->select(DB::raw("SUM(amount) as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $deposit = array_column($deposit, 'count');
+
+
+            $year =  DB::table('Transactions')
+                ->select(DB::raw("created_at as count"))
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->get()->toArray();
+            $year = array_column($year, 'count');
+            // echo "<pre>";
+            // print_r($Transactions);
+            // print_r($year);
+            // print_r($agent_commission);
+            // print_r($withdraw);
+            // exit();
+        return view('admin.dashboard')
+         ->with('Transactions',json_encode($Transactions,JSON_NUMERIC_CHECK))
+        ->with('agent_commission',json_encode($agent_commission,JSON_NUMERIC_CHECK))
+        ->with('withdraw',json_encode($withdraw,JSON_NUMERIC_CHECK))
+        ->with('deposit',json_encode($deposit,JSON_NUMERIC_CHECK))
+        ->with('year',json_encode($year,JSON_NUMERIC_CHECK));
     }
 
     public function customer(){
-       
+        
         // $users = DB::table('users')->where('role', 4)->get();
 
         $data['title'] = 'Customers';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 01, 2020 at 12:53 PM
+-- Generation Time: Oct 03, 2020 at 08:12 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `agent` (
 --
 
 INSERT INTO `agent` (`id`, `agent_id`, `business_name`, `abn`, `type_of_industry`, `commission`, `profile_pic`, `address`, `membership_status`, `membership_end`, `wallet`, `created_at`, `updated_at`) VALUES
-(1, 3, 'test1111111', 'abn', 'test', '22402', '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', '1760', NULL, NULL),
+(1, 3, 'test1111111', 'abn', 'test', '2240200', '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', '12820000', NULL, NULL),
 (2, 1, 'test', 'abn', 'test', '2000', '', 'address', 'enable', '2021-01-30', '20', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -518,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `galleryvideos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`video_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `galleryvideos`
@@ -527,7 +527,9 @@ CREATE TABLE IF NOT EXISTS `galleryvideos` (
 INSERT INTO `galleryvideos` (`video_id`, `video`, `type`, `created_at`, `updated_at`) VALUES
 (6, '160126597183.jpeg', 's', '2020-09-27 22:36:11', NULL),
 (5, '160126595650.jpeg', 's', '2020-09-27 22:35:56', NULL),
-(4, '160126554942.mp4', 'v', '2020-09-27 22:29:09', NULL);
+(4, '160126554942.mp4', 'v', '2020-09-27 22:29:09', NULL),
+(7, '160171227188.png', 's', '2020-10-03 02:34:31', NULL),
+(9, '160171265784.avi', 'v', '2020-10-03 02:40:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -586,7 +588,7 @@ CREATE TABLE IF NOT EXISTS `order_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_user`
@@ -607,7 +609,9 @@ INSERT INTO `order_user` (`id`, `fname`, `lname`, `country`, `address`, `State`,
 (12, 'patel', 'meet', 3, 'testing', 'DEMOTEST', 'DEMO', '123456', '0123456789', 'testASASASSA@gmail.com', '2020-10-01 01:09:43', NULL),
 (13, 'patel', 'meet', 3, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-10-01 01:12:52', NULL),
 (14, 'patel', 'meet', 3, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-10-01 01:13:25', NULL),
-(15, 'patel', 'meet', 3, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-10-01 01:44:34', NULL);
+(15, 'patel', 'meet', 3, 'sdf', 'Jerusalem', 'Jerusalem', '123456', '0123456789', 'test@gmail.com', '2020-10-01 01:44:34', NULL),
+(16, 'Kali', 'Feest', 7, 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', 'United States', 'New York', '123456', '0987456321', 'viola.reichel@example.net', '2020-10-02 07:21:02', NULL),
+(17, 'Kali', 'Feest', 15, 'A108 Adam Street\r\nNew York, NY 535022', 'United States', 'New York', '123456', '0987456321', 'viola.reichel@example.net', '2020-10-02 07:22:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -624,7 +628,7 @@ CREATE TABLE IF NOT EXISTS `package_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_user`
@@ -651,7 +655,9 @@ INSERT INTO `package_user` (`id`, `Package_id`, `user_id`, `quality`, `created_a
 (18, 4, 2, '2', '2020-10-01 01:09:43', NULL),
 (19, 4, 2, '2', '2020-10-01 01:12:52', NULL),
 (20, 4, 2, '2', '2020-10-01 01:13:25', NULL),
-(21, 5, 2, '2', '2020-10-01 01:44:34', NULL);
+(21, 5, 2, '2', '2020-10-01 01:44:34', NULL),
+(22, 10, 2, '1', '2020-10-02 07:21:02', NULL),
+(23, 6, 2, '1', '2020-10-02 07:22:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -666,6 +672,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('viola.reichel@example.net', '$2y$10$OxeuG0OiB9zkkZ3pGn0a/OmG0UirStSGqB2LvE3OElbn6e9R3UbkG', '2020-10-03 02:31:26');
 
 -- --------------------------------------------------------
 
@@ -766,7 +779,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`transactions_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -774,7 +787,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 
 INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amount`, `type`, `deposittype`, `agentcommission`, `commission`, `created_at`, `updated_at`) VALUES
 (2, 2, 1, 90.00, 'd', '2', '10', '10', '2019-06-13 05:39:16', NULL),
-(3, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-10-22 00:43:18', NULL),
+(3, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-03-19 05:56:20', NULL),
 (4, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:43:24', NULL),
 (5, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:43:48', NULL),
 (6, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:45:11', NULL),
@@ -783,7 +796,7 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (9, 13, 3, 8568.00, 'd', '2', '952', '10', '2020-09-25 01:55:53', NULL),
 (10, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 05:20:26', NULL),
 (11, 14, 3, 1800.00, 'd', '2', '200', '10', '2020-09-25 05:21:17', NULL),
-(13, 0, 3, 2000.00, 'w', '3', '0', '0', '2020-09-25 06:31:26', NULL),
+(13, 0, 3, 20000.00, 'w', '3', '0', '0', '2020-10-25 06:31:26', NULL),
 (15, 0, 3, 200.00, 'w', '3', '0', '0', '2020-09-25 06:38:53', NULL),
 (16, 0, 3, 20.00, 'w', '3', '0', '0', '2020-09-25 06:51:22', NULL),
 (17, 2, 1, 81000.00, 'd', '2', '9000', '10', '2020-09-24 20:02:48', NULL),
@@ -795,7 +808,14 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (23, 2, 1, 810000.00, 'd', '2', '9000', '10', '2020-09-24 20:07:35', NULL),
 (24, 2, 1, 81000.00, 'd', '2', '9000', '10', '2020-08-18 20:10:31', NULL),
 (25, 0, 3, 20.00, 'w', '3', '0', '0', '2020-09-24 20:17:52', NULL),
-(26, 0, 3, 1000.00, 'd', '3', '0', '0', '2019-12-04 23:13:13', NULL);
+(26, 0, 3, 1000.00, 'd', '3', '0', '0', '2019-12-04 23:13:13', NULL),
+(51, 2, 1, 900000.00, 'd', '4', '100000', '10', '2020-10-02 07:21:02', NULL),
+(52, 2, 1, 45000.00, 'd', '4', '5000', '10', '2020-10-02 07:22:29', NULL),
+(53, 0, 3, 200.00, 'w', '3', '0', '0', '2019-06-13 00:38:50', NULL),
+(54, 0, 3, 200.00, 'w', '3', '0', '0', '2020-10-03 00:39:20', NULL),
+(55, 0, 3, 60.00, 'w', '3', '0', '0', '2020-10-03 00:39:58', NULL),
+(56, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:16', NULL),
+(57, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -825,9 +845,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'vbwCugQeHiDR0U2ArboH7QgaQGhsdkfOO6bzNfilSF2RYCiTuAMWAcLrqiaL', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'Kali Feest', NULL, 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'oKUNPu8QHngRyyJUGj9drgvkrIhwfApks3b1dr2YMfDU45f4L1JE4nagmIG4', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '90fgTwHTPgwAqTGvjsgGQh6VUxCdJD5p94DHzcVkT4KQIhjjngpGILpIHJAT', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'szSgTHenBwkPd1k1w27aGYr10iV3uCe6lE9ApwsWpWGkey2xfcymhiTPapd6', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'Kali Feest', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'noQK3dckaQs0CbxhjY4ZVyfu2ZzH3HqV0OA1UfB6OEqUFFRQw1PTa1pGak6g', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'jwcrUFDf5wMetvZXpN8qi0C6j59n47GDCPewJbfc1UKMGoqG02AZui2pzeVg', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),

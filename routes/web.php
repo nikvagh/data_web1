@@ -120,7 +120,10 @@ Route::get('remove_cart', [App\Http\Controllers\CartsController::class, 'remove_
 
 Route::middleware('AgentAuth')->group(function () {
 //Agent
-    
+
+   
+
+
 Route::get('/agent/profile', [App\Http\Controllers\AgentController::class, 'profile'])->name('profile');
 Route::post('/agentprofile', [App\Http\Controllers\AgentController::class, 'Submitprofile'])->name('agentprofile');
 Route::get('/agentprofilepdf/{id}', [App\Http\Controllers\AgentController::class, 'agentprofilepdf'])->name('agentprofilepdf');
