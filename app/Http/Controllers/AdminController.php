@@ -63,23 +63,35 @@ class AdminController extends Controller
             ->groupBy(DB::raw("Month(created_at)"))
             ->get()->toArray();
             $year = array_column($year, 'count');
-            // echo "<pre>";
-            // print_r($Transactions);
-            // print_r($year);
-            // print_r($agent_commission);
-            // print_r($withdraw);
-            // exit();
-        return view('admin.dashboard')
+       
+             $totalproducts= DB::table('package_user')->count();
+             $totalcustomer= DB::table('customer')->count();
+             $totalagent= DB::table('agent')->count();
+             $totatransactions= DB::table('transactions')->where('type', 'd')->get();
+             $totatcommission = DB::table('agent')->get();
+
+             $agentcommission= DB::table('agent')->select('commission as count')->pluck('count');
+              $agentsellamount=DB::table('transactions')->select(DB::raw("sum(amount) as count"))
+                  ->groupBy(\DB::raw("agent_id"))->pluck('count');
+              $agentname=DB::table('agent')->select('business_name')
+                  ->groupBy(\DB::raw("business_name"))->pluck('business_name'); 
+             // print_r($agentname);
+             // exit();
+        
+        return view('admin.dashboard',['totalproducts'=>$totalproducts,'totalcustomer'=>$totalcustomer,'totalagent'=>$totalagent,'totatransactions'=>$totatransactions,'totatcommission'=>$totatcommission])
          ->with('Transactions',json_encode($Transactions,JSON_NUMERIC_CHECK))
         ->with('agent_commission',json_encode($agent_commission,JSON_NUMERIC_CHECK))
         ->with('withdraw',json_encode($withdraw,JSON_NUMERIC_CHECK))
         ->with('deposit',json_encode($deposit,JSON_NUMERIC_CHECK))
-        ->with('year',json_encode($year,JSON_NUMERIC_CHECK));
+        ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
+        ->with('agentsellamount',json_encode($agentsellamount,JSON_NUMERIC_CHECK))
+        ->with('agentname',json_encode($agentname,JSON_NUMERIC_CHECK))
+        ->with('agentcommission',json_encode($agentcommission,JSON_NUMERIC_CHECK));
     }
 
+
     public function customer(){
-        
-        // $users = DB::table('users')->where('role', 4)->get();
+      // $users = DB::table('users')->where('role', 4)->get();
 
         $data['title'] = 'Customers';
         return view('admin.customer_list')->with($data);
@@ -112,42 +124,52 @@ class AdminController extends Controller
     }
 
     public function agent_data(){
-        // $builder =  DB::table('sales')->join('customer', 'customer.customer_id', '=', 'sales.customer_id')->get();
+        $builder =  DB::table('agent')->get();
 
-        $builder = sale::query();
+        // $builder = sale::query();
         
         return datatables($builder)
                         //   ->editColumn('id', function ($user) {
                         //       return $user->id;
                         //   })
-                            ->editColumn('created_at', function ($user) {
-                                return date('Y-m-d H:i:s',strtotime($user->created_at));
-                            })
+                            // ->editColumn('created_at', function ($user) {
+                            //     return date('Y-m-d H:i:s',strtotime($user->created_at));
+                            // })
                             // ->setRowClass(function ($user) {
                             //     return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
                             // })
                             ->addColumn('action', function ($user) {
-                                return '<a href="'.url('/admin/agent/sales/view/').'/'.$user->id.'" class="btn btn-sm btn-primary">View</a>';
+                                return '<a href="'.url('/admin/agent/view').'/'.$user->id.'" class="btn btn-sm btn-primary">View</a>';
                             })
                         //   ->rawColumns([1,2])
                           ->make();
     }
+    public function agentview($id)
+    {
+       $get = DB::table('agent')
+            ->where('id', $id)
+            ->get()->first();  
+            // print_r($get);
+            // exit();
+      return view('admin.agentview', ['get' => $get]); 
 
+    }
+   
     public function agent_sales(){
 
         $data['title'] = 'Agents';
         return view('admin.agent_list')->with($data);
     }
-
+   
     public function agent_sales_data(){
         // $builder = User::query()->select('*')->where('role',3);
         return datatables()->eloquent($builder)
                         //   ->editColumn('id', function ($user) {
                         //       return $user->id;
-                        //   })
-                            ->editColumn('created_at', function ($user) {
-                                return date('Y-m-d H:i:s',strtotime($user->created_at));
-                            })
+                        // //   })
+                        //     ->editColumn('created_at', function ($user) {
+                        //         return date('Y-m-d H:i:s',strtotime($user->created_at));
+                        //     })
                             // ->setRowClass(function ($user) {
                             //     return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
                             // })
@@ -230,7 +252,7 @@ class AdminController extends Controller
     public function addVideossubmit(Request $request)
     {
          $this->validate($request, [
-            'Videos' => 'required',]);
+            'Videos' => 'required']);
 
               $file=$request->file('Videos');
 
@@ -304,4 +326,39 @@ class AdminController extends Controller
 
 
     }
+     public function admin_packag_list()
+        {   
+            
+             $data['title'] = 'Packages';
+           return view('admin.customer_packag_list')->with($data);
+        }
+     public function admin_packag_view($id)
+        {
+          $Package =  DB::table('package_user')->where('PackageUser_id', $id)
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
+            return view('admin.packag_view',['Package'=>$Package]);
+        }
+    public function admin_packag_data()
+        {
+           $builder =  DB::table('package_user')
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get();
+
+            // $builder = sale::query();
+            
+            return datatables($builder)
+                            //   ->editColumn('id', function ($Package) {
+                            //       return $Package->id;
+                            //   })
+                                    // ->editColumn('created_at', function ($Package) {
+                                    //     return date('Y-m-d H:i:s',strtotime($Package->created_at));
+                                    // })
+                                // ->setRowClass(function ($Package) {
+                                //     return $Package->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+                                // })
+                                ->addColumn('action', function ($Package) {
+                                    return '<a href="'.url('/admin/packag/view/').'/'.$Package->PackageUser_id.'" class="btn btn-sm btn-primary">View</a>';
+                                })
+                            //   ->rawColumns([1,2])
+                              ->make();
+        }
 }

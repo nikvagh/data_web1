@@ -40,16 +40,77 @@
       <a href="{{url('renewmembership')}}" class="btn btn-danger">Membership Renew </a>
         <!-- ./col -->
     </div>
-
-    @php
-        echo "<pre>";
-        print_r($users);
-        exit;
-    @endphp
-
 @endif
-    <!-- /.row -->
-<div id="container"></div>
+  
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{$totalPackage}}</h3>
+
+              <p>Total Packages Sell</p>
+            </div>
+           <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="{{ url('package') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{$totalPackagesell->sum('amount')}}</h3>
+
+              <p>Total sell</p>
+            </div>
+             <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            
+            <a href="{{ url('package') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>{{ $totalCustomer }}</h3>
+
+              <p>Total Customer</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="{{ url('customerlist') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        
+          <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{$totalcommission->commission }}</h3>
+
+              <p>Total Commission</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="{{ url('taranjesonlist') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+ <div class="box ">
+            <div class="box-header"><h3 class="box-title">Chart</h3></div>
+           
+    
+        <div id="container"></div>
+          </div>
 </section>
 <!-- /.content -->
 

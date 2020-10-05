@@ -1,9 +1,8 @@
-@extends('layouts.admin_dash')
+@extends('layouts.agent_dash')
 
 @section('css')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
 @endsection
 
 @section('content')
@@ -14,16 +13,20 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                              <!-- /.box-header -->
+    <div class="box-header"><h3 class="box-title">Active Package</h3></div>
+                <!-- <div class="box-header">
+                    <h3 class="box-title"></h3>
+                </div> -->
+                <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example" class="table table-bordered">
+                    <table id="example1" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                                <!-- <th>Action</th> -->
+                                <th>Packages Name</th>
+                                <th>Packages amount</th>
+                                <th>Packages By Date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -43,22 +46,21 @@
     <script src="{{ asset('back_asset/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     
-    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
     <script>
         $(function () {
             // $("#example1").DataTable();
-            $('#example').DataTable({
+            $('#example1').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admincustomer_data') !!}',
+                ajax: '{!! route('agent_packag_data') !!}',
                 columns: [
-                    { data: 'id', name: 'id' },
+                    { data: 'PackageUser_id', name: 'PackageUser_id' },
                     { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'created_at', name: 'created_at' }
+                    { data: 'amount', name: 'amount' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
         });
     </script>
-    
 @endsection

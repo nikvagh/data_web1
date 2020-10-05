@@ -48,8 +48,16 @@ class AgentController extends Controller
             ->get()->toArray();
             $year = array_column($year, 'count');
 
+      $totalPackage= DB::table('customer')->join('package_user', 'package_user.user_id', '=', 'customer.customer_id')
+        ->where('customer.agent_id', Auth::user()->id)->count();
+       $totalPackagesell= DB::table('customer')->join('package_user', 'package_user.user_id', '=', 'customer.customer_id')
+        ->join('products', 'products.id', '=', 'package_user.Package_id')->where('customer.agent_id', Auth::user()->id)->get();
+        $totalCustomer= DB::table('customer')->where('agent_id', Auth::user()->id)->count();
+        $totalcommission= DB::table('agent')->where('agent_id', Auth::user()->id)->get()->first();
 
-        return view('agent.dashboard')
+        // print_r($totalcommission->commission);
+        // exit();
+        return view('agent.dashboard',['totalPackage'=>$totalPackage ,'totalPackagesell'=>$totalPackagesell,'totalCustomer'=>$totalCustomer,'totalcommission'=>$totalcommission])
          ->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK))
         ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
         ->with('click',json_encode($click,JSON_NUMERIC_CHECK));
@@ -212,7 +220,7 @@ class AgentController extends Controller
     public function customerlist()
     {
         
-       $data['title'] = 'Customer list';
+       $data['title'] = ' Customer ';
         return view('agent.customerlist')->with($data);
 
     }
@@ -318,7 +326,7 @@ class AgentController extends Controller
                     // exit;
 
 
-       $data['title'] = 'Customer list';
+       $data['title'] = 'Commission';
         return view('agent.taranjesonlist')->with($data);
 
     }
@@ -432,4 +440,40 @@ class AgentController extends Controller
              return redirect('/agent')->with('success', 'Your Membership is Renew for one year.');
 
     }
+      public function customer_packag_list()
+        {   
+            
+             $data['title'] = 'Packages';
+           return view('agent.customer_packag_list')->with($data);
+        }
+     public function customer_packag_view($id)
+        {
+          $Package =  DB::table('package_user')->where('PackageUser_id', $id)
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
+            return view('agent.packag_view',['Package'=>$Package]);
+        }
+    public function customer_packag_data()
+        {
+           $builder =  DB::table('package_user')
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get();
+
+            // $builder = sale::query();
+            
+            return datatables($builder)
+                            //   ->editColumn('id', function ($Package) {
+                            //       return $Package->id;
+                            //   })
+                                    // ->editColumn('created_at', function ($Package) {
+                                    //     return date('Y-m-d H:i:s',strtotime($Package->created_at));
+                                    // })
+                                // ->setRowClass(function ($Package) {
+                                //     return $Package->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+                                // })
+                                ->addColumn('action', function ($Package) {
+                                    return '<a href="'.url('/agent/packag/view/').'/'.$Package->PackageUser_id.'" class="btn btn-sm btn-primary">View</a>';
+                                })
+                            //   ->rawColumns([1,2])
+                              ->make();
+        }
+        
 }

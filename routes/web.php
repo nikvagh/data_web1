@@ -51,10 +51,11 @@ Route::middleware('adminAuth')->group(function () {
     Route::get('/admin/customer', [App\Http\Controllers\AdminController::class, 'customer'])->name('admin_customer');
     Route::get('admin/customer_data', [App\Http\Controllers\AdminController::class, 'customer_data'])->name('admincustomer_data');
 
+    Route::get('/admin/agent/view/{agent_id}', [App\Http\Controllers\AdminController::class, 'agentview'])->name('agentview');
+
     Route::get('/admin/agent', [App\Http\Controllers\AdminController::class, 'agent'])->name('agent');
     Route::get('agent_data', [App\Http\Controllers\AdminController::class, 'agent_data'])->name('agent_data');
     Route::get('/admin/agent/sales/{agent_id}', [App\Http\Controllers\AdminController::class, 'agent_sales'])->name('agent_sales');
-    Route::get('/admin/agent/sales/view/{agent_id}', [App\Http\Controllers\AdminController::class, 'salesview'])->name('salesview');
 
     Route::get('/admin/deposite', [App\Http\Controllers\AdminController::class, 'deposite'])->name('deposite');
     Route::get('/admin/withdraw', [App\Http\Controllers\AdminController::class, 'withdraw'])->name('withdraw');
@@ -81,6 +82,11 @@ Route::get('/screenshot_data', [App\Http\Controllers\AdminController::class, 'sc
 Route::get('/Gallery/screenshots/addscreenshots', [App\Http\Controllers\AdminController::class, 'addscreenshots'])->name('Gallery/screenshots/addscreenshots');
 Route::post('/addScreenshots', [App\Http\Controllers\AdminController::class, 'addScreenshotssubmit'])->name('addScreenshots');
 Route::get('/Gallery/Screenshot/delete/{id}', [App\Http\Controllers\AdminController::class, 'Screenshot_delete'])->name('Screenshot_delete');
+
+Route::get('/admin/package', [App\Http\Controllers\AdminController::class, 'admin_packag_list'])->name('admin_packag_list');
+Route::get('admin_packag_data', [App\Http\Controllers\AdminController::class, 'admin_packag_data'])->name('admin_packag_data');
+Route::get('admin/packag/view/{id}', [App\Http\Controllers\AdminController::class, 'admin_packag_view'])->name('admin_packag_view');
+
 
 
 });
@@ -110,9 +116,12 @@ Route::get('/getcart', [App\Http\Controllers\CartsController::class, 'getcart'])
 Route::get('/clear_cart/{id}', [App\Http\Controllers\CartsController::class, 'clear_cart'])->name('clear_cart');
 Route::get('/pluscart/{id}', [App\Http\Controllers\CartsController::class, 'pluscart'])->name('pluscart/{id}');
 Route::get('/minuscart/{id}', [App\Http\Controllers\CartsController::class, 'minuscart'])->name('minuscart');
-Route::get('load_cart_block', [App\Http\Controllers\CartsController::class, 'load_cart_block'])->name('load_cart_block');
-Route::get('payment_successful', [App\Http\Controllers\CartsController::class, 'payment_successful'])->name('payment_successful');
-Route::get('remove_cart', [App\Http\Controllers\CartsController::class, 'remove_cart'])->name('remove_cart');
+Route::get('/load_cart_block', [App\Http\Controllers\CartsController::class, 'load_cart_block'])->name('load_cart_block');
+Route::get('/payment_successful', [App\Http\Controllers\CartsController::class, 'payment_successful'])->name('payment_successful');
+Route::get('/remove_cart', [App\Http\Controllers\CartsController::class, 'remove_cart'])->name('remove_cart');
+Route::get('/customers/packag', [App\Http\Controllers\CustomerController::class, 'customer_packag_list'])->name('customer/packag');
+Route::get('/customer_packag_data', [App\Http\Controllers\CustomerController::class, 'customer_packag_data'])->name('customer_packag_data');
+Route::get('/customer/packag/view/{PackageUser_id}', [App\Http\Controllers\CustomerController::class, 'customer_packag_view'])->name('/customer/packag/view/{PackageUser_id}');
 
 
 });
@@ -120,9 +129,6 @@ Route::get('remove_cart', [App\Http\Controllers\CartsController::class, 'remove_
 
 Route::middleware('AgentAuth')->group(function () {
 //Agent
-
-   
-
 
 Route::get('/agent/profile', [App\Http\Controllers\AgentController::class, 'profile'])->name('profile');
 Route::post('/agentprofile', [App\Http\Controllers\AgentController::class, 'Submitprofile'])->name('agentprofile');
@@ -145,6 +151,10 @@ Route::post('/withdraw', [App\Http\Controllers\AgentController::class, 'addwithd
 Route::get('/renewmembership', [App\Http\Controllers\AgentController::class, 'renewmembership'])->name('renewmembership');
 
 Route::post('/membershiprenew', [App\Http\Controllers\AgentController::class, 'membershiprenew'])->name('membershiprenew');
+
+Route::get('/package', [App\Http\Controllers\AgentController::class, 'customer_packag_list'])->name('customer_packag_list');
+Route::get('/agent_packag_data', [App\Http\Controllers\AgentController::class, 'customer_packag_data'])->name('agent_packag_data');
+Route::get('/agent/packag/view/{id}', [App\Http\Controllers\AgentController::class, 'customer_packag_view'])->name('/agent/packag/view/');
 
 });
 Route::view('/About_us', 'front.About_us')->name('About_us');

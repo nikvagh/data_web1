@@ -30,10 +30,14 @@ class CustomerController extends Controller
             ->get()->toArray();
             $year = array_column($year, 'count');
 
-            // print_r($deposit);
+            $packag= DB::table('package_user')->where('user_id', Auth::user()->id)->orderBy('package_user.created_at', 'desc')
+            ->rightJoin('products', 'package_user.Package_id', '=', 'products.id')->get();
+             $packagcount= DB::table('package_user')->where('user_id', Auth::user()->id)->count();
+            // print_r($packagcount);
             // print_r($year);
             // exit();
-    	 return view('client.dashboard')
+
+    	 return view('client.dashboard',['packag'=>$packag,'packagcount'=>$packagcount])
         ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
         ->with('deposit',json_encode($deposit,JSON_NUMERIC_CHECK));
        
@@ -102,4 +106,40 @@ class CustomerController extends Controller
       $pdf->setPaper('A5', 'Landscape');
         return $pdf->download('client Card.pdf');
     }
+     public function customer_packag_list()
+        {   
+            
+             $data['title'] = 'Packages';
+           return view('client.customer_packag_list')->with($data);
+        }
+     public function customer_packag_view($id)
+        {
+          $Package =  DB::table('package_user')->where('PackageUser_id', $id)
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
+            return view('client.customer_packag_view',['Package'=>$Package]);
+        }
+    public function customer_packag_data()
+        {
+           $builder =  DB::table('package_user')
+                ->Join('products', 'package_user.Package_id', '=', 'products.id')->get();
+
+            // $builder = sale::query();
+            
+            return datatables($builder)
+                            //   ->editColumn('id', function ($Package) {
+                            //       return $Package->id;
+                            //   })
+                                    // ->editColumn('created_at', function ($Package) {
+                                    //     return date('Y-m-d H:i:s',strtotime($Package->created_at));
+                                    // })
+                                // ->setRowClass(function ($Package) {
+                                //     return $Package->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+                                // })
+                                ->addColumn('action', function ($Package) {
+                                    return '<a href="'.url('/customer/packag/view/').'/'.$Package->PackageUser_id.'" class="btn btn-sm btn-primary">View</a>';
+                                })
+                            //   ->rawColumns([1,2])
+                              ->make();
+        }
+ 
 }

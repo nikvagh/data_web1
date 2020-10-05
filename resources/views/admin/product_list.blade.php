@@ -37,7 +37,6 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Amount</th>
-                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -70,7 +69,6 @@
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
                     { data: 'amount', name: 'amount' },
-                    { data: 'created_at', name: 'created_at' },
                     { data: 'action', name: 'action' }
                 ]
             });
