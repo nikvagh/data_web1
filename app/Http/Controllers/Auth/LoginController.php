@@ -32,8 +32,9 @@ class LoginController extends Controller
     public function redirectTo()
     {
         // echo "11";
-        // print_r($request);
+        // print_r($_REQUEST);
         // exit;
+
         switch(Auth::user()->role){
             case 2:
                 $this->redirectTo = '/admin';
@@ -74,11 +75,23 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // echo "construct";
+        // print_r($_REQUEST);
+        // exit;
+
         $this->middleware('guest')->except('logout');
     }
 
     public function loggedOut()
     {
         return redirect()->route('admin');
+    }
+
+
+    public function postLogin(Request $request)
+    {
+        echo "<pre>";
+        print_r($_POST);
+        exit;
     }
 }
