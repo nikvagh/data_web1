@@ -29,9 +29,12 @@ Route::get('/view_clear', function() {
 
 
 Auth::routes();
+
+
+// App\Http\Controllers\Auth\LoginController@showLoginFor
 // Authentication Routes...
-// $this->get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-// $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('login/{role?}/{redirect?}', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 // $this->post('login', 'Auth\LoginController@login');
 // $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -111,38 +114,36 @@ Route::get('admin/packag/view/{id}', [App\Http\Controllers\AdminController::clas
 });
 
 Route::middleware('ClientAuth')->group(function () {
-//customer
-Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
-Route::get('/profile', [App\Http\Controllers\CustomerController::class, 'profile'])->name('profile');
+    //customer
+    Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
+    Route::get('/profile', [App\Http\Controllers\CustomerController::class, 'profile'])->name('profile');
 
-Route::post('/Submitprofile', [App\Http\Controllers\CustomerController::class, 'Submitprofile'])->name('Submitprofile');
+    Route::post('/Submitprofile', [App\Http\Controllers\CustomerController::class, 'Submitprofile'])->name('Submitprofile');
 
-Route::get('/PDF/{id}', [App\Http\Controllers\CustomerController::class, 'idcardPDF']);
+    Route::get('/PDF/{id}', [App\Http\Controllers\CustomerController::class, 'idcardPDF']);
 
-Route::get('/deposit', [App\Http\Controllers\Depositcontroller::class, 'index']);
-Route::get('/card', [App\Http\Controllers\Depositcontroller::class, 'carddetails']);
-Route::post('/card', [App\Http\Controllers\Depositcontroller::class, 'cardinsert']);
-Route::get('/transaction', [App\Http\Controllers\Depositcontroller::class, 'transaction'])->name('transaction');
-Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'gettaranjeson'])->name('gettaranjeson');
-Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
-Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
-Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
-Route::get('/product_details/{id}', [App\Http\Controllers\Frontcontroller::class, 'product_details'])->name('/product_details{id}');
-Route::get('/checkout/', [App\Http\Controllers\Frontcontroller::class, 'order_user'])->name('/checkout');
-Route::post('/checkout', [App\Http\Controllers\Frontcontroller::class, 'order_usersubmit'])->name('/checkout');
-Route::post('/addcart/{id}', [App\Http\Controllers\CartsController::class, 'addcart'])->name('/addcart/{id}');
-Route::get('/getcart', [App\Http\Controllers\CartsController::class, 'getcart'])->name('getcart');
-Route::get('/clear_cart/{id}', [App\Http\Controllers\CartsController::class, 'clear_cart'])->name('clear_cart');
-Route::get('/pluscart/{id}', [App\Http\Controllers\CartsController::class, 'pluscart'])->name('pluscart/{id}');
-Route::get('/minuscart/{id}', [App\Http\Controllers\CartsController::class, 'minuscart'])->name('minuscart');
-Route::get('/load_cart_block', [App\Http\Controllers\CartsController::class, 'load_cart_block'])->name('load_cart_block');
-Route::get('/payment_successful', [App\Http\Controllers\CartsController::class, 'payment_successful'])->name('payment_successful');
-Route::get('/remove_cart', [App\Http\Controllers\CartsController::class, 'remove_cart'])->name('remove_cart');
-Route::get('/customers/packag', [App\Http\Controllers\CustomerController::class, 'customer_packag_list'])->name('customer/packag');
-Route::get('/customer_packag_data', [App\Http\Controllers\CustomerController::class, 'customer_packag_data'])->name('customer_packag_data');
-Route::get('/customer/packag/view/{PackageUser_id}', [App\Http\Controllers\CustomerController::class, 'customer_packag_view'])->name('/customer/packag/view/{PackageUser_id}');
-
-
+    Route::get('/deposit', [App\Http\Controllers\Depositcontroller::class, 'index']);
+    Route::get('/card', [App\Http\Controllers\Depositcontroller::class, 'carddetails']);
+    Route::post('/card', [App\Http\Controllers\Depositcontroller::class, 'cardinsert']);
+    Route::get('/transaction', [App\Http\Controllers\Depositcontroller::class, 'transaction'])->name('transaction');
+    Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'gettaranjeson'])->name('gettaranjeson');
+    Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
+    Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
+    Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
+    Route::get('/product_details/{id}', [App\Http\Controllers\Frontcontroller::class, 'product_details'])->name('/product_details{id}');
+    Route::get('/checkout/', [App\Http\Controllers\Frontcontroller::class, 'order_user'])->name('/checkout');
+    Route::post('/checkout', [App\Http\Controllers\Frontcontroller::class, 'order_usersubmit'])->name('/checkout');
+    Route::post('/addcart/{id}', [App\Http\Controllers\CartsController::class, 'addcart'])->name('/addcart/{id}');
+    Route::get('/getcart', [App\Http\Controllers\CartsController::class, 'getcart'])->name('getcart');
+    Route::get('/clear_cart/{id}', [App\Http\Controllers\CartsController::class, 'clear_cart'])->name('clear_cart');
+    Route::get('/pluscart/{id}', [App\Http\Controllers\CartsController::class, 'pluscart'])->name('pluscart/{id}');
+    Route::get('/minuscart/{id}', [App\Http\Controllers\CartsController::class, 'minuscart'])->name('minuscart');
+    Route::get('/load_cart_block', [App\Http\Controllers\CartsController::class, 'load_cart_block'])->name('load_cart_block');
+    Route::get('/payment_successful', [App\Http\Controllers\CartsController::class, 'payment_successful'])->name('payment_successful');
+    Route::get('/remove_cart', [App\Http\Controllers\CartsController::class, 'remove_cart'])->name('remove_cart');
+    Route::get('/customers/packag', [App\Http\Controllers\CustomerController::class, 'customer_packag_list'])->name('customer/packag');
+    Route::get('/customer_packag_data', [App\Http\Controllers\CustomerController::class, 'customer_packag_data'])->name('customer_packag_data');
+    Route::get('/customer/packag/view/{PackageUser_id}', [App\Http\Controllers\CustomerController::class, 'customer_packag_view'])->name('/customer/packag/view/{PackageUser_id}');
 });
 
 Route::middleware('AgentAuth')->group(function () {

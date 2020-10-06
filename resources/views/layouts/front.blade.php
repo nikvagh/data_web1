@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,18 +5,18 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-   <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-@yield('css')
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ config('app.name', 'Laravel') }}</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  @yield('css')
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('front_asset/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('front_asset/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <!-- <link href="{{asset('front_asset/assets/img/favicon.png')}}" rel="icon"> -->
+  <!-- <link href="{{asset('front_asset/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -49,10 +48,10 @@
     <div class="container d-flex">
       <div class="contact-info mr-auto">
         <?php $settings = DB::table('settings')
-            ->where('settings_id', '1')
-            ->get()->first(); ?>
+          ->where('settings_id', '1')
+          ->get()->first(); ?>
         <label class="displaynone">
-          
+
         </label>
         <i class="icofont-envelope"></i> <a href="mailto:contact@example.com"> {{ $settings->Email }}</a>
         <i class="icofont-phone"></i> {{ $settings->mobile_number }}
@@ -79,14 +78,14 @@
         <ul>
           <li class="{{ (request()->segment(1) == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
           <li class="{{ (request()->segment(1) == 'About_us') ? 'active' : '' }}"><a href="{{URL('About_us')}}">About</a></li>
-         <!--  <li><a href="#services">Services</a></li>
+          <!--  <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li> -->
-         
-           <li  class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
+
+          <li class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
           <li class="{{ (request()->segment(1) == 'Product') ? 'active' : '' }}"><a href="{{URL('Product')}}">Product</a></li>
           <li class="{{ (request()->segment(1) == 'Charity') ? 'active' : '' }}"><a href="{{URL('Charity')}}">Charity</a></li>
-          
-         <!--  <li class="drop-down"><a href="">Drop Down</a>
+
+          <!--  <li class="drop-down"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="drop-down"><a href="#">Deep Drop Down</a>
@@ -103,16 +102,17 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          <li  class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
+          <li class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
           @if (isset(Auth::user()->id))
-         <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger">          {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></i></a></li>
-         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                      @csrf
-                    </form></li>
-         @else
-         <li><a  href="{{url('login')}}">Login</a></li>
-        <li><a href="{{url('customer_register')}}">Register</a></li>
+          <li><a href="{{url('getcart')}}"> <i class="icofont-cart-alt caeticon"><span style="border-radius: 50%;" class="badge badge-danger"> {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></i></a></li>
+          <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </li>
+          @else
+          <li><a href="{{url('login')}}">Login</a></li>
+          <li><a href="{{url('customer_register')}}">Register</a></li>
           @endif
         </ul>
       </nav><!-- .nav-menu -->
@@ -120,23 +120,19 @@
     </div>
   </header><!-- End Header -->
   <!-- ======= Breadcrumbs ======= -->
-@yield('Breadcrumbs')
+  @yield('Breadcrumbs')
   @if(session()->get('cart'))
-     <div class="container-fluid section-bg" id="msg">
-  <div class="alert-warning padding10">{{ session()->get('cart') }} </div>
- </div>
-                   
-               
-    
+  <div class="container-fluid section-bg" id="msg">
+    <div class="alert-warning padding10">{{ session()->get('cart') }} </div>
+  </div>
+
+
+
   @endif
 
   @yield('content')
-
-
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
-    
 
     <div class="footer-top">
       <div class="container">
@@ -145,8 +141,8 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>{{$settings->company_name}}<span>.</span></h3>
             <p>{{$settings->address}}</p><br>
-              <strong>Phone:</strong>{{$settings->Email}}<br>
-              <strong>Email:</strong> {{$settings->mobile_number}}<br>
+            <strong>Phone:</strong>{{$settings->Email}}<br>
+            <strong>Email:</strong> {{$settings->mobile_number}}<br>
             </p>
           </div>
 
@@ -166,7 +162,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{url('agent_register')}}">Agent Register</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{url('customer_register')}}">Customer Register</a></li>
-          
+
             </ul>
           </div>
 
@@ -214,17 +210,14 @@
   <script src="{{asset('front_asset/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
   <script src="{{asset('front_asset/assets/vendor/venobox/venobox.min.js')}}"></script>
   <script src="{{asset('front_asset/assets/vendor/aos/aos.js')}}"></script>
-<script type="text/javascript">
-    setTimeout(function () {
-        $("#msg").fadeOut("fast");
+  <script type="text/javascript">
+    setTimeout(function() {
+      $("#msg").fadeOut("fast");
     }, 3000); // <-- time in milliseconds
-</script>
+  </script>
   <!-- Template Main JS File -->
   <script src="{{asset('front_asset/assets/js/main.js')}}"></script>
   @yield('js')
 </body>
 
 </html>
- 
-
-

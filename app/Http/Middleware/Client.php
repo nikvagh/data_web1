@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Auth;
 use Closure;
 use Illuminate\Http\Request;
+use URL;
 
 class Client
 {
@@ -16,10 +17,20 @@ class Client
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {
+    {   
+        // echo URL::previous();
+        // echo request()->segment(1);
+        // echo "<pre>";
+        // print_r($request->all());
+        // exit;
+
         // return $next($request);
         if (!Auth::check()) {
-            return redirect()->route('login');
+            if(request()->segment(1) == 'product_details'){
+                return redirect('login/customer/front');
+            }else{        
+                return redirect()->route('login');
+            }
         }
 
         // if (Auth::user()->role == 1) {
@@ -35,10 +46,7 @@ class Client
         }
 
         if (Auth::user()->role == 4) {
-
             return $next($request);
-
         }
-        
     }
 }

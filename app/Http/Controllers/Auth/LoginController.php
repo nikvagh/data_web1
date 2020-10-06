@@ -31,9 +31,16 @@ class LoginController extends Controller
     protected $redirectTo;
     public function redirectTo()
     {
-        // echo "11";
         // print_r($_REQUEST);
         // exit;
+        
+        $role = ""; $redirect = "";
+        if(isset($_REQUEST['role'])){
+            $role = $_REQUEST['role'];
+        }
+        if(isset($_REQUEST['redirect'])){
+            $redirect = $_REQUEST['redirect'];
+        }
 
         switch(Auth::user()->role){
             case 2:
@@ -41,7 +48,11 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 4:
-                $this->redirectTo = '/customer';
+                $location = '/customer';
+                if($redirect == 'front'){
+                    $location = '/Product';
+                }
+                $this->redirectTo = $location;
                 return $this->redirectTo;
                 break;
             case 3:
@@ -87,11 +98,17 @@ class LoginController extends Controller
         return redirect()->route('admin');
     }
 
-
-    public function postLogin(Request $request)
+    public function showLoginForm($role="",$redirect="")
     {
-        echo "<pre>";
-        print_r($_POST);
-        exit;
+        // if(isset($page)){
+        //     // do something
+        //     // example: return view('auth.login', compact('page'));
+        // }
+        // echo "pname=".$page;
+        // exit;
+        $data['role'] = $role;
+        $data['redirect'] = $redirect;
+
+        return view('auth.login')->with($data);
     }
 }
