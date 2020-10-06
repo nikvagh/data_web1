@@ -254,21 +254,7 @@
                     <!-- <small>Member since Nov. 2012</small> -->
                   </p>
                 </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-xs-4 text-center">
-                   <!--    <a href="#">Followers</a> -->
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <!-- <a href="#">Friends</a> -->
-                    </div>
-                  </div>
-                  <!-- /.row -->
-                </li>
+             
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
@@ -308,22 +294,16 @@
           </div>
         </div>
 
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
-          <li class="header">MAIN NAVIGATION</li>
+    
 
-          <!-- <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+     <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="{{ (request()->segment(1) == 'admin') ? 'active' : '' }} treeview">
+          <a href="{{url('admin')}}">
+         <span>Dashboard</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
-        </li> -->
 
           <li class="{{ (request()->segment(2) == 'customer') ? 'active' : '' }}">
             <a href="{{ route('admin_customer') }}">
@@ -357,6 +337,13 @@
             <a href="{{ route('product') }}">
               <!-- <i class="fa fa-users"></i>  -->
               <span>Products</span>
+            </a>
+          </li>
+          
+           <li class="{{ (request()->segment(2) == 'package') ? 'active' : '' }}">
+            <a href="{{ route('admin_packag_list') }}">
+              <!-- <i class="fa fa-users"></i>  -->
+              <span>Packages</span>
             </a>
           </li>
            <li class="{{ (request()->segment(1) == 'Gallery') ? 'active' : '' }}">

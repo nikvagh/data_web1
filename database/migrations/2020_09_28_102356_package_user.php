@@ -14,10 +14,11 @@ class PackageUser extends Migration
     public function up()
     {
           Schema::create('Package_User', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('PackageUser_id');
             $table->integer('Package_id');
             $table->integer('user_id');
             $table->string('quality');
+            $table->string('action_date');
             $table->timestamps();
         });
     }

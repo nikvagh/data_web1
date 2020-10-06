@@ -22,9 +22,10 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Agent ID</th>
-                                <th>Customer ID</th>
-                                <th>Amount </th>
+                                <th>Business Name</th>
+                                <th>abn</th>
+                                <th>commission </th>
+                                <th>Address</th>
                                 <th>Viwe</th>
                             </tr>
                         </thead>
@@ -54,9 +55,10 @@
                 ajax: '{!! route('agent_data') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'agent_id', name: 'agent_id' },
-                    { data: 'customer_id', name: 'customer_id' },
-                    { data: 'amount', name: 'amount' },
+                    { data: 'business_name', name: 'business_name' },
+                    { data: 'abn', name: 'abn' },
+                    { data: 'commission', name: 'commission' },
+                    { data: 'address', name: 'address' },
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

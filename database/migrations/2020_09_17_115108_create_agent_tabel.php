@@ -27,10 +27,10 @@ class CreateAgentTabel extends Migration
                 $table->date('membership_end');
                 $table->string('wallet');
                 $table->timestamps();
-            });
             $table->foreign('agent_id')
                 ->references('id')
                 ->on('users');
+            });
             // $table->foreign('agent_id')->references('id')->on('users');
         }
     }
