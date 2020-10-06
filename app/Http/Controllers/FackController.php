@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\models\User;
 use App\models\Customer;
 
-class fackController extends Controller
+class FackController extends Controller
 {
     public function fuser()
     {

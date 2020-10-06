@@ -25,7 +25,7 @@
                                 <th>Business Name</th>
                                 <th>abn</th>
                                 <th>commission </th>
-                                <th>Address</th>
+                             <!--    <th>Address</th> -->
                                 <th>Viwe</th>
                             </tr>
                         </thead>
@@ -58,7 +58,7 @@
                     { data: 'business_name', name: 'business_name' },
                     { data: 'abn', name: 'abn' },
                     { data: 'commission', name: 'commission' },
-                    { data: 'address', name: 'address' },
+                    // { data: 'address', name: 'address' },
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

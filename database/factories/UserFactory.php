@@ -25,10 +25,12 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'phone' => $this->faker->randomDigit(10),
             'email' => $this->faker->unique()->safeEmail,
+            'role' => 3,
             'email_verified_at' => now(),
-            'role' => 2,
-            'password' => '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'status_id' => $this->faker->randomDigit,
             'remember_token' => Str::random(10),
         ];
 

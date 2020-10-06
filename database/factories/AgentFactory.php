@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Agent;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 
@@ -22,17 +23,18 @@ class AgentFactory extends Factory
      */
     public function definition()
     {
-        return [
-           'agent_id' => factory(User::class)->create()->id,
-            // 'agent_id' => randomDigit(),
-            'business_name' => $faker->Name(),
-            'abn' =>'abn',
-            'type_of_industry' =>'type_of_industry',
+       return [
+            'agent_id' => User::factory(),
+            // 'agent_id' => User::factory()->create(['user_type' => 'agent',]),
+            'business_name' => $this->faker->Name(),
+            'abn' => $this->faker->randomDigit(10),
+            'type_of_industry' => $this->faker->realText(10),
             'commission' => '0',
+            'profile_pic' => "test",
+            'address' => $this->faker->Text(),
             'membership_status' => 'enable',
-            'membership_end' => $faker->date(),
-            'wallet' => '0',
-            'address' => $faker->Text(),
+            'membership_end' => $this->faker->date('Y-m-d h:i:s', time()),
+            'wallet' => $this->faker->randomNumber(4),
         ];
     }
 }

@@ -8,7 +8,7 @@ use DB;
 use App\models\User;
 use App\models\Customer;
 use App\models\sale;
-
+use Intervention\Image\ImageManagerStatic as Image;
 use Yajra\DataTables\Html\Builder;
 
 use Auth;
@@ -118,7 +118,7 @@ class AdminController extends Controller
     }
 
     public function agent(){
-
+      
         $data['title'] = 'Agents';
         return view('admin.agent_list')->with($data);
     }
@@ -278,7 +278,7 @@ class AdminController extends Controller
 
         return datatables($builder)
                            ->editColumn('image', function ($user) {
-                                return url('/uploads/Videos/').'/'.$user->video;
+                                return url('/uploads/Videos/thumb/').'/'.'300X300_'.$user->video;
                                 // return '<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">';
                                 // return view('<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">')->render();
                             })
@@ -294,21 +294,47 @@ class AdminController extends Controller
     }
     public function addScreenshotssubmit(Request $request)
     {
-        
+     
          $this->validate($request, [
             'Videos' => 'required',]);
 
               $file=$request->file('Videos');
 
-                    $Videos=time().rand(1,100).'.'.$file->extension();
-                    $file->move('uploads/Videos',$Videos);
+                    $filename=time().rand(1,100).'.'.$file->extension();
+                     $image_resize = Image::make($file->getRealPath());              
+
+                      $image_resize->resize(300, 300);
+                      $image_resize->save(public_path('uploads/Videos/thumb/' .'300X300_'.$filename));
+                    $file->move('uploads/Videos',$filename);
+
                      $date=date("Y-m-d h:i:s");
               DB::table('galleryvideos')->insert(
-                         ['video' => $Videos,
+                         ['video' => $filename,
                          'type' => 's',
                          'created_at' =>$date,
                          ]);
               return redirect('/Gallery/Trading_screenshots')->with('success', 'Record inserted successfully.');
+          // if($request->ajax())
+          //    {
+          //     // print_r($request->all());
+          //     $image_data = $request->image;
+          //     $image_array_1 = explode(";", $image_data);
+          //     $image_array_2 = explode(",", $image_array_1[1]);
+          //     $data = base64_decode($image_array_2[1]);
+          //     $image_name =time().rand(1,100).'.'.'.png';
+
+          //     $upload_path = public_path('uploads/Videos/' . $image_name);
+          //     file_put_contents($upload_path, $data);
+
+          //     $date=date("Y-m-d h:i:s");
+          //     // DB::table('galleryvideos')->insert(
+          //     //            ['video' => $image_name,
+          //     //            'type' => 's',
+          //     //            'created_at' =>$date,
+          //     //            ]);
+          //     return response()->json();
+          //    }
+
     }
      public function Screenshot_delete($id)
     {

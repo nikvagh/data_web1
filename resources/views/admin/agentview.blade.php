@@ -3,55 +3,62 @@
 
 
 <section class="content">
-    <div class="row">
 
-        <div class="col-md-6">
 
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Agent</h3>
-                </div>
+<div class="row">
+        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
+            <div class="col-md-6">
 
-                <!-- form start -->
-                <form role="form" method="post" action="{{ route('store_product') }}">
-                    @csrf
-                    <div class="box-body">
-                        <div class="form-group">
-                            <h4>ID : <span>{{$get->agent_id}}</span></h4>
-                        </div>
-                                  <div class="form-group">
-                            <h4>Business Name : <span>{{$get->business_name}}</span></h4>
-                        </div>
-                                <div class="form-group">
-                            <h4>Abn : <span>{{$get->abn}}</span></h4>
-                        </div>
-                                  <div class="form-group">
-                            <h4>Type of Industry : <span>{{$get->type_of_industry}}</span></h4>
-                        </div>
-                        
-                         <div class="form-group">
-                            <h4>Wallet : <span>{{$get->wallet}}</span></h4>
-                        </div>
-                         <div class="form-group">
-                            <h4>Commission : <span>{{$get->commission}}</span></h4>
-                        </div>
-                          <div class="form-group">
-                            <h4>Membership End Date : <span>{{$get->membership_end}}</span></h4>
-                        </div>
-                        
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Agent</h3>
 
-                         <div class="form-group">
-                   			<a href="{{ url()->previous() }}" class="btn btn-primary" style="float: right;">Back</a>
-                   		</div>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+                        </div>
                     </div>
 
-                </form>
-                
+                    <div class="box-body no-padding">
+                               <table class="table table-striped">
+                            <tr>
+                                <td style="width: 40px">Id</td>
+                                <th style="width: 60px">{{$get->agent_id}}</th>
+                            </tr>
+                            <tr>
+                                <td>Business Name </td>
+                                <th>{{$get->business_name}}</th>
+                            </tr>
+                            <tr>
+                                <td>Abn</td>
+                                <th>{{$get->abn}}</th>
+                            </tr>
+                            <tr>
+                                <td>Type of Industry </td>
+                                <th>{{$get->type_of_industry}}</th>
+                            </tr>
+                            <tr>
+                                <td>Wallet </td>
+                                <th>{{$get->wallet}}</th>
+                            </tr>
+                            <tr>
+                                <td>Commission </td>
+                                <th>{{$get->commission}}</th>
+                            </tr>
+                            <tr>
+                                <td>Membership End Date </td>
+                                <th>{{$get->membership_end}}</th>
+                            </tr>
+                            <tr>
+                                <td>Address </td>
+                                <th>{{$get->address}}</th>
+                            </tr>
+                           
+                            
+                        </table>
+                    </div>
+                </div>
+
             </div>
-
-        </div>
-
-    </div>
-    <!-- /.row -->
-</section>
+        </form>
+      </section>
 @endsection

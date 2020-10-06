@@ -179,13 +179,13 @@
             text: 'Rate'
            }
          },
-        series: [{
-                name: 'commission',
-                data:agentcommission
-            },
-            {
+        series: [ {
                 name: 'Agent Sell',
                 data:agentsellamount
+            },
+            {
+                name: 'commission',
+                data:agentcommission
             }]
       });
     });

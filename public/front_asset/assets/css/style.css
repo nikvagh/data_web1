@@ -31,7 +31,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 .imggallery{
-  max-width: 35vh;
+  max-width: 21vh;
+  max-height: 21vh;
   padding: 15px;
 }
 .top-label{

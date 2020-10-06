@@ -39,7 +39,9 @@
         <div class="container col-md-12">
      
           @foreach ($data as $key)
-          <img src="{{ asset('/uploads/Videos/').'/'.$key->video }}" class="img-responsive imggallery">
+         
+          <img src="{{ asset('/uploads/Videos/thumb/').'/'.'300X300_'.$key->video }}" class="img-responsive imggallery">
+      
           @endforeach
        
       
