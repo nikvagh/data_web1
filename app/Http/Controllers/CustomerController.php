@@ -15,7 +15,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-    	   $deposit =  DB::table('Transactions')
+    	   $deposit =  DB::table('transactions')
              ->where('type', 'd')
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
@@ -23,7 +23,7 @@ class CustomerController extends Controller
             ->get()->toArray();
             $deposit = array_column($deposit, 'count');
 
-            $year =  DB::table('Transactions')
+            $year =  DB::table('transactions')
                 ->select(DB::raw("created_at as count"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("Month(created_at)"))

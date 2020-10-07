@@ -20,6 +20,7 @@
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
+        "srmklive/paypal": "^3.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
