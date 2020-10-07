@@ -105,10 +105,10 @@
                 <th style="float: left; width:50%">Subtotal:</th>
                 <td> {{ $data->sum('amount') }}</td>
               </tr>
-              <tr>
+            <!--   <tr>
                 <th>Tax (9.3%)</th>
                 <td> {{($data->sum('amount')) % 9.3}}</td>
-              </tr>
+              </tr> -->
              
               <tr>
                 <th>Total:</th>
@@ -127,7 +127,7 @@
           
          
          
-          <a href="{{url('Invoicepdf')}}" class="btn btn-primary pull-right" style="margin-right: 5px;"> <i class="fa fa-download"></i> Generate PDF</a>
+          <a href="{{url('Invoicepdf',$id)}}" class="btn btn-primary pull-right" style="margin-right: 5px;"> <i class="fa fa-download"></i> Generate PDF</a>
         </div>
       </div>
     </section>

@@ -62,19 +62,19 @@ class Depositcontroller extends Controller
             ->get();
          
              $data = DB::table('users')
-            ->where('transactions.customer_id', Auth::user()->id)
+            ->where('transactions.transactions_id', $id)
             ->join('transactions', 'users.id', '=', 'transactions.customer_id')
             ->join('agent', 'transactions.agent_id', '=', 'agent.id')
             ->get();
         // echo "<pre>";
         // print_r($data);
         // exit();
-        return view('client.invoice',['get' => $get,'customer' => $customer,'data' => $data]);
+        return view('client.invoice',['get' => $get,'customer' => $customer,'data' => $data,'id'=>$id]);
         
     }
-    public function Invoicepdf()
+    public function Invoicepdf($id)
     {
-
+        
           $get = DB::table('settings')
             ->where('settings_id','1')
             ->get();    
@@ -84,8 +84,8 @@ class Depositcontroller extends Controller
             ->where('customer_id', Auth::user()->id)
             ->get();
          
-             $data = DB::table('users')
-            ->where('transactions.customer_id', Auth::user()->id)
+               $data = DB::table('users')
+            ->where('transactions.transactions_id', $id)
             ->join('transactions', 'users.id', '=', 'transactions.customer_id')
             ->join('agent', 'transactions.agent_id', '=', 'agent.id')
             ->get();

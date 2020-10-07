@@ -23,7 +23,7 @@ class AgentController extends Controller
     public function index()
     {
 
-            $viewer =  DB::table('Transactions')
+            $viewer =  DB::table('transactions')
                 ->where('agent_id', Auth::user()->id)
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
@@ -31,7 +31,7 @@ class AgentController extends Controller
             ->get()->toArray();
             $viewer = array_column($viewer, 'count');
 
-            $click =  DB::table('Transactions')
+            $click =  DB::table('transactions')
                 ->select(DB::raw("SUM(agentcommission) as count"))
                 ->where('agent_id', Auth::user()->id)
                 
@@ -40,7 +40,7 @@ class AgentController extends Controller
             ->get()->toArray();
             $click = array_column($click, 'count');
 
-            $year =  DB::table('Transactions')
+            $year =  DB::table('transactions')
                 ->where('agent_id', Auth::user()->id)
                 ->select(DB::raw("created_at as count"))
             ->orderBy("created_at")
@@ -65,19 +65,19 @@ class AgentController extends Controller
     public function dashboard()
     {
  // line chart testing
-        // $users = Transactions::select(\DB::raw("SUM(amount) as total"))
+        // $users = transactions::select(\DB::raw("SUM(amount) as total"))
         //             // ->whereYear('created_at', date('Y'))
         //             ->groupBy(\DB::raw("Month(created_at)"))
         //             ->pluck('total')->toArray();
 
 
-         $users = DB::table('Transactions')
+         $users = DB::table('transactions')
                 ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_at') ,\DB::raw("sum(amount) as total"))
                 ->groupBy(\DB::raw("Month(created_at)"))
                 ->orderBy(\DB::raw("created_at"))
                  ->pluck('total','created_at')->toArray();  
 
-             $commission = DB::table('Transactions')
+             $commission = DB::table('transactions')
                 ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as created_at') ,\DB::raw("sum(agentcommission) as total"))
                 ->groupBy(\DB::raw("Month(created_at)"))
                 ->orderBy(\DB::raw("created_at"))
@@ -432,7 +432,7 @@ class AgentController extends Controller
         echo "Record inserted successfully.<br/>";
 
 
-        $oneYearOn = date('Y-m-d',strtotime(date("Y-m-d", ) . " + 365 day"));
+        $oneYearOn = date('Y-m-d',strtotime(date("Y-m-d") . " + 365 day"));
                 DB::table('agent')
             ->where('agent_id', Auth::user()->id)
              ->update(['membership_end' => $oneYearOn]);

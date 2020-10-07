@@ -129,7 +129,7 @@ Route::middleware('ClientAuth')->group(function () {
     Route::get('/gettaranjeson', [App\Http\Controllers\Depositcontroller::class, 'gettaranjeson'])->name('gettaranjeson');
     Route::get('/taranjeson/view/{id}', [App\Http\Controllers\Depositcontroller::class, 'taranjeson_viwe']);
     Route::get('/Invoice/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoice'])->name('Invoice');
-    Route::get('/Invoicepdf', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
+    Route::get('/Invoicepdf/{id}', [App\Http\Controllers\Depositcontroller::class, 'Invoicepdf'])->name('Invoicepdf');
     Route::get('/product_details/{id}', [App\Http\Controllers\Frontcontroller::class, 'product_details'])->name('/product_details{id}');
     Route::get('/checkout/', [App\Http\Controllers\Frontcontroller::class, 'order_user'])->name('/checkout');
     Route::post('/checkout', [App\Http\Controllers\Frontcontroller::class, 'order_usersubmit'])->name('/checkout');

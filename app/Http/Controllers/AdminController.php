@@ -25,7 +25,7 @@ class AdminController extends Controller
         // User::factory()->count(10)->create();
         // Customer::factory()->count(10)->make();
 
-            $Transactions =  DB::table('Transactions')
+            $Transactions =  DB::table('transactions')
              
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
@@ -33,14 +33,14 @@ class AdminController extends Controller
             ->get()->toArray();
             $Transactions = array_column($Transactions, 'count');
 
-            $agent_commission =  DB::table('Transactions')
+            $agent_commission =  DB::table('transactions')
                 ->select(DB::raw("SUM(agentcommission) as count"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("Month(created_at)"))
             ->get()->toArray();
             $agent_commission = array_column($agent_commission, 'count');
 
-             $withdraw =  DB::table('Transactions')
+             $withdraw =  DB::table('transactions')
              ->where('type', 'w')
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
@@ -48,7 +48,7 @@ class AdminController extends Controller
             ->get()->toArray();
             $withdraw = array_column($withdraw, 'count');
 
-             $deposit =  DB::table('Transactions')
+             $deposit =  DB::table('transactions')
              ->where('type', 'd')
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
@@ -57,7 +57,7 @@ class AdminController extends Controller
             $deposit = array_column($deposit, 'count');
 
 
-            $year =  DB::table('Transactions')
+            $year =  DB::table('transactions')
                 ->select(DB::raw("created_at as count"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("Month(created_at)"))
