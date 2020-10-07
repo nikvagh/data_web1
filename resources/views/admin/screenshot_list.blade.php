@@ -4,11 +4,14 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
+
+    
 @endsection
 
 @section('content')
 
-<section class="content-header"> </section>
+<section class="content-header"> <h1>Trading screenshots</h1> </section>
 
 <section class="content">
 
@@ -34,7 +37,7 @@
                     <table id="example1" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>id</th>
                                 <th>Image</th>
                                
                                 <th>Action</th>
@@ -52,9 +55,13 @@
     <!-- /.row -->
 </section>
 
+
+
+
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="{{ asset('back_asset/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     
@@ -72,7 +79,7 @@
                         "name": "image",
                         "data": "image",
                         "render": function (data, type, full, meta) {
-                            return "<img src=\"" + data + "\" height=\"50\"/>";
+                            return "<a href=\""+'/uploads/Videos/'+ data + "\" data-lightbox='image-1' ><img src=\""+'/uploads/Videos/thumb/300x300_'+ data + "\" height=\"50\"/></a>";
                         },
                         "title": "Image",
                         "orderable": true,
@@ -99,5 +106,10 @@
             });
         });
     </script>
-    
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
 @endsection

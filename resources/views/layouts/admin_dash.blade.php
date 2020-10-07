@@ -160,7 +160,7 @@
               </span>
             </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('Gallery/Videos') }}"></i> Videos </a></li>
+            <li><a href="{{ route('Gallery/Videos') }}"></i>Trading Videos </a></li>
             <li><a href="{{ route('Gallery/Trading_screenshots') }}"></i> Trading screenshots</a></li>
            
           </ul>

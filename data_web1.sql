@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 07, 2020 at 09:00 AM
+-- Generation Time: Oct 07, 2020 at 12:15 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -527,7 +527,6 @@ CREATE TABLE IF NOT EXISTS `galleryvideos` (
 
 INSERT INTO `galleryvideos` (`video_id`, `video`, `type`, `created_at`, `updated_at`) VALUES
 (4, '160126554942.mp4', 'v', '2020-09-27 22:29:09', NULL),
-(10, '160189911446.mp4', 'v', '2020-10-05 06:28:34', NULL),
 (30, '160196737166.jpeg', 's', '2020-10-06 01:26:11', NULL),
 (28, '160196723788.png', 's', '2020-10-06 01:23:57', NULL),
 (27, '160196722980.jpeg', 's', '2020-10-06 01:23:49', NULL),
@@ -814,9 +813,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'rx5taC7h5fHUrjKizIKQfncI86PJjaz4RuUx8rSyi66vMVTUJWPd5PqoN5P9', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'Vvt7OEsA67rMLM1pyajsO543s4TSWRnVaR6ILY1tfKcX2RPMW5k4B58y65hJ', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'YgXR27tQoBfiPcXc3c7abn0x0Ygfx98MH1ICY6944bq022fHPHqCrcV82R8b', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'YKdF68vr9B3dvf5vVr7DyWtrTp1HtEJNEx6pNZCh0bASvka09tlCBbUcXYAT', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'z7LvZMTxZGTaaQWFgaDhcsByUFlU2OTmG5QNatuqQZC01MF7N48KESrkVwlr', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'bODm3DKLQTWdoACqPVLO9FEVUm7PodigkRT1Rnoxjz4htHr83zoFRgp5Z4pE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),

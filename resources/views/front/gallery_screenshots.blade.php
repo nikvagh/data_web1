@@ -1,4 +1,7 @@
 @extends('layouts.front')
+@section('css')
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
+@endsection
 @section('Breadcrumbs')
 <section class="breadcrumbs">
 
@@ -40,7 +43,7 @@
      
           @foreach ($data as $key)
          
-          <img src="{{ asset('/uploads/Videos/thumb/').'/'.'300X300_'.$key->video }}" class="img-responsive imggallery">
+          <a href="{{ asset('/uploads/Videos/').'/'.$key->video }}" data-lightbox='{{$key->video}}' ><img src="{{ asset('/uploads/Videos/thumb/').'/'.'300X300_'.$key->video }}" class="img-responsive imggallery"></a>
       
           @endforeach
        
@@ -72,7 +75,7 @@
      
           @foreach ($video as $key)
 
-<video src="{{ asset('/uploads/Videos/').'/'.$key->video }}" controls class="imggallery">
+ <a href="{{ asset('/uploads/Videos/').'/'.$key->video }}" data-lightbox='image-1' ><video src="{{ asset('/uploads/Videos/').'/'.$key->video }}" controls class="imggallery"></video></a>
 
 </video>
           <!-- <video src="{{ asset('/uploads/Videos/').'/'.$key->video }}" class=" imggallery"></video> -->
@@ -155,4 +158,13 @@
       </div>
     </section><!-- End Testimonials Section -->
 
+@endsection
+@section('js')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
 @endsection

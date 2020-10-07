@@ -218,7 +218,7 @@ class AdminController extends Controller
 
         return datatables($builder)
                              ->editColumn('video', function ($user) {
-                                return url('/uploads/Videos/').'/'.$user->video;
+                                return $user->video;
                                 // return '<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">';
                                 // return view('<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">')->render();
                             })
@@ -278,7 +278,7 @@ class AdminController extends Controller
 
         return datatables($builder)
                            ->editColumn('image', function ($user) {
-                                return url('/uploads/Videos/thumb/').'/'.'300X300_'.$user->video;
+                                return $user->video;
                                 // return '<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">';
                                 // return view('<img src="'.url('/uploads/Videos/').'/'.$user->video.'" width="20" height="20">')->render();
                             })
