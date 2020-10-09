@@ -23,7 +23,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Business Name</th>
-                                <th>abn</th>
+                                <th>Abn</th>
                                 <th>commission </th>
                              <!--    <th>Address</th> -->
                                 <th>Viwe</th>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 07, 2020 at 12:15 PM
+-- Generation Time: Oct 09, 2020 at 12:58 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `business_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `abn` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_of_industry` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `commission` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `commission` double(20,2) NOT NULL,
   `profile_pic` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `membership_status` enum('enable','disable') COLLATE utf8mb4_unicode_ci NOT NULL,
   `membership_end` date NOT NULL,
-  `wallet` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wallet` double(20,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `agent` (
 --
 
 INSERT INTO `agent` (`id`, `agent_id`, `business_name`, `abn`, `type_of_industry`, `commission`, `profile_pic`, `address`, `membership_status`, `membership_end`, `wallet`, `created_at`, `updated_at`) VALUES
-(1, 3, 'test1111111', 'abn', 'test', '22402', '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', '12730000', NULL, NULL),
-(2, 1, 'test', 'abn', 'test', '2000', '', 'address', 'enable', '2021-01-30', '20', NULL, NULL),
-(3, 20, 'Aracely Wisoky', '3', 'Five!.', '0', 'test', 'Omnis quas temporibus eaque tempore omnis. Quos repellat ex amet aliquid et deserunt voluptas. At autem occaecati quas id autem. Ad dolor et in necessitatibus autem.', 'enable', '2009-03-11', '1328', '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
-(4, 21, 'Prof. Alycia Rutherford', '2', 'ME, and.', '0', 'test', 'Dolor omnis eum itaque dicta. Est sed voluptates asperiores illo. Rerum itaque qui qui enim laborum assumenda suscipit officia.', 'enable', '1980-12-19', '7603', '2020-10-06 00:19:38', '2020-10-06 00:19:38');
+(1, 3, 'test1111111', 'abn', 'test', 22402.00, '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', 12730000.00, NULL, NULL),
+(2, 1, 'test', 'abn', 'test', 2000.00, '', 'address', 'enable', '2021-01-30', 20.00, NULL, NULL),
+(3, 20, 'Aracely Wisoky', '3', 'Five!.', 0.00, 'test', 'Omnis quas temporibus eaque tempore omnis. Quos repellat ex amet aliquid et deserunt voluptas. At autem occaecati quas id autem. Ad dolor et in necessitatibus autem.', 'enable', '2009-03-11', 1328.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
+(4, 21, 'Prof. Alycia Rutherford', '2', 'ME, and.', 0.00, 'test', 'Dolor omnis eum itaque dicta. Est sed voluptates asperiores illo. Rerum itaque qui qui enim laborum assumenda suscipit officia.', 'enable', '1980-12-19', 7603.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38');
 
 -- --------------------------------------------------------
 
@@ -466,25 +466,26 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `customer_id` int NOT NULL,
   `agent_id` int DEFAULT NULL,
-  `address` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abn` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile_pic` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abn` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_pic` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `wallet` double(20,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `customer_customer_id_foreign` (`customer_id`),
   KEY `customer_agent_id_foreign` (`agent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `customer_id`, `agent_id`, `address`, `abn`, `name`, `profile_pic`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, '795 Folsom Ave, Suite 600\r\n San Francisco, CA 94107', 'abn', 'test', '160077437191.png', NULL, '2020-10-06 03:12:37'),
-(6, 14, 3, 'sdfasasadsdsa', 'abn', 'demo1', NULL, '2020-09-25 00:42:18', '2020-09-24 20:17:17'),
-(7, 16, 3, '795 Folsom Ave, Suite 600\r\n San Francisco, CA 94107', 'anb', 'demo1', NULL, '2020-09-24 20:17:00', '2020-10-06 03:12:56');
+INSERT INTO `customer` (`id`, `customer_id`, `agent_id`, `address`, `abn`, `name`, `profile_pic`, `created_at`, `updated_at`, `wallet`) VALUES
+(1, 2, 3, 'testing', '3', 'test', '160077437191.png', NULL, NULL, 0.00),
+(6, 14, 3, 'address', 'abn', 'demo', NULL, NULL, NULL, 0.00),
+(7, 16, 3, 'address', 'abn', 'testing', NULL, NULL, NULL, 0.00);
 
 -- --------------------------------------------------------
 
@@ -545,7 +546,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -557,7 +558,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (54, '2019_08_19_000000_create_failed_jobs_table', 1),
 (74, '2020_09_03_070053_create_settings_table', 8),
 (56, '2020_09_17_113702_create_transactions_table', 1),
-(57, '2020_09_17_115045_create_customer_tabel', 1),
+(80, '2020_09_17_115045_create_customer_tabel', 12),
 (63, '2020_09_17_115108_create_agent_tabel', 2),
 (59, '2020_09_18_060845_create_products_table', 1),
 (60, '2020_09_21_070756_create_sales_table', 1),
@@ -616,7 +617,7 @@ CREATE TABLE IF NOT EXISTS `package_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`PackageUser_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_user`
@@ -624,7 +625,10 @@ CREATE TABLE IF NOT EXISTS `package_user` (
 
 INSERT INTO `package_user` (`PackageUser_id`, `Package_id`, `user_id`, `quality`, `action_date`, `created_at`, `updated_at`) VALUES
 (1, 4, 2, '1', '', '2020-10-04 23:16:27', NULL),
-(2, 5, 2, '1', '', '2020-10-04 23:19:36', NULL);
+(2, 5, 2, '1', '', '2020-10-04 23:19:36', NULL),
+(3, 5, 2, '2', '', '2020-10-09 05:03:16', NULL),
+(4, 5, 2, '3', '', '2020-10-09 05:07:09', NULL),
+(5, 5, 2, '3', '', '2020-10-09 05:07:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -744,7 +748,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`transactions_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -780,6 +784,13 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (54, 0, 3, 200.00, 'w', '3', '0', '0', '2020-10-03 00:39:20', NULL),
 (55, 0, 3, 60.00, 'w', '3', '0', '0', '2020-10-03 00:39:58', NULL),
 (56, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:16', NULL),
+(67, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:33:11', NULL),
+(66, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:28:31', NULL),
+(65, 1, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:19:59', NULL),
+(64, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:19:59', NULL),
+(63, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:18:21', NULL),
+(62, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-09 05:07:28', NULL),
+(61, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-09 05:03:16', NULL),
 (60, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-06 03:12:08', NULL),
 (59, 2, 1, 18000.00, 'd', '4', '2000', '10', '2020-10-04 23:19:36', NULL),
 (58, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-10-04 23:16:27', NULL),

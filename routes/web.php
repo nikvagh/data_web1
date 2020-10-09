@@ -139,11 +139,11 @@ Route::middleware('ClientAuth')->group(function () {
     Route::get('/pluscart/{id}', [App\Http\Controllers\CartsController::class, 'pluscart'])->name('pluscart/{id}');
     Route::get('/minuscart/{id}', [App\Http\Controllers\CartsController::class, 'minuscart'])->name('minuscart');
     Route::get('/load_cart_block', [App\Http\Controllers\CartsController::class, 'load_cart_block'])->name('load_cart_block');
-    Route::get('/payment_successful', [App\Http\Controllers\CartsController::class, 'payment_successful'])->name('payment_successful');
     Route::get('/remove_cart', [App\Http\Controllers\CartsController::class, 'remove_cart'])->name('remove_cart');
     Route::get('/customers/packag', [App\Http\Controllers\CustomerController::class, 'customer_packag_list'])->name('customer/packag');
     Route::get('/customer_packag_data', [App\Http\Controllers\CustomerController::class, 'customer_packag_data'])->name('customer_packag_data');
     Route::get('/customer/packag/view/{PackageUser_id}', [App\Http\Controllers\CustomerController::class, 'customer_packag_view'])->name('/customer/packag/view/{PackageUser_id}');
+    Route::get('/payment_successful', [App\Http\Controllers\PaymentController::class, 'payment_successful'])->name('payment_successful');
 });
 
 Route::middleware('AgentAuth')->group(function () {

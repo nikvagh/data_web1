@@ -54,14 +54,14 @@
                             <td>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</td>
                         </tr>
                       
-                         <tr>
+                        <!--  <tr>
                             <th >Delivery Charges  : </th>
                             <td>{{ $dc=0}}</td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th >Total : </th>
-                            <td><b>{{ Cart::session(Auth::user()->id)->getSubTotal() + $dc}}</b></td>
+                            <td><b>{{ Cart::session(Auth::user()->id)->getSubTotal() }}</b></td>
                         </tr>
                         
                     </table>
@@ -74,7 +74,7 @@
                                 <div class="checkout-left">
                                     <div class="checkout-left-basket" >
                                         
-                                        <a href="{{url('checkout')}}" class="btn btn-primary">checkout</a>
+                                        <a href="{{url('checkout')}}" class="btn btn-primary">Checkout</a>
                                     </div>
 
                                     <div class="clearfix"></div>

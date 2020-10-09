@@ -111,47 +111,13 @@ class CartsController extends Controller
           
         $data['view_data'] = view('front.cart_block',['data'=>$data])->render();
         return response()->json($data);
-    }
-    public function payment_successful()
-    {
-        $id = session()->get('payment_successful');
-        // $id=8;
-        if($id){
-            $data = DB::table('order_user')
-                ->where('id', $id)
-                ->get()->first();  
-
-
-            // $carts = Cart::session(Auth::user()->id)->getContent();
-            // $cart = $carts->toArray(); 
-            $products = DB::table('package_user')
-                ->where('package_user.created_at', $data->created_at)
-                ->leftJoin('products', 'package_user.Package_id', '=', 'products.id')
-                ->get();   
-                
-        // return view('front.payment_successful_mail',['data'=>$data,'products'=>$products]);
-            // exit();
-            // print_r($products->sum('amount'));
-                $datas['data']=$data;
-                $datas['products']=$products;
-// send mail
-                // if (Auth::user()->email) {
-                //   $data = array('name'=>Auth::user()->name);
-                //      Mail::send('front.payment_successful_mail',$datas, function($message) {
-                //      $message->to('abc@gmail.com', 'web_data')->subject
-                //       ('Order Successful');
-                //      $message->from(Auth::user()->email, Auth::user()->name);
-                //     });
-                // }
-                 
-
-            return view('front.payment_successful',['data'=>$data,'products'=>$products]);
-        }
     return redirect('/');
+    }
+  
     // return redirect('order_user');
 
     
-    }
+   
     public function remove_cart()
     {
          Cart::clear();

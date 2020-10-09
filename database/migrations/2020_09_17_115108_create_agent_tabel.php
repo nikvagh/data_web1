@@ -20,12 +20,13 @@ class CreateAgentTabel extends Migration
                 $table->string('business_name');
                 $table->string('abn');
                 $table->string('type_of_industry');
-                $table->string('commission');
+               $table->double('commission', 20, 2);
+                
                 $table->text('profile_pic');
                 $table->text('address');
                 $table->enum('membership_status',['enable', 'disable']);
                 $table->date('membership_end');
-                $table->string('wallet');
+               $table->double('wallet', 20, 2);
                 $table->timestamps();
             $table->foreign('agent_id')
                 ->references('id')

@@ -11,7 +11,7 @@
 
 @section('content')
 
-<section class="content-header"> <h1>Trading screenshots</h1> </section>
+<section class="content-header"> <h1>Trading Screenshots</h1> </section>
 
 <section class="content">
 
@@ -29,7 +29,7 @@
                 <div class="box-header">
                     <!-- <h3 class="box-title">Hover Data Table</h3> -->
                     <div class="pull-right">
-                        <a href="{{ route('Gallery/screenshots/addscreenshots') }}" class="btn btn-sm btn-primary">Add screenshots</a>
+                        <a href="{{ route('Gallery/screenshots/addscreenshots') }}" class="btn btn-sm btn-primary">Add Screenshots</a>
                     </div>
                 </div>
                 <!-- /.box-header -->

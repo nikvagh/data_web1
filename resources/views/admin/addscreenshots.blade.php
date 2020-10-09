@@ -20,7 +20,7 @@
 
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Add screenshots</h3>
+                    <h3 class="box-title">Add Screenshots</h3>
                 </div>
 
                 <!-- form start -->

@@ -25,7 +25,6 @@
                 <div class="col-md-10">
                     <div class="woocommerce-billing-fields">
                         <h3>Billing details</h3>
-                      
                         <div class="woocommerce-billing-fields__field-wrapper">
                           <div class="flex">
                             <div class="form-group with50">
@@ -106,8 +105,38 @@
                              @error('email')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
+
+
+                           
+
+
+                            <div class="form-group">
+                                <label for="email" >Payment Meaning&nbsp;<abbr class="required" title="required">*</abbr></label>
+
+                                <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="{{ $payment->wallet }}">
+                                <label class="form-check-label" for="exampleRadios1">Wallet (Available Balance : {{ $payment->wallet }})</label>
+                                </div>
+
+                               <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="Polipay">
+                                <label class="form-check-label" for="exampleRadios1">Polipay</label>
+                               </div>
+
+                               <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="Paypal">
+                                <label class="form-check-label" for="exampleRadios1">Paypal</label>
+                               </div>
+
+                                @error('Payment_Meaning')
+                                <small class=" form-text text-danger"> {{ $message }}</small>
+                                @enderror
+                          </div>
+
+
                         </div>
                     </div>
+                      <input type="hidden" name="total" value="{{ Cart::session(Auth::user()->id)->getSubTotal() }}">
 
                     <input type="submit" name="submit" class="btn btn-primary" />
                 </div>

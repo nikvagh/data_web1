@@ -88,18 +88,22 @@ class Frontcontroller extends Controller
     }
     public function order_user()
     {
-        // print_r($id);
-        // exit();
               $country = DB::table('country')->get();   
-            // print_r($get);
+           $payment = DB::table('customer')
+            ->where('customer_id', Auth::user()->id)
+            ->get()->first();
+
+            // print_r($payment->wallet);
             // exit();
-       return view('front.order_user',['country'=>$country]);
+       return view('front.checkout',['country'=>$country,'payment'=>$payment]);
 
     }
     public function order_usersubmit(Request $request)
     {
-       
+      // print_r($request->get('Payment_Meaning'));
+      exit();
         $this->validate($request, [
+            'Payment_Meaning'=>'required|wallet_balance',
             'fname' => 'required',
             'lname' => 'required',
             'country' => 'required',
@@ -110,8 +114,18 @@ class Frontcontroller extends Controller
             'Phone' => 'required',
             'email' => 'required',
         ]);
-       
-//  //order_user     
+        // print_r();
+    
+            $payment=$request->get('Payment_Meaning');
+            if ($payment=="Paypal") {
+             
+            }
+            elseif ($payment=="Polipay") {
+              
+            }else{
+
+            }
+            exit();
         $date=date("Y-m-d h:i:s");
         $order_user=DB::table('order_user')->insertGetId(
                          ['fname' => $request->input('fname'),
@@ -125,53 +139,12 @@ class Frontcontroller extends Controller
                          'email' => $request->input('email'),
                          'created_at' => $date,
                          ]);
-// // package_user
-//         // exit();
-         $carts = Cart::session(Auth::user()->id)->getContent();
-        $cart = $carts->toArray();
-       foreach ($cart as $key ) {
-        $ids=$key['id'];
-        $quantity=$key['quantity'];
-         // print_r($key['quantity']);
-          DB::table('package_user')->insert(
-                         ['Package_id' => $ids,
-                         'user_id' => Auth::user()->id,
-                          'quality' => $quantity,
-                         'created_at' => $date,
-                         ]);           
-
-// //transactions
-        $product=DB::table('products')->where('id', $ids)->get()->first();
-         // print_r($product->amount);
-         // exit();
-         $settings = DB::table('settings')->where('settings_id', '1')->get()->first();   
-        $agentcopr = $settings->agentcommission;
-
-        $agentcommission= $product->amount*$agentcopr/'100'; 
         
-        $customer = DB::table('customer')->where('customer_id', Auth::user()->id)->get()->first();
-       // echo "<pre>";
+
       
-       $agent = DB::table('agent')->where('agent_id', $customer->agent_id)->get()->first();
-            //  print_r(count($agent));
-            // exit();
-       if (!$agent) {
-         
-       $oldcommmissin=$agent->commission;
-       $newcommmissin=$oldcommmissin+$agentcommission;
-           DB::table('agent')->where('agent_id', $customer->agent_id)->update(['commission' => $newcommmissin]);
-       }
-
-        $amount=($product->amount)-$agentcommission;
-
-        DB::table('transactions')->insert(['customer_id' => Auth::user()->id, 'agent_id' =>$customer->agent_id,'agentcommission' => $agentcommission,
-            'commission' => $agentcopr, 'amount' => $amount, 'type' => 'd', 'deposittype' => '4', 'created_at' => $date]);
-        }
-        // echo "Record inserted successfully.<br/>";
-        // $order_user="8";
-        Cart::clear();
-        Cart::session(Auth::user()->id)->clear();  
-        return redirect('/payment_successful')->with('payment_successful', $order_user);
+       
+//  //order_user     
+  // return redirect('/payment_successful')->with('payment_successful', $order_user);
         
 
     }

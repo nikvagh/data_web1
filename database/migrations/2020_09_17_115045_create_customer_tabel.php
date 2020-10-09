@@ -23,7 +23,7 @@ class CreateCustomerTabel extends Migration
                 $table->string('name');
                 $table->string('profile_pic')->nullable();
                 $table->timestamps();
-
+                  $table->double('wallet', 20, 2);
 
                 $table->foreign('customer_id')
                 ->references('id')
