@@ -11,6 +11,7 @@ use DB;
 use Auth;
 use Cart;
 use Mail;
+use Session;
 
 class CartsController extends Controller
 {
@@ -36,7 +37,10 @@ class CartsController extends Controller
             ));
             
             // print_r($data->id);
-             return redirect($path)->with('cart', 'Product been Added to your Cart.');
+            Session::flash('message_s','Product been Added to your Cart');
+
+
+             return redirect($path);
 
     }
     public function getcart()

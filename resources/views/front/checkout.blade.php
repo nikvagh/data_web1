@@ -20,9 +20,13 @@
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing section-bg">
     <div class="container" data-aos="fade-up">
+      @if (Session::has('message_e'))
+        @include('partials.alert', ['type' => "danger",'message'=> Session::get('message_e') ])
+        @endif
         <form name="checkout" method="post" action="{{url('checkout')}}" enctype="multipart/form-data">@csrf
             <div class="col2-set" id="customer_details">
                 <div class="col-md-10">
+
                     <div class="woocommerce-billing-fields">
                         <h3>Billing details</h3>
                         <div class="woocommerce-billing-fields__field-wrapper">
@@ -114,7 +118,7 @@
                                 <label for="email" >Payment Meaning&nbsp;<abbr class="required" title="required">*</abbr></label>
 
                                 <div class="form-check">
-                                <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="{{ $payment->wallet }}">
+                                <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="Wallet_{{ $payment->wallet }}">
                                 <label class="form-check-label" for="exampleRadios1">Wallet (Available Balance : {{ $payment->wallet }})</label>
                                 </div>
 

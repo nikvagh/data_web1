@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 09, 2020 at 12:58 PM
+-- Generation Time: Oct 10, 2020 at 09:19 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -591,7 +591,7 @@ CREATE TABLE IF NOT EXISTS `order_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_user`
@@ -599,7 +599,44 @@ CREATE TABLE IF NOT EXISTS `order_user` (
 
 INSERT INTO `order_user` (`id`, `fname`, `lname`, `country`, `address`, `State`, `City`, `Postcode/ZIP`, `Phone`, `email`, `created_at`, `updated_at`) VALUES
 (1, 'Kali Feest', 'meet', 3, 'testing', 'United States', 'Jerusalem', '123456', '0987456321', 'viola.reichel@example.net', '2020-10-04 23:16:27', NULL),
-(2, 'Kali Feest', 'meet', 15, 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', 'United States', 'New York', '123456', '0987456321', 'viola.reichel@example.net', '2020-10-04 23:19:36', NULL);
+(2, 'Kali Feest', 'meet', 15, 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', 'United States', 'New York', '123456', '0987456321', 'viola.reichel@example.net', '2020-10-04 23:19:36', NULL),
+(3, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:23:15', NULL),
+(4, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:24:49', NULL),
+(5, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:26:00', NULL),
+(6, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:26:50', NULL),
+(7, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:30:04', NULL),
+(8, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:30:55', NULL),
+(9, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:33:03', NULL),
+(10, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:39:12', NULL),
+(11, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:41:44', NULL),
+(12, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:42:12', NULL),
+(13, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 22:43:30', NULL),
+(14, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 23:10:03', NULL),
+(15, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 23:17:23', NULL),
+(16, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-09 23:26:05', NULL),
+(17, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:11:00', NULL),
+(18, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:31:40', NULL),
+(19, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:37:04', NULL),
+(20, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:44:21', NULL),
+(21, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(22, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(23, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(24, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(25, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(26, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(27, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(28, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(29, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(30, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(31, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(32, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(33, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(34, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 01:49:04', NULL),
+(35, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 03:02:11', NULL),
+(36, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 03:02:11', NULL),
+(37, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 03:02:11', NULL),
+(38, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 03:06:05', NULL),
+(39, 'jay', 'dev', 99, 'surat', 'surat', 'surat', '395010', '0987456321', 'viola.reichel@example.net', '2020-10-10 03:09:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -617,7 +654,7 @@ CREATE TABLE IF NOT EXISTS `package_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`PackageUser_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_user`
@@ -628,7 +665,26 @@ INSERT INTO `package_user` (`PackageUser_id`, `Package_id`, `user_id`, `quality`
 (2, 5, 2, '1', '', '2020-10-04 23:19:36', NULL),
 (3, 5, 2, '2', '', '2020-10-09 05:03:16', NULL),
 (4, 5, 2, '3', '', '2020-10-09 05:07:09', NULL),
-(5, 5, 2, '3', '', '2020-10-09 05:07:28', NULL);
+(5, 5, 2, '3', '', '2020-10-09 05:07:28', NULL),
+(6, 5, 2, '1', '', '2020-10-10 01:49:53', NULL),
+(7, 5, 2, '1', '', '2020-10-10 01:51:11', NULL),
+(8, 5, 2, '1', '', '2020-10-10 01:51:41', NULL),
+(9, 5, 2, '1', '', '2020-10-10 01:52:16', NULL),
+(10, 5, 2, '1', '', '2020-10-10 01:52:22', NULL),
+(11, 5, 2, '1', '', '2020-10-10 01:52:47', NULL),
+(12, 5, 2, '1', '', '2020-10-10 01:53:12', NULL),
+(13, 5, 2, '1', '', '2020-10-10 01:54:06', NULL),
+(14, 5, 2, '1', '', '2020-10-10 01:54:17', NULL),
+(15, 5, 2, '1', '', '2020-10-10 01:54:41', NULL),
+(16, 5, 2, '1', '', '2020-10-10 01:55:19', NULL),
+(17, 5, 2, '1', '', '2020-10-10 01:55:31', NULL),
+(18, 5, 2, '1', '', '2020-10-10 01:57:00', NULL),
+(19, 5, 2, '1', '', '2020-10-10 01:57:18', NULL),
+(20, 5, 2, '1', '', '2020-10-10 03:04:09', NULL),
+(21, 5, 2, '1', '', '2020-10-10 03:04:35', NULL),
+(22, 5, 2, '1', '', '2020-10-10 03:05:28', NULL),
+(23, 5, 2, '1', '', '2020-10-10 03:06:54', NULL),
+(24, 4, 2, '1', '', '2020-10-10 03:10:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -748,7 +804,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`transactions_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -784,6 +840,11 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (54, 0, 3, 200.00, 'w', '3', '0', '0', '2020-10-03 00:39:20', NULL),
 (55, 0, 3, 60.00, 'w', '3', '0', '0', '2020-10-03 00:39:58', NULL),
 (56, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:16', NULL),
+(72, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:51:41', NULL),
+(71, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:51:11', NULL),
+(70, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:49:53', NULL),
+(69, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 22:31:23', NULL),
+(68, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 22:26:50', NULL),
 (67, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:33:11', NULL),
 (66, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:28:31', NULL),
 (65, 1, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-09 05:19:59', NULL),
@@ -794,7 +855,23 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (60, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-06 03:12:08', NULL),
 (59, 2, 1, 18000.00, 'd', '4', '2000', '10', '2020-10-04 23:19:36', NULL),
 (58, 2, 1, 9000.00, 'd', '4', '1000', '10', '2020-10-04 23:16:27', NULL),
-(57, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:45', NULL);
+(57, 0, 3, 90000.00, 'w', '3', '0', '0', '2020-10-03 00:40:45', NULL),
+(73, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:52:16', NULL),
+(74, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:52:22', NULL),
+(75, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:52:47', NULL),
+(76, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:53:12', NULL),
+(77, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:54:06', NULL),
+(78, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:54:17', NULL),
+(79, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:54:41', NULL),
+(80, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:55:19', NULL),
+(81, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:55:31', NULL),
+(82, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:57:00', NULL),
+(83, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 01:57:18', NULL),
+(84, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:04:09', NULL),
+(85, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:04:35', NULL),
+(86, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:05:28', NULL),
+(87, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:06:54', NULL),
+(88, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-10 03:10:38', NULL);
 
 -- --------------------------------------------------------
 

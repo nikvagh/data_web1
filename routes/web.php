@@ -143,7 +143,7 @@ Route::middleware('ClientAuth')->group(function () {
     Route::get('/customers/packag', [App\Http\Controllers\CustomerController::class, 'customer_packag_list'])->name('customer/packag');
     Route::get('/customer_packag_data', [App\Http\Controllers\CustomerController::class, 'customer_packag_data'])->name('customer_packag_data');
     Route::get('/customer/packag/view/{PackageUser_id}', [App\Http\Controllers\CustomerController::class, 'customer_packag_view'])->name('/customer/packag/view/{PackageUser_id}');
-    Route::get('/payment_successful', [App\Http\Controllers\PaymentController::class, 'payment_successful'])->name('payment_successful');
+    Route::get('/payment_successful', [App\Http\Controllers\PaymentController::class, 'payment_successful'])->name('paypal.success');
 });
 
 Route::middleware('AgentAuth')->group(function () {
@@ -187,7 +187,9 @@ Route::get('/gallery', [App\Http\Controllers\Frontcontroller::class, 'screenshot
 Route::get('/Charity', [App\Http\Controllers\CharityController::class, 'index'])->name('Charity');
 Route::post('/Charity', [App\Http\Controllers\CharityController::class, 'Charity'])->name('Charity');
 
-
+Route::get('/paypal', [App\Http\Controllers\PaypalController::class, 'index']);
+// Route::get('/paypal/success', [App\Http\Controllers\PaypalController::class, 'success'])->name('paypal.success');
+Route::get('/paypal/cancel', [App\Http\Controllers\PaymentController::class, 'payment_cancel'])->name('paypal.cancel');
 
 
 

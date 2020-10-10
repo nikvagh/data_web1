@@ -15,8 +15,13 @@
 
 </section><!-- End Breadcrumbs -->
 @endsection
-
 @section('content')
+<div class="section-bg">
+<div class="container">
+@if (Session::has('message_s'))
+        @include('partials.alert', ['type' => "success",'message'=> Session::get('message_s') ])
+        @endif
+  </div>
 <form method="post" action="{{url('addcart',$data->id)}}">@csrf
   <input type="hidden" name="path" value="{{Request::url()}}">
   <input type="hidden" name="id" value="{{$data->id}}">

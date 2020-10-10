@@ -121,14 +121,11 @@
   </header><!-- End Header -->
   <!-- ======= Breadcrumbs ======= -->
   @yield('Breadcrumbs')
-  @if(session()->get('cart'))
-  <div class="container-fluid section-bg" id="msg">
-    <div class="alert-warning padding10">{{ session()->get('cart') }} </div>
-  </div>
 
 
 
-  @endif
+
+
 
   @yield('content')
   <!-- ======= Footer ======= -->

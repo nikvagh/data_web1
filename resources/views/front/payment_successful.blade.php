@@ -15,7 +15,11 @@
 
     </section><!-- End Breadcrumbs -->
 @endsection @section('content')
+
   <section id="contact" class="contact white-bg">
+
+
+
 
     <div class="container">
 	<div class="row">
@@ -72,7 +76,7 @@
 			</div> 
 		</div>
 		
-		<a href="{{url('remove_cart')}}" class="btn btn-dark flortright margin10">Back To Home</a>
+		<a href="{{url('/')}}" class="btn btn-dark flortright margin10">Back To Home</a>
 	</div>	</section>
 
 @endsection

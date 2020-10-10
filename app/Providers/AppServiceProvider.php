@@ -28,34 +28,29 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
-        // Validator::extend('Wallet_Balance', function ($attribute, $value, $parameters, $validator) {
-        //       $inputs = $validator->getData();
-        //       $phone = $inputs['Payment_Meaning'];
-        //      print_r($inputs);
-        //      exit();
-        //       $except_id = (!empty($parameters)) ? head($parameters) : null;
-
-        //       $query = User::where('phone', $concatenated_number);
-        //       if(!empty($except_id)) {
-        //         $query->where('id', '<>', $except);
-        //       }
-
-        //       return $query->exists();
-        // });
-
-        $this->app['validator']->extend('wallet_balance', function ($attribute, $value, $parameters)
-        {
-            $inputs = $validator->getData();
-            print_r($inputs);
-            exit();
-
-            foreach ($value as $v) {
-                if (!is_int($v)) {
-                    return false;
-                }
-            }
-            return true;
+        Validator::extend('wallet_balance', function ($attribute, $value, $parameters, $validator) {
+              $inputs = $validator->getData();
+              $Payment_Meaning = $inputs['Payment_Meaning'];
+              $total = $inputs['total'];
+             // print_r($total);
+             if(substr($Payment_Meaning,0,6)=="Wallet")
+             {
+                // echo "string";
+                  if (substr($Payment_Meaning,7) >= $total) {
+                     return true;
+                  }
+                  else{
+                        return false;
+                  }  
+             }
+             else{
+                 return true;
+             }
+             // exit();
+             
         });
+
+       
 
     }
 }
