@@ -1,22 +1,18 @@
-@extends('layouts.agent_dash') @section('content')
-<style type="text/css">
-    .image-upload>input {
-  display: none;
-}
-</style>
-<section class="content">
-    <div class="row">
+@extends('layouts.new') @section('content')
+
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
         <form role="form" method="post" action="{{ route('customerupdate') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"> Edit customary</h3>
-                    </div>
-                    @csrf
+               
+                @csrf
                   
                  
                     <div class="box-body">
-                    	<input type="hidden" name="id" value="{{$get[0]->customer_id }}">
+                        <input type="hidden" name="id" value="{{$get[0]->customer_id }}">
                          <div class="form-group">
                             <label for="exampleInputEmail1">customary Name</label>
                             <input type="text" class="form-control" name="name" value="{{$get[0]->name}}" placeholder="Customary Name" />
@@ -60,18 +56,17 @@
                             @enderror
                         </div>
 
-                            
+                   <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-cus float-right" value="update" >
+                  </div>
 
-                        <div class="form-group">
-                         
-                            <input type="submit" name="submit" style="float: right;" class="btn btn-primary" value="Update" />
-                        </div>
-
-                    </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </section>
+
+<!-- end body -->
+
   
-@endsection

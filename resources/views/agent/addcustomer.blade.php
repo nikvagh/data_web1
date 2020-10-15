@@ -1,23 +1,14 @@
-@extends('layouts.agent_dash') @section('content')
-<style type="text/css">
-    .image-upload>input {
-  display: none;
-}
-</style>
-<section class="content">
-    <div class="row">
-        <form role="form" method="post" action="{{ route('addcustomer') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"> Add New customer</h3>
-                    </div>
-                    @csrf
-                  
-                 
-                    <div class="box-body">
+@extends('layouts.new') @section('content')
 
-                         <div class="form-group">
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
+        <form role="form" method="post" action="{{ route('addcustomer') }}" enctype="multipart/form-data">
+               @csrf
+                  <div class="form-group">
                             <label for="exampleInputEmail1">customer Name</label>
                             <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="customer Name" />
                             @error('name')
@@ -74,18 +65,32 @@
                             @enderror
                         </div>
 
-                            
+                   <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-cus float-right" value="ADD" >
+                  </div>
 
-                        <div class="form-group">
-                         
-                            <input type="submit" name="submit" style="float: right;" class="btn btn-primary" value="ADD" />
-                        </div>
-
-                    </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </section>
+
+<!-- end body -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 @endsection

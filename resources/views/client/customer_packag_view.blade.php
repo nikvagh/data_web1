@@ -1,23 +1,17 @@
-@extends('layouts.customer_dash')
-@section('content')
 
+@extends('layouts.new') @section('content')
 
-<section class="content">
-    <div class="row">
-        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
+        <form role="form" method="post" action="{{ route('withdraw') }}" enctype="multipart/form-data">
+       @csrf 
+  
 
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Transaction</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
-                        </div>
-                    </div>
-
-                    <div class="box-body no-padding">
-                        <table class="table table-striped">
+                      <table class="table table-striped">
                             <tr>
                                 <td style="width: 40px">Id</td>
                                 <th style="width: 60px">
@@ -39,6 +33,46 @@
                            
                             
                         </table>
+
+                  
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end body -->
+  
+@endsection
+
+
+
+
+
+
+
+
+
+@section('content')
+
+
+<section class="content">
+    <div class="row">
+        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
+            <div class="col-md-6">
+
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Transaction</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body no-padding">
+                      
                     </div>
                 </div>
 

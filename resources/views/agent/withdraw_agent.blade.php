@@ -1,17 +1,18 @@
-@extends('layouts.agent_dash') @section('content')
-<style type="text/css">
-    .image-upload > input {
-        display: none;
-    }
-</style>
-<section class="content">
-    <div class="row">
+
+@extends('layouts.new') @section('content')
+
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
         <form role="form" method="post" action="{{ route('withdraw') }}" enctype="multipart/form-data">
-            @if(session()->get('error'))
+       @csrf 
+                 @if(session()->get('error'))
             <div class="container-fluid" id="msg">
                 <div class="callout callout-danger">
                     <h4>Payment Failed!</h4>
-
                     <p>{{ session()->get('error') }}</p>
                 </div>
                 @endif @if(session()->get('success'))
@@ -22,21 +23,9 @@
                         {{ session()->get('success') }}
                     </div>
                 </div>
-
                 @endif
-            </div>
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">withdraw</h3>
-                    </div>
-                    @csrf
 
-                    <div class="box-body">
-                        <!--  <div class="form-group">
-                            <h4>Wallet Balance : <b></b></h4>
-                        </div> -->
-                        <div class="form-group">
+                    <div class="form-group">
                             <label for="exampleInputEmail1">Amount</label>
                             <input type="text" class="form-control" name="amount" placeholder="Amount" />
                             @error('amount')
@@ -44,14 +33,24 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-primary" value="withdraw" />
-                        </div>
-                    </div>
-                </div>
+                   <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-cus float-right" value="withdraw" >
+                  </div>
+
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </section>
 
+<!-- end body -->
+  
 @endsection
+
+
+
+
+
+
+

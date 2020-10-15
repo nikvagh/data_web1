@@ -102,7 +102,7 @@ class PaymentController extends Controller
     }
     public function payment_cancel()
     {
-        Session::flash('message_e','Your Transaction  in Field Pulse Try Again');
+        Session::flash('message_e','Payment failed. please try again.');
         return redirect('/checkout');
        
     }

@@ -51,7 +51,8 @@ class ProductController extends Controller
             'name' => 'required',
             'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
-        $product = Product::create(['name' => $request->name,'amount' => $request->amount]);
+
+        $product = DB::table('products')->insert(['name' => $request->name,'amount' => $request->amount]);
         
         $request->session()->flash('message_s','Product created Successfully!');
         return redirect('admin/product');
@@ -74,7 +75,8 @@ class ProductController extends Controller
             'name' => 'required',
             'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
-        $product = Product::where('id',$id)
+      
+        $product = DB::table('products')->where('id',$id)
                     ->update(['name' => $request->name,'amount' => $request->amount]);
         
         $request->session()->flash('message_s','Product updated Successfully!');

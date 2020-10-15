@@ -175,7 +175,8 @@ class AgentController extends Controller
     }
     public function addcustomer()
     {
-             return view('agent.addcustomer');
+         $data['title'] = 'Add New customer';
+             return view('agent.addcustomer')->with($data);
         
     }
     public function submitcustomer(request $request)
@@ -270,7 +271,8 @@ class AgentController extends Controller
 
             // print_r($get);
             // exit();
-        return view('agent.customeredit',['get'=>$get]);
+             $data['title'] = 'customer edit';
+        return view('agent.customeredit',['get'=>$get])->with($data);
          
     }
     public function customerupdate(request $request)
@@ -281,7 +283,7 @@ class AgentController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             
             'abn' => 'required',
             'address' => 'required',
@@ -356,7 +358,8 @@ class AgentController extends Controller
     }
     public function agenttaranjesonview($id)
     {
-        $data= DB::table('transactions')
+         $data['title'] = 'Package View';
+        $transactions= DB::table('transactions')
                 ->where('transactions.transactions_id', $id)
                 ->Join('users', 'users.id', '=', 'transactions.customer_id')
                 ->Join('customer', 'customer.customer_id', '=', 'transactions.customer_id')
@@ -366,12 +369,13 @@ class AgentController extends Controller
                 // print_r($data);
                 // exit();
 
-        return view('agent.agenttaranjesonview',['data'=>$data]);
+        return view('agent.agenttaranjesonview',['transactions'=>$transactions])->with($data);
 
     }
     public function withdraw(request $request)
     {
-       return view('agent.withdraw_agent');
+        $data['title'] = 'Withdraw';
+       return view('agent.withdraw_agent')->with($data);
     }
     public function addwithdraw(request $request)
     {
@@ -448,9 +452,12 @@ class AgentController extends Controller
         }
      public function customer_packag_view($id)
         {
+            $data['title'] = 'Withdraw';
+       
+
           $Package =  DB::table('package_user')->where('PackageUser_id', $id)
                 ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
-            return view('agent.packag_view',['Package'=>$Package]);
+            return view('agent.packag_view',['Package'=>$Package])->with($data);
         }
     public function customer_packag_data()
         {

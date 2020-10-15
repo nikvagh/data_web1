@@ -1,20 +1,33 @@
-@extends('layouts.customer_dash') @section('content')
-<section class="content">
-    <div class="row">
-        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
 
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Transaction</h3>
+@extends('layouts.new')
 
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
-                        </div>
-                    </div>
+@section('css')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+@endsection
 
-                    <div class="box-body no-padding">
-                        <table class="table table-striped">
+@section('content')
+
+<!-- start body -->
+<section class="card-body">
+    
+<div class="container">
+       <h4>{{ $title }}</h4>
+    <div class="col-md-12">
+<!--         <div class="text-right m-2">
+<a  href="{{ route('addcustomer') }}" class="btn btn-sm btn-cus ">Add Customer</a>
+</div> -->
+
+    <div class="box">
+       
+        <!-- /.box-header -->
+
+        <div class="box-body">
+
+            <div id="example1_wrapper" class="col-md-12 p-10">
+               
+                       <table class="table table-striped">
                             <tr>
                                 <td style="width: 40px">Transactions Id</td>
                                 <th style="width: 60px">
@@ -66,6 +79,38 @@
                             </tr>
                             
                         </table>
+            
+                        <div id="example1_processing" class="dataTables_processing" style="display: none;">Processing...</div>
+                    </div>
+                </div>
+
+    </div>
+</div></div></section>
+<!-- end body -->
+
+@endsection
+
+
+
+
+
+ @section('content')
+<section class="content">
+    <div class="row">
+        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
+            <div class="col-md-6">
+
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Transaction</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body no-padding">
+                        
                     </div>
                 </div>
 

@@ -106,7 +106,7 @@ class Frontcontroller extends Controller
             'Phone' => 'required',
             'email' => 'required',
         ],[
-    'wallet_balance' => 'Wallet Balance is Not Safety!', // <---- pass a message for your custom validator
+    'wallet_balance' => 'Wallet Balance is Not Sufficient!', // <---- pass a message for your custom validator
   ]);
         $date = date("Y-m-d h:i:s");
         $checkout_data = [

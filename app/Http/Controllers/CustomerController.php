@@ -114,9 +114,10 @@ class CustomerController extends Controller
         }
      public function customer_packag_view($id)
         {
+            $data['title'] = 'Packages view';
           $Package =  DB::table('package_user')->where('PackageUser_id', $id)
                 ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
-            return view('client.customer_packag_view',['Package'=>$Package]);
+            return view('client.customer_packag_view',['Package'=>$Package])->with($data);
         }
     public function customer_packag_data()
         {

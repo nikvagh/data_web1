@@ -23,8 +23,8 @@ class Depositcontroller extends Controller
            
         // print_r($data);
         // exit();
-
-        return view('client.taranjeson', ['data' => $data]);
+             $datas['title'] = 'Transaction  List';
+        return view('client.taranjeson', ['data' => $data])->with($datas);
     }
     public function taranjeson_viwe($id)
     {
@@ -35,11 +35,14 @@ class Depositcontroller extends Controller
             ->get();
         // print_r($data);
         // exit();
-        return view('client.taranjeson_viwe', ['data' => $data]);
+             $datas['title'] = 'Transaction View';
+        return view('client.taranjeson_viwe', ['data' => $data])->with($datas);
     }
     public function index()
     {
-        return view('client.deposit');
+
+        $datas['title'] = 'Deposit';
+        return view('client.deposit')->with($datas);
     }
     public function carddetails()
     {
@@ -48,7 +51,8 @@ class Depositcontroller extends Controller
             ->get();
         // print_r($get);
         // exit();
-        return view('client.cardpayment', ['get' => $get]);
+              $datas['title'] = 'Card Details';
+        return view('client.cardpayment', ['get' => $get])->with($datas);
     }
     public function Invoice($id)
     {
@@ -69,7 +73,8 @@ class Depositcontroller extends Controller
         // echo "<pre>";
         // print_r($data);
         // exit();
-        return view('client.invoice',['get' => $get,'customer' => $customer,'data' => $data,'id'=>$id]);
+             $datas['title'] = 'Invoice';
+        return view('client.invoice',['get' => $get,'customer' => $customer,'data' => $data,'id'=>$id])->with($datas);
         
     }
     public function Invoicepdf($id)

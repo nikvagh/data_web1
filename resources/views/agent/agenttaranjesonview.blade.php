@@ -1,77 +1,92 @@
-@extends('layouts.agent_dash')
- @section('content')
-<section class="content">
 
-            <div class="row">
-        <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
+@extends('layouts.new') @section('content')
 
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Package</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
-                        </div>
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
+        <form role="form" method="post" action="{{ route('withdraw') }}" enctype="multipart/form-data">
+       
+                 @if(session()->get('error'))
+            <div class="container-fluid" id="msg">
+                <div class="callout callout-danger">
+                    <h4>Payment Failed!</h4>
+                    <p>{{ session()->get('error') }}</p>
+                </div>
+                @endif @if(session()->get('success'))
+                <div class="container-fluid" id="msg" style="margin: 10px;">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                        {{ session()->get('success') }}
                     </div>
+                </div>
+                @endif
 
-                    <div class="box-body no-padding">
-                        <table class="table table-striped">
+                     <table class="table table-striped">
                             <tr>
                                 <td style="width: 40px">Transactions Id</td>
                                 <th style="width: 60px">
-                                   {{$data[0]->transactions_id}}
+                                   {{$transactions[0]->transactions_id}}
                                 </th>
                             </tr>
                             <tr>
                                 <td>Customer Name </td>
-                                <th>{{$data[0]->name}}</th>
+                                <th>{{$transactions[0]->name}}</th>
                             </tr>
                             <tr>
                                 <td>Agent Name</td>
-                                <th>{{$data[0]->business_name}}</th>
+                                <th>{{$transactions[0]->business_name}}</th>
                             </tr>
                             <tr>
                                 <td>Amount </td>
-                                <th>{{$data[0]->amount}}</th>
+                                <th>{{$transactions[0]->amount}}</th>
                             </tr>
                             <tr>
                                 <td>Type </td>
-                                <th>@if($data[0]->type=='d')<b>Deposit</b>@elseif($data[0]->type=='w')<b>without</b>@endif</th>
+                                <th>@if($transactions[0]->type=='d')<b>Deposit</b>@elseif($transactions[0]->type=='w')<b>without</b>@endif</th>
                             </tr>
                             <tr>
                                 <td>Deposit type </td>
-                                <th>@if($data[0]->deposittype==1)<b>Crypto</b>
-                                    @elseif($data[0]->deposittype==2)<b>Visa/Master</b>
-                                    @elseif($data[0]->deposittype==3)<b>Poli</b>
-                                    @elseif($data[0]->deposittype==4)<b>Western Union</b>
-                                    @elseif($data[0]->deposittype==5)<b>Bank Deposit</b>
+                                <th>@if($transactions[0]->deposittype==1)<b>Crypto</b>
+                                    @elseif($transactions[0]->deposittype==2)<b>Visa/Master</b>
+                                    @elseif($transactions[0]->deposittype==3)<b>Poli</b>
+                                    @elseif($transactions[0]->deposittype==4)<b>Western Union</b>
+                                    @elseif($transactions[0]->deposittype==5)<b>Bank Deposit</b>
                                     @endif</th>
                             </tr>
                             <tr>
                                 <td>Agent Commission </td>
-                                <th>{{$data[0]->agentcommission}}</th>
+                                <th>{{$transactions[0]->agentcommission}}</th>
                             </tr>
                             <tr>
                                 <td>Commission(%) </td>
-                                <th>{{$data[0]->commission}}</th>
+                                <th>{{$transactions[0]->commission}}</th>
                             </tr>
                             <tr>
                                 <td>Email </td>
-                                <th>{{$data[0]->email}}</th>
+                                <th>{{$transactions[0]->email}}</th>
                             </tr>
 
                            
                             
                         </table>
-                    </div>
-                </div>
 
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-
-
-                    
 </section>
+
+<!-- end body -->
+  
 @endsection
+
+
+
+
+
+
+

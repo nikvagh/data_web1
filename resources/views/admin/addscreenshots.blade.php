@@ -1,6 +1,4 @@
-@extends('layouts.admin_dash')
-
-@section('css')
+@extends('layouts.new') @section('css')
 
   <!-- <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css">
@@ -9,24 +7,15 @@
 @endsection
 @section('content')
 
-<section class="content-header">
-
-</section>
-
-<section class="content">
-    <div class="row">
-
-        <div class="col-md-6">
-
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add Screenshots</h3>
-                </div>
-
-                <!-- form start -->
-                <form role="form" method="post" enctype="multipart/form-data" action="{{ route('addScreenshots') }}">
-                    @csrf
-                    <div class="box-body">
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
+                        <form role="form" method="post" enctype="multipart/form-data" action="{{ route('addScreenshots') }}">
+               @csrf
+                        <div class="box-body">
                         <div class="form-group">
                             <label>Screenshots</label>
                             <input type="file" name="Videos"   accept="image/png, image/jpeg" class="form-control"  value="{{old('Videos')}}">
@@ -35,21 +24,53 @@
                             @enderror
                         </div>
 
-                    </div>
 
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                   <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-cus float-right" value="ADD" >
+                  </div>
+
                 </form>
-             
-
+            </div>
         </div>
-
     </div>
-    <!-- /.row -->
 </section>
 
-    @endsection<!-- 
+<!-- end body -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
     @section('js')
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>

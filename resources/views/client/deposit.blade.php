@@ -1,15 +1,16 @@
-@extends('layouts.customer_dash') @section('content')
+@extends('layouts.new') @section('content')
 <style type="text/css">
     .image-upload > input {
         display: none;
     }
 </style>
+<div class="container">
 <section class="content">
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Profile</h3>
+                    <h3 class="box-title">Deposit</h3>
                 </div>
 
                 <div style="padding: 10px;">
@@ -24,5 +25,5 @@
         </div>
 
     </div>
-</section>
+</section></div>
         @endsection

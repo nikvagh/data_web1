@@ -1,4 +1,8 @@
-@extends('layouts.customer_dash') @section('content')
+@extends('layouts.new') @section('content')
+
+
+
+<div class="container">
  <section class="invoice">
       <!-- title row -->
       <div class="row">
@@ -100,7 +104,7 @@
           <!-- <p class="lead">Amount Due 2/22/2014</p> -->
 
           <div class="table-responsive">
-            <table class="table">
+            <table class="table ">
               <tr>
                 <th style="float: left; width:50%">Subtotal:</th>
                 <td> {{ $data->sum('amount') }}</td>
@@ -130,7 +134,7 @@
           <a href="{{url('Invoicepdf',$id)}}" class="btn btn-primary pull-right" style="margin-right: 5px;"> <i class="fa fa-download"></i> Generate PDF</a>
         </div>
       </div>
-    </section>
+    </section></div>
 
 
     @endsection

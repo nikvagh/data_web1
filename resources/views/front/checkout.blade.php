@@ -60,10 +60,18 @@
                               <div class="form-group">
                                 <label for="country" class="">Country&nbsp;<abbr class="required" title="required">*</abbr></label>
 
+                              
+
                                 <select name="country" id="country" class="form-control" autocomplete="country">
                                     <option value="">Select a country&hellip;</option>
                                     @foreach($country as $valu)
-                                    <option value="{{$valu->id}}">{{$valu->name}}</option>
+                                    @if(old('country')==$valu->id)
+                                    <option value="{{$valu->id}}" selected>{{$valu->name}}</option>
+
+                                    @else
+                                   
+                                     <option value="{{$valu->id}}">{{$valu->name}}</option>
+                                     @endif
                                     @endforeach
                                 </select>
                             </div>

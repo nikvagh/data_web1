@@ -151,7 +151,8 @@ class AdminController extends Controller
             ->get()->first();  
             // print_r($get);
             // exit();
-      return view('admin.agentview', ['get' => $get]); 
+             $data['title'] = 'Agents Viwe';
+      return view('admin.agentview', ['get' => $get])->with($data); 
 
     }
    
@@ -206,9 +207,9 @@ class AdminController extends Controller
     }
     public function GalleryVideos()
     {
-       
-
-       return view('admin.Gallery_Videos_list');
+      
+            $data['title'] = 'Trading Videos';
+       return view('admin.Gallery_Videos_list')->with($data);
         
     }
     public function video_data()
@@ -246,7 +247,8 @@ class AdminController extends Controller
     }
     public function addVideos()
     {
-       return view('admin.GalleryVideos');
+       $data['title'] = 'Add Videos';
+       return view('admin.GalleryVideos')->with($data);
        
     }
     public function addVideossubmit(Request $request)
@@ -269,7 +271,8 @@ class AdminController extends Controller
     }
      public function Trading_screenshots()
     {
-        return view('admin.screenshot_list');
+       $data['title'] = 'Trading Screenshots';
+        return view('admin.screenshot_list')->with($data);
     }
     public function screenshot_data()
    {
@@ -290,7 +293,8 @@ class AdminController extends Controller
     }
     public function addscreenshots()
     {
-       return view('admin.addscreenshots');
+      $data['title'] = 'Add screenshots';
+       return view('admin.addscreenshots')->with($data);
     }
     public function addScreenshotssubmit(Request $request)
     {
@@ -362,7 +366,8 @@ class AdminController extends Controller
         {
           $Package =  DB::table('package_user')->where('PackageUser_id', $id)
                 ->Join('products', 'package_user.Package_id', '=', 'products.id')->get()->first();
-            return view('admin.packag_view',['Package'=>$Package]);
+                   $data['title'] = 'Package';
+            return view('admin.packag_view',['Package'=>$Package])->with($data);
         }
     public function admin_packag_data()
         {

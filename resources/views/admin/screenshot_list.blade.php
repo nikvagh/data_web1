@@ -1,41 +1,42 @@
-@extends('layouts.admin_dash')
+
+
+@extends('layouts.new')
 
 @section('css')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.css') }}">
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
-
-    
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
 @endsection
 
 @section('content')
 
-<section class="content-header"> <h1>Trading Screenshots</h1> </section>
-
-<section class="content">
-
-    @if (Session::has('success'))
+<!-- start body -->
+<section class="card-body">
+          @if (Session::has('success'))
         @include('partials.alert', ['type' => "success",'id' => "msg",'message'=> Session::get('success') ])
     @endif
 
     @if (Session::has('message_s'))
         @include('partials.alert', ['type' => "success",'message'=> Session::get('message_s') ])
     @endif
+<div class="container">
+       <h4>{{ $title }}</h4>
+    <div class="col-md-12">
+        <div class="text-right m-2">
+<a href="{{ route('Gallery/screenshots/addscreenshots') }}" class="btn btn-sm btn-cus">Add Screenshots</a>
+</div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <!-- <h3 class="box-title">Hover Data Table</h3> -->
-                    <div class="pull-right">
-                        <a href="{{ route('Gallery/screenshots/addscreenshots') }}" class="btn btn-sm btn-primary">Add Screenshots</a>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example1" class="table table-bordered">
-                        <thead>
+    <div class="box">
+       
+        <!-- /.box-header -->
+
+        <div class="box-body">
+
+            <div id="example1_wrapper" class="col-md-12 p-10">
+               
+                        <table id="example1" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="example1_info" >
+                            <thead>
                             <tr>
                                 <th>id</th>
                                 <th>Image</th>
@@ -43,30 +44,28 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                    </table>
+                            <tbody> 
+                            </tbody>
+                        </table>
+            
+                        <div id="example1_processing" class="dataTables_processing" style="display: none;">Processing...</div>
+                    </div>
                 </div>
-                <!-- /.box-body -->
 
-            </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-</section>
-
-
-
+</div></div></section>
+<!-- end body -->
 
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="{{ asset('back_asset/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('back_asset/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     
     <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
-    <script>
+   <script>
         $(function () {
             // $("#example1").DataTable();
             $('#example1').DataTable({
@@ -112,4 +111,7 @@
       'wrapAround': true
     })
 </script>
+    
 @endsection
+
+

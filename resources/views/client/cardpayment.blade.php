@@ -1,18 +1,14 @@
-@extends('layouts.customer_dash') @section('content')
-<style type="text/css">
-    .image-upload > input {
-        display: none;
-    }
-</style>
-<section class="content">
-    <div class="row">
-        <form method="post" action="{{url('card')}}">
+@extends('layouts.new') @section('content')
+
+<!-- start body -->
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
+         <form method="post" action="{{url('card')}}">
             @csrf
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Card</h3>
-                    </div>
+                  
                     <input type="hidden" name="agent_id" value="{{$get[0]->agent_id }}" />
                     <div class="container-fluid">
                         <div class="form-group">
@@ -55,6 +51,54 @@
                             <small class="form-text text-muted" style="color: red;"> {{ $message }}</small>
                             @enderror
                         </div>
+                   <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-cus float-right" value="pay" >
+                  </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end body -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+@endsection
+
+
+
+
+ @section('content')
+<style type="text/css">
+    .image-upload > input {
+        display: none;
+    }
+</style>
+<section class="content">
+    <div class="row">
+       
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Card</h3>
+                    </div>
+                    
                         <div class="form-group">
                             <input type="submit" name="submit" class="btn btn-success" value="pay" />
                         </div>
