@@ -21,7 +21,8 @@ class SettingsController extends Controller
             ->get()->first();;
         // print_r($data);
         // exit();
-        return view('admin.settings', ['data' => $data]);
+             $datas['title'] = 'Settings';
+        return view('admin.settings', ['data' => $data])->with($datas);
     }
     public function updatedata(request $request)
     {

@@ -100,3 +100,6 @@ padding: 10px;
     /*border-color: #5C4696;*/
     color: #fff;   
 }
+.body_min_with{
+	    min-height: 43vh;
+}

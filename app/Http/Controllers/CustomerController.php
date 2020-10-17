@@ -36,7 +36,7 @@ class CustomerController extends Controller
             // print_r($packagcount);
             // print_r($year);
             // exit();
-
+         
     	 return view('client.dashboard',['packag'=>$packag,'packagcount'=>$packagcount])
         ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
         ->with('deposit',json_encode($deposit,JSON_NUMERIC_CHECK));
@@ -53,8 +53,8 @@ class CustomerController extends Controller
             ->get();
         // print_r($users);
         // exit();	
-
-     	 return view('client.Profile',['users' => $users]);
+                    $data['title'] = 'Profile';
+     	 return view('client.Profile',['users' => $users])->with($data);
     }
     public function Submitprofile(request $request)
     {

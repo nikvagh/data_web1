@@ -52,30 +52,33 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">console</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                	 <a class="dropdown-item" href="{{url('admin')}}">Dashboard</a>
                                     <a class="dropdown-item" href="{{url('admin/customer')}}">Customer</a>
                                     <a class="dropdown-item" href="{{url('admin/agent')}}">Agents</a>
                                     <a class="dropdown-item" href="{{url('admin/product')}}">Products</a>
                                     <a class="dropdown-item" href="{{url('admin/package')}}">Packages</a>
                                     <a class="dropdown-item" href="{{url('Gallery/Videos')}}">Trading Videos</a>
                                     <a class="dropdown-item" href="{{url('Gallery/Trading_screenshots')}}">Trading Screenshots</a>
+                                    
+
+
                                   
                                 </div>
                             </li>
-                            <li class="nav-item dropdown"> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
+                          
 
                             @elseif(Auth::user()->role=="3")
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">console</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                	 <a class="dropdown-item" href="{{url('agent')}}">Dashboard</a>
                                     <a class="dropdown-item" href="{{url('customerlist')}}">Customer</a>
                                     <a class="dropdown-item" href="{{url('taranjesonlist')}}">Commission</a>
                                     <a class="dropdown-item" href="{{url('package')}}">Packages</a>
                                     <a class="dropdown-item" href="{{url('withdraw')}}">withdraw</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown"> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
+                           
 
 
                             @elseif(Auth::user()->role=="4")
@@ -87,14 +90,31 @@
                                     
                                 </div>
                             </li>
-                            <li class="nav-item dropdown"> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
+                         		@endif
 
+                                @if(Auth::user()->role=="2")
+                                 <li class="nav-item">
+                                 <a class="nav-link " href="{{url('admin/settings')}}">Settings</a>
+                             </li>
+                                @elseif(Auth::user()->role=="3")
+                                <li class="nav-item">
+                                 <a class="nav-link " href="{{url('agent/profile')}}">Profile</a>
+                             </li>
+                                @elseif(Auth::user()->role=="4")
+                                <li class="nav-item">
+                                 <a class="nav-link " href="{{url('profile')}}">Profile</a>
+                             </li>
+                                @endif
+                               
+                            	</li>
+                             @if(Auth::user())
+                             <li class="nav-item dropdown"> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
                              @else
-                            <li><a class="nav-link" href="{{url('login')}}">Login</a></li>
+                             <li><a class="nav-link" href="{{url('login')}}">Login</a></li>
                             <li><a class="nav-link" href="{{url('customer_register')}}">Register</a></li>
+
                             @endif
-                            
 
                         </ul>
                     </div>
@@ -104,7 +124,7 @@
         <!-- end header -->
         
         <!-- start breadcrumb -->
-
+@if(isset($title))
         <div>
             <nav aria-label="breadcrumb" class="breadcrumb">
                 <div class="container">
@@ -115,10 +135,11 @@
               </ol>
           </div>
       </nav></div>
-            
+ @endif       
         <!-- end breadcrumb -->
+        <div class="body_min_with">
   @yield('content')
-
+            </div>
   
 
  <!-- start footer -->

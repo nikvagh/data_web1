@@ -1,17 +1,13 @@
-@extends('layouts.admin_dash') @section('content')
+@extends('layouts.new') @section('content')
 
+<div class="container">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Dashboard <small>Control panel</small></h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-        </li>
-        <li class="active">Dashboard</li>
-    </ol>
+  
 </section>
 @if(session()->get('success'))
-<div class="container-fluid" id="msg" style="margin: 10px;">
+<div  id="msg">
     <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-check"></i> Alert!</h4>
@@ -25,30 +21,26 @@
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="alert alert-primary">
                 <div class="inner">
                     <h3>{{$totalcustomer}}</h3>
 
                     <p>Total Customer</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
+               
                 <a href="{{url('admin/customer')}}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-green">
+            <div class="alert alert-secondary">
                 <div class="inner">
                     <h3>{{$totalagent}}</h3>
 
                     <p>Total Agent</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-person"></i>
-                </div>
+               
 
                 <a href="{{url('admin/agent')}}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -56,30 +48,26 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="alert alert-success">
                 <div class="inner">
                     <h3>{{$totalproducts}}</h3>
 
                     <p>Total Package</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
+               
                 <a href="{{url('admin/package')}}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-red">
+            <div class="alert alert-danger">
                 <div class="inner">
                     <h3>{{$totatransactions->sum('amount')}}</h3>
 
                     <p>Total transaction</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
+               
                 <a href="{{url('admin/package')}}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -89,32 +77,33 @@
     <div class="box">
      
 
-        <div id="container"></div>
     </div>
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="alert alert-warning">
                 <div class="inner">
                     <h3>{{$totatcommission->SUM('commission')}}</h3>
 
                     <p>Total commission</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
+                
                 <a href="{{url('admin/package')}}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
     </div>
-    <div style="width: 50%;">
+    <div class="border border-dark">
+        <div id="container"></div>
+    </div>
+    <div >
       <div class="box">
      
-
+<div class="border border-dark col-md-6" style="margin-top: 10px;">
         <div id="agent"></div>
+    </div>
     </div></div>
-</section>
+</section></div>
 @endsection @section('js')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 

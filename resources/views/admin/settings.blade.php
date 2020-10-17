@@ -1,14 +1,14 @@
-@extends('layouts.admin_dash') @section('content')
+@extends('layouts.new') @section('content')
 
-<section class="content">
-    <div class="row">
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12 d-flex">
+            <div class="box mx-auto col-md-6">
         <form role="form" method="post" action="{{ route('settings') }}">
-            <div class="col-md-6">
+      
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Settings</h3>
-                    </div>
-
+                
                     <!-- form start -->
                     <input type="hidden" name="id" value="{{$data->settings_id }}">
                     @csrf
@@ -115,7 +115,7 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Terms And Conditions</h3>
+                        <label class="box-title">Terms And Conditions</label>
                     </div>
                     <div class="container-fluid">
                         <div class="form-group">

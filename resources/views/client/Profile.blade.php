@@ -1,17 +1,14 @@
-@extends('layouts.customer_dash') @section('content')
-<style type="text/css">
-    .image-upload>input {
-  display: none;
-}
-</style>
-<section class="content">
-    <div class="row">
+@extends('layouts.new') @section('content')
+
+<section class="card-body">
+    <div class="container">
+        <h4>{{ $title }}</h4>
+        <div class="col-md-12">
+            <div class="box mx-auto col-md-6">
         <form role="form" method="post" action="{{ route('Submitprofile') }}" enctype="multipart/form-data">
-            <div class="col-md-6">
+          
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Profile</h3>
-                    </div>
+                   
 
                     <!-- form start -->
 
@@ -24,11 +21,17 @@
                     </label>
                     <input type="hidden" name="id" value="{{Auth::user()->id}}">
                      <input type="hidden" name="old_img" value="{{$users[0]->profile_pic}}" />
-                    <input id="file-input" onchange="previewImage();" type="file"  name="profile_pic" />
+                    <input id="file-input" style="display: none;" onchange="previewImage();" type="file"  name="profile_pic" />
                  @error('profile_pic')
                             <small class="form-text text-muted"  style="color: red;"> {{ $message }}</small>
                             @enderror
                 </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="text" class="form-control" readonly value="{{Auth::user()->email}}" />
+                               
+                            </div>
                     <div class="box-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>

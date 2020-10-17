@@ -116,8 +116,8 @@ class AgentController extends Controller
                 ->get()->first();
             // print_r($users);
             // exit();  
-
-             return view('agent.Agentprofile',['users' => $users]);
+                 $data['title'] = 'Profile';
+             return view('agent.Agentprofile',['users' => $users])->with($data);
         }
     public function Submitprofile(request $request)
         {
