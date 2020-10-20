@@ -38,7 +38,7 @@ class Agent
         }
 
         if (Auth::user()->role == 4) {
-            return redirect()->route('client');
+            return redirect()->route('customer');
         }
     }
 }

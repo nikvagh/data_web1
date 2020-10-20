@@ -75,7 +75,8 @@ class LoginController extends Controller
                 $this->redirectTo = '/login';
                 return $this->redirectTo;
         }
-         
+             // print_r($_REQUEST);
+        // exit;
         // return $next($request);
     }
 
@@ -92,7 +93,7 @@ class LoginController extends Controller
 
         $this->middleware('guest')->except('logout');
     }
-
+  
     public function loggedOut()
     {
         return redirect()->route('admin');

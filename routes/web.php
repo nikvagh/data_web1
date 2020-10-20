@@ -75,7 +75,7 @@ Route::middleware('adminAuth')->group(function () {
 
     Route::get('/admin/agent/view/{agent_id}', [App\Http\Controllers\AdminController::class, 'agentview'])->name('agentview');
 
-    Route::get('/admin/agent', [App\Http\Controllers\AdminController::class, 'agent'])->name('agent');
+    Route::get('/admin/agent', [App\Http\Controllers\AdminController::class, 'agent']);
     Route::get('agent_data', [App\Http\Controllers\AdminController::class, 'agent_data'])->name('agent_data');
     Route::get('/admin/agent/sales/{agent_id}', [App\Http\Controllers\AdminController::class, 'agent_sales'])->name('agent_sales');
 
