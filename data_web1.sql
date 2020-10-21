@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 10, 2020 at 09:19 AM
+-- Generation Time: Oct 21, 2020 at 07:27 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -43,17 +43,18 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `agent`
 --
 
 INSERT INTO `agent` (`id`, `agent_id`, `business_name`, `abn`, `type_of_industry`, `commission`, `profile_pic`, `address`, `membership_status`, `membership_end`, `wallet`, `created_at`, `updated_at`) VALUES
-(1, 3, 'test1111111', 'abn', 'test', 22402.00, '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', 12730000.00, NULL, NULL),
+(1, 3, 'test1111111', 'abn', 'test', 22404.00, '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', 12729980.00, NULL, NULL),
 (2, 1, 'test', 'abn', 'test', 2000.00, '', 'address', 'enable', '2021-01-30', 20.00, NULL, NULL),
 (3, 20, 'Aracely Wisoky', '3', 'Five!.', 0.00, 'test', 'Omnis quas temporibus eaque tempore omnis. Quos repellat ex amet aliquid et deserunt voluptas. At autem occaecati quas id autem. Ad dolor et in necessitatibus autem.', 'enable', '2009-03-11', 1328.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
-(4, 21, 'Prof. Alycia Rutherford', '2', 'ME, and.', 0.00, 'test', 'Dolor omnis eum itaque dicta. Est sed voluptates asperiores illo. Rerum itaque qui qui enim laborum assumenda suscipit officia.', 'enable', '1980-12-19', 7603.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38');
+(4, 21, 'Prof. Alycia Rutherford', '2', 'ME, and.', 0.00, 'test', 'Dolor omnis eum itaque dicta. Est sed voluptates asperiores illo. Rerum itaque qui qui enim laborum assumenda suscipit officia.', 'enable', '1980-12-19', 7603.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
+(5, 30, 'test1111111', 'abn', 'sa', 0.00, '', '', 'enable', '0000-00-00', 0.00, '2020-10-21 01:52:22', '2020-10-21 01:52:22');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `carddetails` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `carddetails`
@@ -134,7 +135,8 @@ INSERT INTO `carddetails` (`id`, `card_number`, `expiry_month`, `expiry_year`, `
 (16, '123456789', '2', 2020, '258', 'testdemo', NULL, NULL),
 (17, '123456789', '02', 2020, '258', 'testdemo', NULL, NULL),
 (18, '123456789', '02', 2020, '258', 'testdemo', NULL, NULL),
-(19, '1111111111111111111111', '02', 2020, '258', 'testing card name1', NULL, NULL);
+(19, '1111111111111111111111', '02', 2020, '258', 'testing card name1', NULL, NULL),
+(20, '1212123121223122', '10', 2020, '258', '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,14 +157,15 @@ CREATE TABLE IF NOT EXISTS `charity` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `charity`
 --
 
 INSERT INTO `charity` (`id`, `name`, `CEO_details`, `address`, `business_registration`, `Member_names`, `need_funding`, `background_check`, `created_at`, `updated_at`) VALUES
-(1, 'demo1', 'CEO', 'sdf', 'test', 'a2, a1', 'demo', 'yes', '2020-09-30 22:59:57', NULL);
+(1, 'demo1', 'CEO', 'sdf', 'test', 'a2, a1', 'demo', 'yes', '2020-09-30 22:59:57', NULL),
+(2, 'test1', 'CEO', '131231312', 'test', 'asasasasas', 'asasasas', 'yes', '2020-10-21 01:19:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -476,7 +479,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   PRIMARY KEY (`id`),
   KEY `customer_customer_id_foreign` (`customer_id`),
   KEY `customer_agent_id_foreign` (`agent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customer`
@@ -485,7 +488,11 @@ CREATE TABLE IF NOT EXISTS `customer` (
 INSERT INTO `customer` (`id`, `customer_id`, `agent_id`, `address`, `abn`, `name`, `profile_pic`, `created_at`, `updated_at`, `wallet`) VALUES
 (1, 2, 3, 'testing', '3', 'test', '160077437191.png', NULL, NULL, 0.00),
 (6, 14, 3, 'address', 'abn', 'demo', NULL, NULL, NULL, 0.00),
-(7, 16, 3, 'address', 'abn', 'testing', NULL, NULL, NULL, 0.00);
+(7, 16, 3, 'address', 'abn', 'testing', NULL, NULL, NULL, 0.00),
+(10, 27, NULL, 'surat', 'abn', '', NULL, '2020-10-21 01:42:31', '2020-10-21 01:42:31', 0.00),
+(9, 26, NULL, 'surat', '12345678', '', NULL, '2020-10-21 01:41:24', '2020-10-21 01:41:24', 0.00),
+(11, 28, NULL, 'surat', 'sad', '', NULL, '2020-10-21 01:45:54', '2020-10-21 01:45:54', 0.00),
+(12, 29, NULL, 'surat', 'abn', '', NULL, '2020-10-21 01:47:20', '2020-10-21 01:47:20', 0.00);
 
 -- --------------------------------------------------------
 
@@ -520,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `galleryvideos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`video_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `galleryvideos`
@@ -528,7 +535,6 @@ CREATE TABLE IF NOT EXISTS `galleryvideos` (
 
 INSERT INTO `galleryvideos` (`video_id`, `video`, `type`, `created_at`, `updated_at`) VALUES
 (4, '160126554942.mp4', 'v', '2020-09-27 22:29:09', NULL),
-(30, '160196737166.jpeg', 's', '2020-10-06 01:26:11', NULL),
 (28, '160196723788.png', 's', '2020-10-06 01:23:57', NULL),
 (27, '160196722980.jpeg', 's', '2020-10-06 01:23:49', NULL),
 (26, '160196721880.jpeg', 's', '2020-10-06 01:23:38', NULL),
@@ -719,7 +725,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double(20,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -783,7 +789,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`settings_id`, `company_name`, `Email`, `mobile_number`, `address`, `agentcommission`, `terms_conditions`, `twitter`, `facebook`, `instagram`, `skype`, `linkedin`, `map_key`, `map_ip1`, `map_ip2`) VALUES
-(1, 'Data Web', 'dataweb@gmail.com', '+ 1234567890', 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', '10', '<p>1258</p>', 'https://twitter.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://in.linkedin.com/', 'AIzaSyBOX0wpm3iQ5107OdI-bB3YJ3Q27nkBurU', '40.7127837', '-74.0059413');
+(1, 'Data Web', 'dataweb@gmail.com', '+ 1234567890', 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', '10', '<p>testing</p>', 'https://twitter.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://in.linkedin.com/', 'AIzaSyBOX0wpm3iQ5107OdI-bB3YJ3Q27nkBurU', '40.7127837', '-74.0059413');
 
 -- --------------------------------------------------------
 
@@ -804,7 +810,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`transactions_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -871,7 +877,9 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (85, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:04:35', NULL),
 (86, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:05:28', NULL),
 (87, 2, 3, 18000.00, 'd', '4', '2000', '10', '2020-10-10 03:06:54', NULL),
-(88, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-10 03:10:38', NULL);
+(88, 2, 3, 9000.00, 'd', '4', '1000', '10', '2020-10-10 03:10:38', NULL),
+(89, 0, 3, 20.00, 'w', '3', '0', '0', '2020-10-15 03:52:14', NULL),
+(90, 2, 3, 18.00, 'd', '2', '2', '10', '2020-10-15 06:29:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -894,16 +902,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'YKdF68vr9B3dvf5vVr7DyWtrTp1HtEJNEx6pNZCh0bASvka09tlCBbUcXYAT', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'z7LvZMTxZGTaaQWFgaDhcsByUFlU2OTmG5QNatuqQZC01MF7N48KESrkVwlr', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'bODm3DKLQTWdoACqPVLO9FEVUm7PodigkRT1Rnoxjz4htHr83zoFRgp5Z4pE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'erfJ5w5j1bPjb3BSuygmDppyCaQTvHK6rSf97fYjR67aOb1sz1WextDNRtXE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '5NW6wnOuroJwpMcZQDAknFbUdffHbJFsdAARQrTLqjLFsTHwzbdL4kRQfdTk', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'IUmslGLyVnTBEftOuxdJ7JjqUE7YbCDq11VlGPvzPqwiOP3iIoSJMGri3sdo', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
@@ -911,12 +919,11 @@ INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`
 (8, 'Delta Volkman Jr.', NULL, 'cullen36@example.org', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'wWUx3gV7fo', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (9, 'Sonia Kuhn', NULL, 'mara05@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'XqDBJwG8dm', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (10, 'Mr. Kraig Huels DDS', NULL, 'ejenkins@example.org', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '8OPFuq4uMS', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(24, 'test555', NULL, 'testing555@gmail.com', 3, NULL, '$2y$10$qPAsCbVdwV6kFiI5LyU5xu9OvV.y8uMffMpyHQrhPatRAVEbzflr6', NULL, NULL, '2020-10-20 23:16:49', '2020-10-20 23:16:49'),
 (14, 'demo1', '1234567890', 'testa@gmail.com', 4, NULL, '$2y$10$Am9dlZ.P68jQpWNVeUVlHuP6.eTKX1fppdoJmmOovbaxba6dzMBE2', NULL, NULL, '2020-09-25 00:42:18', '2020-09-24 20:17:17'),
 (16, 'demo1', '1234567890', 'tesasst@gmail.com', 4, NULL, '$2y$10$zv895VSRfE30jxPJ/YxohOZZE5ETlpr4Fxiyb1wF3Hsg4qPjJKyhK', NULL, NULL, '2020-09-24 20:17:00', '2020-10-06 03:12:56'),
 (18, 'Trevor Emmerich', NULL, 'marvin.zachery@example.net', 2, '2020-10-01 05:41:34', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'Xwcu0HTzoq', '2020-10-01 05:41:34', '2020-10-01 05:41:34'),
-(19, 'Pasquale Jakubowski', NULL, 'hoppe.jalyn@example.org', 2, '2020-10-01 05:59:14', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'jgzEmA4lVV', '2020-10-01 05:59:14', '2020-10-01 05:59:14'),
-(20, 'Graham Lynch', '7', 'roxanne.moen@example.net', 3, '2020-10-06 00:19:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, 'u7JT1S607t', '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
-(21, 'Whitney Kunze PhD', '4', 'mills.toby@example.org', 3, '2020-10-06 00:19:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'vgT4xZT0y0', '2020-10-06 00:19:38', '2020-10-06 00:19:38');
+(19, 'Pasquale Jakubowski', NULL, 'hoppe.jalyn@example.org', 2, '2020-10-01 05:59:14', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'jgzEmA4lVV', '2020-10-01 05:59:14', '2020-10-01 05:59:14');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

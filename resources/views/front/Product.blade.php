@@ -1,57 +1,39 @@
-@extends('layouts.front')
-@section('Breadcrumbs')
-<section class="breadcrumbs">
+@extends('layouts.new')
 
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>Products </h2>
-      <ol>
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li>Products </li>
-
-      </ol>
-    </div>
-  </div>
-
-</section>
-@endsection
  @section('content')
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing section-bg">
-      <div class="container" data-aos="fade-up">
+<label style="display: none;">
+{{$show=1}}
+{{$data= DB::table('products')->get()}}</label>
+
+
+  <main id="main">
+
+    
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
 
         <div class="section-title">
-        <!--   <h2>Product</h2> -->
-          <!-- <h3>Product  <span>Product</span> </h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
+          <h2>INVESTMENT PLANS</h2>
         </div>
 
-<label style="display: none;">
-{{$show=0}}
-{{$data= DB::table('products')->get()}}
-
-</label>
         <div class="row">
-          @foreach ($data as $value)
-          <div class="col-lg-3 col-md-6 pricingtop" data-aos="fade-up" data-aos-delay="{{$show+=100}}">   
-            <div class="box">
-              <h3>{{$value->name}}</h3>
-              <h4><sup>$</sup>{{$value->amount}} <!-- <span> / month</span> --></h4>
-              <ul>
-                <!-- <li>Aida dere</li>
-                <li>Nec feugiat nisl</li> -->
-            <!-- <li>Nulla at volutpat dola</li> -->
-          </ul>
-          <div class="btn-wrap">
-            <a href="{{url('product_details',$value->id )}}" class="btn-buy">Buy Now</a>
+ 
+            @foreach ($data as $value)
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+           <a href="{{url('product_details',$value->id )}}"><button type="button"  id="button{{$show++}}" name="$20000" value="$20000 INVESTMENT PLAN">{{$value->amount}} <br>{{$value->name}}</button></a>
           </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
+    @endforeach
 
-  </div>
-</section><!-- End Pricing Section -->
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+   
+
+  </main><!-- End #main -->
 
 @endsection

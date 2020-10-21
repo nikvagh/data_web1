@@ -101,6 +101,7 @@ class HomeController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'role' => 4,
             'password' => bcrypt($request->password),
         ]);

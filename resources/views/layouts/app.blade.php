@@ -75,105 +75,68 @@
 </html> -->
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>Auto Unit</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="{{ asset('back_asset/bootstrap/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('back_asset/dist/css/AdminLTE.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('back_asset/plugins/iCheck/square/blue.css') }}">
+  <!-- Favicons -->
+  <link href="{{ url('back_asset/img/favicon.png') }}" rel="icon">
+  <link href="{{ url('back_asset/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url('back_asset/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/venobox/venobox.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link href="{{ url('back_asset/vendor/aos/aos.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url('back_asset/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Mamba - v2.4.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#">
-                {{ config('app.name', 'DATA') }}
-            </a>
-        </div>
+<body>
 
-        <!-- @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-            @endif
-        @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
+ @yield('content')
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-        @endguest -->
 
-        <!-- /.login-logo -->
-        <div class="login-box-body">
 
-            @yield('content')
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-            <!-- <div class="social-auth-links text-center">
-                <p>- OR -</p>
-                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-                <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-            </div> -->
-            <!-- /.social-auth-links -->
+  <!-- Vendor JS Files -->
+  <script src="{{ url('back_asset/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/jquery-sticky/jquery.sticky.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/venobox/venobox.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/counterup/counterup.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url('back_asset/vendor/aos/aos.js') }}"></script>
 
-        </div>
-        <!-- /.login-box-body -->
-    </div>
-    <!-- /.login-box -->
+  <!-- Template Main JS File -->
+  <script src="{{ url('back_asset/js/main.js') }}"></script>
 
-    <!-- jQuery 2.2.3 -->
-    <script src="{{ asset('back_asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="{{ asset('back_asset/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- iCheck -->
-    <script src="{{ asset('back_asset/plugins/iCheck/icheck.min.js') }}"></script>
-    <script>
-        $(function() {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
 </body>
 
 </html>

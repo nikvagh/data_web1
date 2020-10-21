@@ -2,67 +2,75 @@
 
 @section('content')
 
-<p class="login-box-msg">{{ __('Register') }}</p>
 
-<form method="POST" action="{{ route('register') }}">
-    @csrf
 
-    <div class="form-group has-feedback">
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ __('Name') }}" autocomplete="name" autofocus>
+  <main id="main">
+
+    <div class="signup-form">
+     <form method="POST" action="{{ route('register') }}">
+        @csrf
+    <h2>Register</h2>
+    <p class="hint-text">Create your account.</p>
+   
+
+        <div class="form-group">
+          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ __('Name') }}" autocomplete="name" autofocus>
         @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-    </div>
+        </div>
 
-    <div class="form-group has-feedback">
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" autocomplete="email">
+        <div class="form-group">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" autocomplete="email">
 
         @error('email')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-    </div>
-
-    <div class="form-group has-feedback">
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" autocomplete="new-password">
+        </div>
+    <div class="form-group">
+                   <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" autocomplete="new-password">
 
         @error('password')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-    </div>
-
-    <div class="form-group has-feedback">
-        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="{{ __('Confirm Password') }}" autocomplete="new-password">
-    </div>
-
-    <div class="row">
-        <div class="col-xs-8">
-            <!-- <div class="checkbox icheck">
-                <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms</a>
-                </label>
-            </div> -->
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-        </div>
-        <!-- /.col -->
+    <div class="form-group">
+             <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="{{ __('Confirm Password') }}" autocomplete="new-password">
+        </div>  
+
+
+             
+        <div class="form-group">
+      <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
     </div>
-</form>
+    <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+        <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+    </form>
+  
+</div>
 
-<!-- <div class="social-auth-links text-center">
-    <p>- OR -</p>
-    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-        Facebook</a>
-    <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-        Google+</a>
-</div> -->
+  
 
-<a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+    
+   
+
+ 
+  </main><!-- End #main -->
+
+
+
+
+
+
+
+
+
 @endsection

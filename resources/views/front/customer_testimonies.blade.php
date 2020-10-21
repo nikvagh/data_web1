@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.new')
   @section('content')
  
  <!-- ======= Contact Section ======= -->

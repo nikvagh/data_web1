@@ -14,6 +14,13 @@ use Session;
 
 class Frontcontroller extends Controller
 {
+     public function home()
+    {
+        $products = DB::table('products')->get();
+        // print_r($products);
+        // exit();
+        return view('front.home', ['products' => $products]);
+    }
     public function contact()
     {
         $settings = DB::table('settings')
@@ -49,13 +56,7 @@ class Frontcontroller extends Controller
         return redirect('/contact_us')->with('success', 'Your Message Has Been Sent.');
     }
 
-    public function home()
-    {
-        $products = DB::table('products')->paginate(4);
-        // print_r($products);
-        // exit();
-        return view('front.home', ['products' => $products]);
-    }
+   
     public function screenshots()
     {
         $data = DB::table('galleryvideos')
