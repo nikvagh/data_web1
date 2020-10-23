@@ -65,9 +65,9 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="index.html"><span><img src="{{ url('back_asset/img/slide/au.png') }}"></span></a></h1>
+        <h1 class="text-light"><a href="{{ url('/')}}"><span><img src="{{ url('back_asset/img/slide/au.png') }}"></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="{{ url('back_asset/img/logo.png') }}" alt="" class="img-fluid"></a>-->
+        <!-- <a href="{{ url('/')}}"><img src="{{ url('back_asset/img/logo.png') }}" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav class="nav-menu float-right d-none d-lg-block">
@@ -80,6 +80,8 @@
           <li class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
           <li class="{{ (request()->segment(1) == 'Product') ? 'active' : '' }}"><a href="{{URL('Product')}}">Product</a></li>
           <li class="{{ (request()->segment(1) == 'Charity') ? 'active' : '' }}"><a href="{{URL('Charity')}}">Charity</a></li>
+          <li class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
+
            @if(Auth::user())
             @if(Auth::user()->role=="2")
 	                            <li class="nav-item dropdown">
@@ -147,7 +149,8 @@
 	                             <li class="nav-item dropdown"> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
 	                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
                                    @if(Auth::user()->role=="4")
-                                <li><a href="{{url('getcart')}}"> <h5><i class="icofont-cart-alt caeticon"></i><span  class="badge badge-danger rounded-circle" style="padding: 3px;"> {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></h5></a></li>
+                                <li><a href="{{url('getcart')}}"> <h5><i class="icofont-cart-alt caeticon"></i><span  class="badge badge-danger rounded-circle" style="
+                                height: 15px; width: 15px;/*padding: 3px;*/"> {{Cart::session(Auth::user()->id)->getContent()->count()}}</span></h5></a></li>
                                @endif
 	                             @else
 	                             <li><a class="nav-link" href="{{url('login')}}">Login</a></li>

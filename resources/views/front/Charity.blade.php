@@ -80,7 +80,7 @@
             @else
              <div class="form-row">
                 <div class="form-group" style="width: 100%;">
-                    <input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names" class="form-control" value="" />
+                    <input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names" class="form-control" value="" /><br>
                     <div class="appending_div"></div>
                     <i class="icofont-plus btn btn-primary add " style="display: inline;"></i>
                     @error('Member_names[]')

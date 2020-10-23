@@ -1,20 +1,5 @@
 @extends('layouts.new')
- @section('Breadcrumbs')
-<section class="breadcrumbs">
 
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Contact Us </h2>
-          <ol>
-            <li><a href="{{url('/')}}">Home</a></li>
-             <li>Contact Us</li>  
-
-          </ol>
-        </div>
-      </div>
-
-    </section><!-- End Breadcrumbs -->
-@endsection
  @section('content')
  
  <!-- ======= Contact Section ======= -->
@@ -24,7 +9,7 @@
         <div class="section-title">
 
           <h2>Contact</h2>
-          <h3><span>Contact Us</span></h3>
+         
           <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
         </div>
 

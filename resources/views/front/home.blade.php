@@ -60,7 +60,9 @@
 
   <main id="main">
 
-  
+  <label style="display: none;">
+{{$show=1}}
+</label>
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -71,9 +73,10 @@
         </div>
 
         <div class="row">
+
           @foreach ($products as $key)
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-         <a href="{{ url('product_details',$key->id) }}">  <button type="button"  id="button5"  value="$5000 INVESTMENT PLAN">{{ $key->amount }} <br>{{ $key->name }}</button></a>
+         <a href="{{ url('product_details',$key->id) }}">  <button type="button"  id="button{{$show++}}"  value="$5000 INVESTMENT PLAN">{{ $key->amount }} <br>{{ $key->name }}</button></a>
           </div>
          @endforeach
 

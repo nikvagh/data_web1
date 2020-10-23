@@ -1,54 +1,55 @@
 @extends('layouts.new')
-@section('Breadcrumbs')
-<section class="breadcrumbs">
 
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>Product Details </h2>
-      <ol>
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li>Product Details</li>
-
-      </ol>
-    </div>
-  </div>
-
-</section><!-- End Breadcrumbs -->
-@endsection
 @section('content')
-<div class="section-bg">
-<div class="container">
-@if (Session::has('message_s'))
-        @include('partials.alert', ['type' => "success",'message'=> Session::get('message_s') ])
-        @endif
-  </div>
+<main id="main">
+
+    <!-- ======= Portfolio Details Section ======= -->
 <form method="post" action="{{url('addcart',$data->id)}}">@csrf
   <input type="hidden" name="path" value="{{Request::url()}}">
   <input type="hidden" name="id" value="{{$data->id}}">
-  <!-- ======= Pricing Section ======= -->
-  <section id="pricing" class="pricing section-bg">
-    <div class="container" data-aos="fade-up">
+    <section class="portfolio-details">
+        <div class="container">
+          @if (Session::has('message_s'))
+        @include('partials.alert', ['type' => "success",'message'=> Session::get('message_s') ])
+        @endif
+            <div class="portfolio-details-container">
+                <div class="owl-carousel portfolio-details-carousel">
+                    <img src="{{ asset('/back_asset/assets/img/slide/banner2.jpg') }}" class="img-fluid" alt="" />
 
-      <div align="center">
-        <div class="col-lg-6 col-md-12 pricingtop" data-aos="fade-up" data-aos-delay="100">
-          <div class="box">
-            <h3>{{$data->name}}</h3>
-            <h4><sup>$</sup>{{$data->amount}} <!-- <span> / month</span> -->
-            </h4>
-            <ul>
-              <!--  <li>Aida dere</li>
-                <li>Nec feugiat nisl</li> -->
-              <!-- <li>Nulla at volutpat dola</li> -->
-            </ul>
-            <div class="btn-wrap">
-              <input type="submit" name="submit" class="btn btn-primary" value="Buy Now">
-              <!-- <a href="{{url('addcart',$data->id)}}" class="btn-buy"></a> -->
+                    <img src="{{ asset('/back_asset/assets/img/slide/banner2.jpg') }}" class="img-fluid" alt="" />
+
+                    <img src="{{ asset('/back_asset/assets/img/slide/banner2.jpg') }}" class="img-fluid" alt="" />
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </section><!-- End Pricing Section -->
-</form>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>AUTO UNIT Portfolio Detail</h1>
+
+                    <br />
+
+                    <br />
+
+                    <p>
+                        Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium
+                        nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                    </p>
+
+                    <h3>PRICE:-${{$data->amount}}</h3>
+
+                    <h3>PRODUCT DETAIL:-{{$data->name}}</h3>
+
+                   <button type="submit" name="submit" class="btn btn-danger" value="Buy Now">Buy Now</button>
+                </div>
+
+                <div class="col-lg-6">
+                    <img src="{{ asset('/back_asset/assets/img/slide/content.png') }}" class="img-fluid" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
+    </form>
+</main>
+
+
 @endsection
