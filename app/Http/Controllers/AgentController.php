@@ -482,5 +482,29 @@ class AgentController extends Controller
                             //   ->rawColumns([1,2])
                               ->make();
         }
-        
+    public function agent_commission()
+      {
+                $get = DB::table('customer')
+            ->where('agent_id', Auth::user()->id)
+            // ->join('users', 'users.id', '=', 'customer.agent_id')
+            ->get();
+
+            // print_r($get[0]->name);
+            // exit();
+            $data['title'] = 'Agent Commission';
+            return view('agent.agent_commission',['get'=>$get])->with($data);
+         
+      }  
+      public function agent_commission_data($id)
+      { 
+         $get = DB::table('transactions')
+            ->where('customer_id',$id)
+            // ->join('users', 'users.id', '=', 'customer.agent_id')
+            ->get();
+            // print_r($get);
+            // exit();
+           
+            return view('agent.agent_commission_data',['get'=>$get]);
+          # code...
+      }
 }

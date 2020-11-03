@@ -17,9 +17,45 @@ class Frontcontroller extends Controller
      public function home()
     {
         $products = DB::table('products')->get();
+
+        $transactions =  DB::table('transactions')->where('type', 'w') ->join('agent', 'agent.agent_id', '=', 'transactions.agent_id')
+        ->select('transactions_id','amount','business_name','profile_pic','agent.agent_id')->orderBy('transactions_id','desc') ->take(5)->get();
+
+        $UsersCount= DB::table('users')->get()->count();
+        $Investment= DB::table('transactions')->where('type', 'd')->select('amount')->get();
+
+        $min= DB::table('agent_commission_rules')->get()->min('from');
+        $max= DB::table('agent_commission_rules')->get()->max('to');
+        // print_r($min);
+        // exit();
+        // return view('front._home', ['products' => $products]);
+        return view('front.home', ['products' => $products,'transactions' => $transactions,'UsersCount' => $UsersCount,'Investment' => $Investment,'min' => $min,'max' => $max]);
+    }
+    public function get_recod()
+    { 
+        $amount= $_GET["amount"];
+        $earning_type= $_GET["earning_type"];
+      // print_r($amount);
+        // DB::enableQueryLog();
+        $products = DB::table('agent_commission_rules')->where([['from', '<=', $amount],['to', '>=', $amount]])->get()->first();
+        // dd(DB::getQueryLog());
+
         // print_r($products);
         // exit();
-        return view('front.home', ['products' => $products]);
+        // foreach ($products as $key ) {
+        //     // echo $key->to;
+        //     if ($key->to <= $amount && $key->from >= $amount) {
+        //         // print_r($key);
+        //         // echo $key->earning;
+        //         // return $key;
+        //         // return $key;
+        //     }
+        // }
+
+
+        $result = array("month"=>$products->earning/12,"daily"=>$products->earning/365);
+        echo json_encode($result);
+        
     }
     public function contact()
     {

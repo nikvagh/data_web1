@@ -108,7 +108,8 @@ Route::get('/Gallery/Screenshot/delete/{id}', [App\Http\Controllers\AdminControl
 Route::get('/admin/package', [App\Http\Controllers\AdminController::class, 'admin_packag_list'])->name('admin_packag_list');
 Route::get('admin_packag_data', [App\Http\Controllers\AdminController::class, 'admin_packag_data'])->name('admin_packag_data');
 Route::get('admin/packag/view/{id}', [App\Http\Controllers\AdminController::class, 'admin_packag_view'])->name('admin_packag_view');
-
+Route::get('admin/agent_commission_rules', [App\Http\Controllers\AdminController::class, 'agent_commission_rules']);
+Route::post('agent_commission_rules', [App\Http\Controllers\AdminController::class, 'AgentCommission_rules']);
 
 
 });
@@ -174,10 +175,14 @@ Route::post('/membershiprenew', [App\Http\Controllers\AgentController::class, 'm
 Route::get('/package', [App\Http\Controllers\AgentController::class, 'customer_packag_list'])->name('customer_packag_list');
 Route::get('/agent_packag_data', [App\Http\Controllers\AgentController::class, 'customer_packag_data'])->name('agent_packag_data');
 Route::get('/agent/packag/view/{id}', [App\Http\Controllers\AgentController::class, 'customer_packag_view'])->name('/agent/packag/view/');
+// Route::get('/agent/commission', [App\Http\Controllers\AgentController::class, 'agent_commission']);
+// Route::get('agent_commission_data/{id}', [App\Http\Controllers\AgentController::class, 'agent_commission_data']);
+
+
 
 });
 Route::view('/About_us', 'front.About_us')->name('About_us');
-Route::view('/Product', 'front.Product')->name('Product');
+Route::view('/product', 'front.Product')->name('Product');
 
 Route::get('/contact_us', [App\Http\Controllers\Frontcontroller::class, 'contact'])->name('contact_us');
 Route::post('/contact_us', [App\Http\Controllers\Frontcontroller::class, 'contact_us']);
@@ -194,6 +199,7 @@ Route::get('/paypal/cancel', [App\Http\Controllers\PaymentController::class, 'pa
 
 
 
+Route::get('/get_recod', [App\Http\Controllers\Frontcontroller::class, 'get_recod']);
 
 
 // Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');

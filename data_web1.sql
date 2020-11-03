@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 21, 2020 at 07:27 AM
+-- Generation Time: Nov 03, 2020 at 01:23 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -50,11 +50,37 @@ CREATE TABLE IF NOT EXISTS `agent` (
 --
 
 INSERT INTO `agent` (`id`, `agent_id`, `business_name`, `abn`, `type_of_industry`, `commission`, `profile_pic`, `address`, `membership_status`, `membership_end`, `wallet`, `created_at`, `updated_at`) VALUES
-(1, 3, 'test1111111', 'abn', 'test', 22404.00, '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', 12729980.00, NULL, NULL),
+(1, 3, 'test1', 'abn', 'test', 22404.00, '160152901896.png', 'A108 Adam Street New York, NY 535022\r\nUnited States', 'enable', '2021-09-26', 12729980.00, NULL, NULL),
 (2, 1, 'test', 'abn', 'test', 2000.00, '', 'address', 'enable', '2021-01-30', 20.00, NULL, NULL),
 (3, 20, 'Aracely Wisoky', '3', 'Five!.', 0.00, 'test', 'Omnis quas temporibus eaque tempore omnis. Quos repellat ex amet aliquid et deserunt voluptas. At autem occaecati quas id autem. Ad dolor et in necessitatibus autem.', 'enable', '2009-03-11', 1328.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
 (4, 21, 'Prof. Alycia Rutherford', '2', 'ME, and.', 0.00, 'test', 'Dolor omnis eum itaque dicta. Est sed voluptates asperiores illo. Rerum itaque qui qui enim laborum assumenda suscipit officia.', 'enable', '1980-12-19', 7603.00, '2020-10-06 00:19:38', '2020-10-06 00:19:38'),
 (5, 30, 'test1111111', 'abn', 'sa', 0.00, '', '', 'enable', '0000-00-00', 0.00, '2020-10-21 01:52:22', '2020-10-21 01:52:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agent_commission_rules`
+--
+
+DROP TABLE IF EXISTS `agent_commission_rules`;
+CREATE TABLE IF NOT EXISTS `agent_commission_rules` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `to` double(20,2) NOT NULL,
+  `from` double(20,2) NOT NULL,
+  `earning_type` enum('percent','fixed_runt') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `earning` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `agent_commission_rules`
+--
+
+INSERT INTO `agent_commission_rules` (`id`, `to`, `from`, `earning_type`, `earning`, `created_at`, `updated_at`) VALUES
+(1, 10000.00, 5000.00, 'fixed_runt', '500', NULL, NULL),
+(3, 15000.00, 10000.00, 'percent', '50', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -552,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -574,7 +600,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (69, '2020_09_28_072113_bonus_rewards', 5),
 (77, '2020_09_28_090548_order_user', 10),
 (78, '2020_09_28_102356_package_user', 11),
-(75, '2020_09_30_104811_charity', 9);
+(75, '2020_09_30_104811_charity', 9),
+(84, '2020_11_02_122639_create_agent_commission_rules_table', 13);
 
 -- --------------------------------------------------------
 
@@ -711,7 +738,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('viola.reichel@example.net', '$2y$10$OxeuG0OiB9zkkZ3pGn0a/OmG0UirStSGqB2LvE3OElbn6e9R3UbkG', '2020-10-03 02:31:26');
+('viola.reichel@example.net', '$2y$10$u0YvV6lzoMcDPl2Avavxte6YGkzpuEN7eOtBQr0/VR9d78.JSG4Ue', '2020-10-23 00:59:21');
 
 -- --------------------------------------------------------
 
@@ -909,9 +936,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'erfJ5w5j1bPjb3BSuygmDppyCaQTvHK6rSf97fYjR67aOb1sz1WextDNRtXE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '5NW6wnOuroJwpMcZQDAknFbUdffHbJFsdAARQrTLqjLFsTHwzbdL4kRQfdTk', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'IUmslGLyVnTBEftOuxdJ7JjqUE7YbCDq11VlGPvzPqwiOP3iIoSJMGri3sdo', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'NGo8oHBeBkky5mwcYzgVXKZBLpqKlF3UiEQElvO8n4NSbOvhpf1y3qpgI4uK', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'UGMpaZ1qd3DU57RiInZfWZDzswc7P60FZNtAmSmNUUPnZrqphHaO6lgx06QT', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'AuaO9U3JXZ1gbDCMrQ6fC5RrAZjgydyog9oEcYEmeSm7Z5f5lGfeT1mvtbhc', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),

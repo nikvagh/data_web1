@@ -392,4 +392,36 @@ class AdminController extends Controller
                             //   ->rawColumns([1,2])
                               ->make();
         }
+    public function agent_commission_rules()
+          {
+           $data['title'] = 'Agent Commission Rules';
+           return view('admin.agent_commission_rules')->with($data);
+          }
+      public function AgentCommission_rules()
+           {
+               $this->validate(request(), [
+                'to' => 'required|numeric',
+                'from' => 'required|numeric',
+                'earning_type' => 'required',
+                'earning' => 'required|numeric',
+              ]);
+               if (request()->get('earning_type')=='percent') {
+                      // print_r(request()->get('earning'));
+                    if (request()->get('earning')>='100') {
+                      // exit();
+                      return redirect('admin/agent_commission_rules')->with('error', 'Select less than one hundred percent.');
+                    }
+
+               }
+                       DB::table('agent_commission_rules')->insert([
+                                        'to' => request()->get('to'),
+                                        'from' => request()->get('from'),
+                                        'earning_type' => request()->get('earning_type'),
+                                        'earning' => request()->get('earning'),
+                                       
+                                       ]);
+                      return redirect('admin')->with('success', 'Rules insert successfully.');
+
+            
+           }
 }

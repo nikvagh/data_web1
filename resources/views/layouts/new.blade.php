@@ -93,7 +93,8 @@
 	                                    <a class="dropdown-item" href="{{url('admin/product')}}">Products</a>
 	                                    <a class="dropdown-item" href="{{url('admin/package')}}">Packages</a>
 	                                    <a class="dropdown-item" href="{{url('Gallery/Videos')}}">Trading Videos</a>
-	                                    <a class="dropdown-item" href="{{url('Gallery/Trading_screenshots')}}">Trading Screenshots</a>
+                                      <a class="dropdown-item" href="{{url('Gallery/Trading_screenshots')}}">Trading Screenshots</a>
+	                                    <a class="dropdown-item" href="{{url('admin/agent_commission_rules')}}">New Rules</a>
 	                                    
 
 
@@ -108,7 +109,8 @@
 	                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                                	 <a class="dropdown-item" href="{{url('agent')}}">Dashboard</a>
 	                                    <a class="dropdown-item" href="{{url('customerlist')}}">Customer</a>
-	                                    <a class="dropdown-item" href="{{url('taranjesonlist')}}">Commission</a>
+                                      <a class="dropdown-item" href="{{url('taranjesonlist')}}">Transaction Customer</a>
+	                                    <!-- <a class="dropdown-item" href="{{url('/agent/commission')}}">Commission</a> -->
 	                                    <a class="dropdown-item" href="{{url('package')}}">Packages</a>
 	                                    <a class="dropdown-item" href="{{url('withdraw')}}">withdraw</a>
 	                                </div>
