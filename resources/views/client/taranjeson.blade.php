@@ -1,5 +1,5 @@
 
-@extends('layouts.new')
+@extends('layouts.new_pro')
 
 @section('css')
     <!-- DataTables -->
@@ -8,7 +8,36 @@
 @endsection
 
 @section('content')
+  <section class="inner-page-banner-section gradient-bg ">
 
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/contact.png') }}" alt="image-illustration"></div>
+
+    <div class="container t-120 pb-120">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="inner-page-content-area">
+
+                    <h2 class="page-title">{{ $title }}</h2>
+                    <ol class="breadcrumb">
+                            <!-- <li>Control panel</li> -->
+
+                        </ol>
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </section>
 <!-- start body -->
 <section class="card-body">
         @if (Session::has('message_e'))
@@ -26,11 +55,11 @@
                     <h4><i class="icon fa fa-check"></i> Alert!</h4>
                    {{ session()->get('success') }} </div>
     @endif
-<div class="container">
-       <h4>{{ $title }}</h4>
+<div class="container pt-120 pb-120">
+       <!-- <h4>{{ $title }}</h4> -->
     <div class="col-md-12">
         <div class="text-right m-2">
- <a class="btn btn-sm btn-cus" style="" href="{{url('deposit')}}">Transaction </a>
+ <a class="btn btn-primary" style="" href="{{url('deposit')}}">Transaction </a>
 </div>
 
     <div class="box">
@@ -82,8 +111,8 @@
                                     @endif
                                 </td>
 
-                                <td><a href="{{url('taranjeson/view',$key->transactions_id )}}" class="btn btn-primary">View</a>
-                                <a href="{{url('Invoice',$key->transactions_id )}}" class="btn btn-primary">Invoice</a></td>
+                                <td><a href="{{url('taranjeson/view',$key->transactions_id )}}" class="btn btn-info">View</a>
+                                <a href="{{url('Invoice',$key->transactions_id )}}" class="btn btn-danger">Invoice</a></td>
                             </tr>
                         @endforeach
                         </tbody>

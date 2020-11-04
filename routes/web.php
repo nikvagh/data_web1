@@ -196,6 +196,7 @@ Route::get('/paypal', [App\Http\Controllers\PaypalController::class, 'index']);
 // Route::get('/paypal/success', [App\Http\Controllers\PaypalController::class, 'success'])->name('paypal.success');
 Route::get('/paypal/cancel', [App\Http\Controllers\PaymentController::class, 'payment_cancel'])->name('paypal.cancel');
 
+Route::post('/subscribe_uesr', [App\Http\Controllers\Frontcontroller::class, 'subscribe_uesr']);
 
 
 

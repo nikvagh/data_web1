@@ -1,15 +1,44 @@
-@extends('layouts.new')
+@extends('layouts.new_pro')
 
 @section('content')
-<!-- Content Header (Page header) -->
-<div class="container">
-<section class="content-header">
-    <h1>
-        Dashboard
-        <small>Control panel</small>
-    </h1>
 
-</section>
+  <section class="inner-page-banner-section gradient-bg">
+
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/contact.png') }}" alt="image-illustration"></div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="inner-page-content-area">
+
+                    <h2 class="page-title">Dashboard
+                      </h2>
+                    <ol class="breadcrumb">
+
+                          
+
+                            <li>Control panel</li>
+
+                        </ol>
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </section>
+<!-- Content Header (Page header) -->
+<div class="container pt-120 pb-120">
+
   @if(session()->get('success'))
    <div  id="msg" >
          <div class="alert alert-success alert-dismissible">
@@ -55,7 +84,7 @@
    
       </div>
        <div class="box ">
-            <div class="box-header"><h3 class="box-title">Chart</h3></div>
+            <!-- <div class="box-header"><h3 class="box-title">Chart</h3></div> -->
            
     
          <div class="border border-dark">

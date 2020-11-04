@@ -1,68 +1,107 @@
-@extends('layouts.new')
-@section('Breadcrumbs')
-<section class="breadcrumbs">
+@extends('layouts.new_pro')
 
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Checkout </h2>
-          <ol>
-            <li><a href="{{url('/')}}">Home</a></li>
-             <li>Checkout</li>  
-
-          </ol>
-        </div>
-      </div>
-
-    </section><!-- End Breadcrumbs -->
-@endsection
  @section('content')
 
-<!-- ======= Pricing Section ======= -->
-<section id="pricing" class="pricing section-bg">
-    <div class="container" data-aos="fade-up">
-      @if (Session::has('message_e'))
+
+  <section class="inner-page-banner-section gradient-bg">
+
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/contact.png') }}" alt="image-illustration"></div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="inner-page-content-area">
+
+                    <h2 class="page-title">checkout</h2>
+
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </section>
+
+  <!-- inner-page-banner-section end -->
+
+
+
+  <section class="contact-section mt-minus pb-120">
+
+    <div class="container">
+
+      <div class="contact-form-area">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-7">
+
+            <div class="section-header text-center">
+
+              <span class="section-subtitle">checkout</span>
+
+              <!-- <h2 class="section-title">Billing Details</h2> -->
+
+              <!-- <p>Have questions? We don't bite! Just shoot us a message and we'll get back to you as soon as possible!</p> -->
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-12 contact-form-wrapper">
+
+           <form name="checkout" method="post" action="{{url('checkout')}}" enctype="multipart/form-data">@csrf
+                  
+                 @if (Session::has('message_e'))
         @include('partials.alert', ['type' => "danger",'message'=> Session::get('message_e') ])
         @endif
-        <form name="checkout" method="post" action="{{url('checkout')}}" enctype="multipart/form-data">@csrf
-            <div class="col2-set" id="customer_details">
-                <div class="col-md-10">
 
-                    <div class="woocommerce-billing-fields">
-                        <h3>Billing details</h3>
-                        <div class="woocommerce-billing-fields__field-wrapper">
-                          <div class="flex">
-                            <div class="form-group with50">
-                                <label for="fname" class="">First name&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="fname" id="fname" placeholder="First name" value="@if(old('fname')){{ old('fname') }}@else{{Auth::user()->name}}@endif" autocomplete="given-name" />
+                  
+              <div class="row">
+
+                <div class="col-lg-6">
+
+                                <input type="text" class="contect-input"  name="fname" id="fname" placeholder="First name*" value="@if(old('fname')){{ old('fname') }}@else{{Auth::user()->name}}@endif" autocomplete="given-name" />
                              @error('fname')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
-                            </div>
 
-                            <div class="form-group with50">
-                                <label for="lname" class="">Last name&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="lname" id="lname" placeholder="Last name" value="{{ old('lname') }}" autocomplete="family-name" />
+                </div>
+
+              
+
+                <div class="col-lg-6">
+
+                    <input type="text" class="contect-input" name="lname"  id="lname" placeholder="Last name" value="{{ old('lname') }}" autocomplete="family-name" />
                              @error('lname')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
-                            </div>
-                          </div>
-                          
 
-                            <div class="form-group">
-                                <label for="billing_address_1" class="">Street address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                               <textarea class="form-control" name="address" placeholder="Street Address">{{ old('address') }}</textarea>
-                            </div>
+                </div>
+
+                <div class="col-lg-12">
+
+                 <textarea class="contect-input" name="address"  placeholder="Street Address">{{ old('address') }}</textarea>
+                           
                              @error('address')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
 
-                              <div class="form-group">
-                                <label for="country" class="">Country&nbsp;<abbr class="required" title="required">*</abbr></label>
+                </div>
 
-                              
+                <div class="col-lg-12">
 
-                                <select name="country" id="country" class="form-control" autocomplete="country">
+                    <select name="country" id="country" class="contect-input form-control" autocomplete="country">
                                     <option value="">Select a country&hellip;</option>
                                     @foreach($country as $valu)
                                     @if(old('country')==$valu->id)
@@ -74,56 +113,71 @@
                                      @endif
                                     @endforeach
                                 </select>
-                            </div>
+                           
                              @error('country')
                             <small class=" form-text text-danger"> {{ $message }}</small>
                             @enderror
 
-                            <div class="form-group">
-                                <label for="State" class="">State &nbsp;<abbr class="required" title="required">*</abbr></label>
-                                 <input type="text" class="form-control" name="State" id="State" placeholder="State / County" value="{{ old('State') }}" autocomplete="address-level2" />
-                                </div>
+                </div>
+
+
+                <div class="col-lg-12">
+               <input type="text" class="contect-input" name="State" id="State" placeholder="State / County" value="{{ old('State') }}" autocomplete="address-level2" />
+                               
                              @error('State')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
-                            <div class="form-group">
-                                <label for="City" class="">Town / City&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="City" id="City" placeholder="Town / City" value="{{ old('City') }}" autocomplete="address-level2" />
-                            </div>
+
+                </div>
+
+                    <div class="col-lg-12">
+               <input type="text" class="contect-input" name="City" id="City" placeholder="Town / City" value="{{ old('City') }}" autocomplete="address-level2" />
+                            
                                 @error('City')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
 
-                            <div class="form-group">
-                                <label for="Postcode/ZIP" class="">Postcode / ZIP&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="form-control" name="Postcode/ZIP" id="Postcode/ZIP" placeholder="Postcode / ZIP" value="{{ old('Postcode/ZIP') }}" autocomplete="postal-code" />
-                            </div>
+                </div>
+
+
+                    <div class="col-lg-12">
+               <input type="text" class="contect-input" name="Postcode/ZIP" id="Postcode/ZIP" placeholder="Postcode / ZIP" value="{{ old('Postcode/ZIP') }}" autocomplete="postal-code" />
+                            
                              @error('Postcode/ZIP')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
 
-                            <div iv class="form-group">
-                                <label for="Phone" class="">Phone&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="@if(old('Phone')){{ old('Phone') }}@else{{Auth::user()->phone}}@endif" autocomplete="tel" />
-                            </div>
+                </div>
+
+                                    <div class="col-lg-12">
+               <input type="number" class="contect-input" name="Phone" id="Phone" placeholder="Phone" value="@if(old('Phone')){{ old('Phone') }}@else{{Auth::user()->phone}}@endif" autocomplete="tel" />
+                          
                              @error('Phone')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
 
-                            <div class="form-group">
-                                <label for="email" class="">Email address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="@if(old('email')){{ old('email') }}@else{{Auth::user()->email}}@endif" autocomplete="email username" />
-                            </div>
+                </div>
+
+                                    <div class="col-lg-12">
+               <input type="email" class="contect-input" name="email" id="email" placeholder="Email address" value="@if(old('email')){{ old('email') }}@else{{Auth::user()->email}}@endif" autocomplete="email username" />
+                            
                              @error('email')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
 
+                </div>
 
-                           
+                                    <div class="col-lg-12">
+               <input type="text" class="contect-input" name="State" id="State" placeholder="State / County" value="{{ old('State') }}" autocomplete="address-level2" />
+                                </div>
+                             @error('State')
+                                <small class=" form-text text-danger"> {{ $message }}</small>
+                                @enderror
 
+                </div>
 
-                            <div class="form-group">
-                                <label for="email" >Payment Meaning&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                    <div class="col-lg-12">
+                                       <label for="email" >Payment Meaning&nbsp;</label>
 
                                 <div class="form-check">
                                 <input class="form-check-input" type="radio" name="Payment_Meaning" id="exampleRadios1" value="Wallet_{{ $payment->wallet }}">
@@ -143,19 +197,39 @@
                                 @error('Payment_Meaning')
                                 <small class=" form-text text-danger"> {{ $message }}</small>
                                 @enderror
-                          </div>
+                                    </div>
 
+                <div class="col-lg-12 text-center">
 
-                        </div>
-                    </div>
-                      <input type="hidden" name="total" value="{{ Cart::session(Auth::user()->id)->getSubTotal() }}">
+                    <input type="hidden" name="total" value="{{ Cart::session(Auth::user()->id)->getSubTotal() }}">
 
                     <input type="submit" name="submit" class="btn btn-primary" />
+
                 </div>
 
-               
-            </div>
-        </form>
+              </div>
+
+            </form>
+
+            <p class="form-message"></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
     </div>
-</section>
+
+  </section>
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
  @endsection

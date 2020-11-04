@@ -184,7 +184,7 @@
               <strong>Email:</strong> {{ $settings->Email }}<br>
             </p>
             <div class="social-links mt-3">
- 		<a href="{{ url($settings->twitter)  }}" class="twitter"><i class="icofont-twitter"></i></a>
+ 	  	<a href="{{ url($settings->twitter)  }}" class="twitter"><i class="icofont-twitter"></i></a>
         <a href="{{ url($settings->facebook) }}" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="{{ url($settings->instagram) }}" class="instagram"><i class="icofont-instagram"></i></a>
         <a href="{{ url($settings->skype) }}" class="skype"><i class="icofont-skype"></i></a>

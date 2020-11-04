@@ -1,9 +1,5 @@
 @extends('layouts.new') @section('content')
-<style type="text/css">
-    .image-upload > input {
-        display: none;
-    }
-</style>
+
 <div class="container">
 <section class="content">
     <div class="row">

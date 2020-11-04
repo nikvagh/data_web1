@@ -640,7 +640,7 @@ li.menu_has_children:hover:after {
 
   text-transform: uppercase;
 
-  padding: 29px 25px;
+  padding: 29px 20px;
 
   display: inline-block;
 
@@ -14140,7 +14140,9 @@ textarea:-ms-input-placeholder {
 
   border-radius: 999px;
 
-  width: 135px;
+  /*width: 135px;*/
+
+  margin: 0 10px 0 10px;
 
   height: 50px;
 
@@ -15224,7 +15226,45 @@ a[class*='lightcase-icon-'].lightcase-icon-close {
 
 /* preloader css end */
 
-
+/*-------------------------------------------------------------------------------------------------------------------------*/
 .calc-box{
 padding: 20px 0;
+}
+.login-box{
+padding: 20px 0;
+margin: auto;
+}
+.input-text{
+  padding: 10px;
+}
+.contect-input{
+  margin-top: 30px;
+}
+
+.dataTables_paginate .pagination .page-item.next a{
+  background: none;
+  box-shadow: none;
+  color: black;
+
+         padding: 8px 14px;
+    margin: 0 2px;
+    line-height: initial;
+
+
+
+    
+}
+
+.dataTables_paginate .page-item.active .page-link{
+  background-image: -webkit-linear-gradient( 90deg, rgb(1,132,255) 1%, rgb(1,171,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(1,132,255) 1%, rgb(1,171,255) 100%);
+    box-shadow: 0px 5px 5px 0px rgba(1, 132, 255, 0.4);
+    
+}
+
+.dataTables_paginate .pagination .page-item a{
+      padding: 8px 14px;
+}
+.sociyal a{
+      padding: 5px;
 }

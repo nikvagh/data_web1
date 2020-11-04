@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\users;
+use Carbon\Carbon;
 use Storage;
 use DB;
 use Auth;
@@ -16,20 +17,28 @@ class Frontcontroller extends Controller
 {
      public function home()
     {
-        $products = DB::table('products')->get();
+        $INVESTORS = DB::table('transactions')->where([['type', 'd']])
+                   ->join('customer', 'transactions.customer_id', '=', 'customer.customer_id')
+                   ->selectRaw('*, sum(amount) as sum')
+                   ->groupBy('transactions.customer_id') ->take(10)->get();
 
-        $transactions =  DB::table('transactions')->where('type', 'w') ->join('agent', 'agent.agent_id', '=', 'transactions.agent_id')
-        ->select('transactions_id','amount','business_name','profile_pic','agent.agent_id')->orderBy('transactions_id','desc') ->take(5)->get();
+                     $products = DB::table('products')->get();
+
+        $transactionsbyday =  DB::table('transactions')->whereDate('transactions.created_at', Carbon::today())->where('type', 'w') ->join('agent', 'agent.agent_id', '=', 'transactions.agent_id')->select('transactions_id','amount','business_name','profile_pic','agent.agent_id')->orderBy('transactions_id','desc') ->take(5)->get();
+
+        $transactionsbymonth =  DB::table('transactions')-> whereMonth('transactions.created_at', date('m'))->where('type', 'w')->join('agent', 'agent.agent_id', '=', 'transactions.agent_id')->select('transactions_id','amount','business_name','profile_pic','agent.agent_id')->orderBy('transactions_id','desc') ->take(5)->whereYear('transactions.created_at', date('Y'))->get(['created_at']);
+
+        
 
         $UsersCount= DB::table('users')->get()->count();
         $Investment= DB::table('transactions')->where('type', 'd')->select('amount')->get();
 
         $min= DB::table('agent_commission_rules')->get()->min('from');
         $max= DB::table('agent_commission_rules')->get()->max('to');
-        // print_r($min);
+        // print_r($INVESTORS);
         // exit();
         // return view('front._home', ['products' => $products]);
-        return view('front.home', ['products' => $products,'transactions' => $transactions,'UsersCount' => $UsersCount,'Investment' => $Investment,'min' => $min,'max' => $max]);
+        return view('front.home', ['products' => $products,'transactionsbyday' => $transactionsbyday,'transactionsbymonth' => $transactionsbymonth,'UsersCount' => $UsersCount,'Investment' => $Investment,'min' => $min,'max' => $max,'INVESTORS' => $INVESTORS]);
     }
     public function get_recod()
     { 
@@ -183,5 +192,22 @@ class Frontcontroller extends Controller
                 return redirect('/payment_successful');
             }
         }
+    }
+    public function subscribe_uesr()
+    {
+         request()->validate([
+            'subs_name' => 'required|email',
+            
+        ]);
+         // print_r(request()->input('subs_name'));
+         // exit();
+                 DB::table('subscribes')->insert(
+                         ['email' => request()->input('subs_name'),
+                         'created_at' =>  date('Y-m-d H:i:s'),
+                         ]  
+                     );
+                 return redirect('/');
+
+
     }
 }

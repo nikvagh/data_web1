@@ -109,7 +109,7 @@ class CartsController extends Controller
     }
       
     public function load_cart_block(Request $request){
-        $carts = Cart::session(Auth::user()->id)->getContent();
+        $carts = Cart::session(Auth::user()->id)->getContent()->sortBy('id');
           $data = $carts->toArray();
        
           

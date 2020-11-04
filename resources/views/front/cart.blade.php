@@ -1,35 +1,99 @@
-@extends('layouts.new')
- @section('Breadcrumbs')
-<section class="breadcrumbs">
+@extends('layouts.new_pro')
 
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Cart </h2>
-          <ol>
-            <li><a href="{{url('/')}}">Home</a></li>
-             <li>Cart</li>  
-
-          </ol>
-        </div>
-      </div>
-
-    </section><!-- End Breadcrumbs -->
-@endsection
  @section('content')
 
-<section id="pricing" class="cart section-bg">
-<div class="checkout">
+
+  <!-- inner-page-banner-section start -->
+
+  <section class="inner-page-banner-section gradient-bg">
+
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/investment.png') }}" alt="image-illustration"></div>
+
     <div class="container">
-        <h2>Cart </h2>
-  
-            
-         
-       <div id="cart_box"></div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="inner-page-content-area">
+
+                    <h2 class="page-title">Checkout</h2>
+
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+                        <ol class="breadcrumb">
+
+                            <li class="breadcrumb-item"><a href="home-one.html">Home</a></li>
+
+                            <li class="breadcrumb-item"><a href="#0">Pages</a></li>
+
+                            <li class="breadcrumb-item">Cart Pages</li>
+
+                        </ol>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-</div>
-</div>
-</div>
-</section>
+
+  </section>
+
+  <!-- inner-page-banner-section end -->
+
+
+
+  <!-- checkout-section start -->
+
+  <section class="checkout-section pb-120">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-12">
+
+          <div class="main-area">
+
+            <div class="checkout-wrapper">
+
+              <div class="checkout-message">
+
+                <p>Hey! Nice selection of items there.Please review your order below
+
+                  and follow the next quick steps to complete your order.</p>
+
+              </div>
+
+             
+       <div id="cart_box"></div>
+
+
+
+   
+
+            </div><!-- checkout-wrapper end -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- checkout-section end  -->
+
+
+
+<!-- ===================================================================================================================================================== -->
+
 
  @endsection
 

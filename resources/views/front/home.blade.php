@@ -119,7 +119,7 @@
 
                 
 
-                <span class="counter">{{ number_format($Investment->sum('amount')/$UsersCount)}}</span>
+                <span class="counter">{{ number_format(($Investment->sum('amount')/$UsersCount)/1000) }} </span><span>k</span>
 
             
 
@@ -644,7 +644,7 @@
 
                   <div class="item">
 
-                    <a href="#" class="invest-btn btn-round">invest now</a>
+                    <a href="{{ url('product') }}" class="invest-btn btn-round">invest now</a>
 
                   </div>
 
@@ -955,7 +955,7 @@
 
                 <div class="btn-area text-center">
 
-                  <a href="#0" class="btn btn-secondary">join us</a>
+                  <a href="{{ url('customer_register') }}" class="btn btn-secondary">join us</a>
 
                 </div>
 
@@ -1048,14 +1048,16 @@
 
                   </thead>
 
+
                   <tbody>
-@foreach ($transactions as $key)
+   @if(!count($transactionsbyday)==0)
+            @foreach ($transactionsbyday as $key)
 
 
                     <tr>
-                      <td data-head="name">
+                      <td  data-head="name">
                         <div class="person-details">
-                          <div class="thumb"><img src="{{ url('uploads/Profile',$key->profile_pic) }}" alt="image"></div>
+                          <div class="thumb">@if($key->profile_pic)<img src="{{ url('uploads/Profile',$key->profile_pic) }}" alt="image">@else <img src="{{ url('uploads/Profile/images.png') }}" alt="image"> @endif </div>
                           <div class="content">
                             <span class="name">{{ $key->business_name}}</span>
                           </div>
@@ -1077,7 +1079,13 @@
                       </td>
 
                     </tr>
-@endforeach
+              @endforeach
+@else
+<tr>
+  <td colspan="3" class="text-center">Data is Empty. </td>
+</tr>
+
+@endif
                   </tbody>
 
                 </table>
@@ -1092,271 +1100,49 @@
 
               <div class="withdraw-table-area">
 
+
                 <table>
 
                   <thead>
 
                     <tr>
 
-                      <th>name</th>
+                      <th>Name</th>
 
-                      <th>price</th>
+                      <th>AMOUNTS</th>
 
-                      <th>Daily Dividend</th>
+                    
 
-                      <th>AMOUNTs</th>
-
-                      <th>Deposit by</th>
-
+                     
                       <th>Currency</th>
 
                     </tr>
 
                   </thead>
 
+
                   <tbody>
+   @if(!count($transactionsbymonth)==0)
+            @foreach ($transactionsbymonth as $key)
+
 
                     <tr>
-
-                      <td data-head="name">
-
+                      <td  data-head="name">
                         <div class="person-details">
-
-                          <div class="thumb"><img src="{{ url('new_front_asset/images/withdraw/t-1.png') }}" alt="image"></div>
-
+                          <div class="thumb">@if($key->profile_pic)<img src="{{ url('uploads/Profile',$key->profile_pic) }}" alt="image">@else <img src="{{ url('uploads/Profile/images.png') }}" alt="image"> @endif </div>
                           <div class="content">
-
-                            <span class="name">Jim Adams</span>
-
+                            <span class="name">{{ $key->business_name}}</span>
                           </div>
-
                         </div>
-
-                      </td>
-
-                      <td data-head="price">
-
-                        <span class="price">$10.50</span>
-
-                      </td>
-
-                      <td data-head="daily dividend">
-
-                        <span class="daily-dividend">$10.50</span>
-
                       </td>
 
                       <td data-head="amounts">
 
-                        <span class="amount">$0.9</span>
+                        <span class="amount">{{$key->amount}}</span>
 
                       </td>
 
-                      <td data-head="Deposit by">
-
-                        <span class="days">21 days</span>
-
-                      </td>
-
-                      <td data-head="Currency">
-
-                        <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon">
-
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td data-head="name">
-
-                        <div class="person-details">
-
-                          <div class="thumb"><img src="{{ url('new_front_asset/images/withdraw/t-2.png') }}" alt="image"></div>
-
-                          <div class="content">
-
-                            <span class="name">Willie Barton </span>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td data-head="price">
-
-                        <span class="price">$10.50</span>
-
-                      </td>
-
-                      <td data-head="daily dividend">
-
-                        <span class="daily-dividend">$10.50</span>
-
-                      </td>
-
-                      <td data-head="amounts">
-
-                        <span class="amount">$0.9</span>
-
-                      </td>
-
-                      <td data-head="Deposit by">
-
-                        <span class="days">21 days</span>
-
-                      </td>
-
-                      <td data-head="Currency">
-
-                        <img src="{{ url('new_front_asset/images/icons/withdraw/fire.png') }}" alt="icon">
-
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td data-head="name">
-
-                        <div class="person-details">
-
-                          <div class="thumb"><img src="{{ url('new_front_asset/images/withdraw/t-3.png') }}" alt="image"></div>
-
-                          <div class="content">
-
-                            <span class="name">Kim Mccoy </span>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td data-head="price">
-
-                        <span class="price">$10.50</span>
-
-                      </td>
-
-                      <td data-head="daily dividend">
-
-                        <span class="daily-dividend">$10.50</span>
-
-                      </td>
-
-                      <td data-head="amounts">
-
-                        <span class="amount">$0.9</span>
-
-                      </td>
-
-                      <td data-head="Deposit by">
-
-                        <span class="days">21 days</span>
-
-                      </td>
-
-                      <td data-head="Currency">
-
-                        <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon">
-
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td data-head="name">
-
-                        <div class="person-details">
-
-                          <div class="thumb"><img src="{{ url('new_front_asset/images/withdraw/t-4.png') }}" alt="image"></div>
-
-                          <div class="content">
-
-                            <span class="name">Sheryl Tran </span>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td data-head="price">
-
-                        <span class="price">$10.50</span>
-
-                      </td>
-
-                      <td data-head="daily dividend">
-
-                        <span class="daily-dividend">$10.50</span>
-
-                      </td>
-
-                      <td data-head="amounts">
-
-                        <span class="amount">$0.9</span>
-
-                      </td>
-
-                      <td data-head="Deposit by">
-
-                        <span class="days">21 days</span>
-
-                      </td>
-
-                      <td data-head="Currency">
-
-                        <img src="{{ url('new_front_asset/images/icons/withdraw/fan.png') }}" alt="icon">
-
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td data-head="name">
-
-                        <div class="person-details">
-
-                          <div class="thumb"><img src="{{ url('new_front_asset/images/withdraw/t-5.png') }}" alt="image"></div>
-
-                          <div class="content">
-
-                            <span class="name">Jim Adams</span>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td data-head="price">
-
-                        <span class="price">$10.50</span>
-
-                      </td>
-
-                      <td data-head="daily dividend">
-
-                        <span class="daily-dividend">$10.50</span>
-
-                      </td>
-
-                      <td data-head="amounts">
-
-                        <span class="amount">$0.9</span>
-
-                      </td>
-
-                      <td data-head="Deposit by">
-
-                        <span class="days">21 days</span>
-
-                      </td>
+                     
 
                       <td data-head="Currency">
 
@@ -1365,11 +1151,16 @@
                       </td>
 
                     </tr>
+              @endforeach
+@else
+<tr>
+  <td colspan="3" class="text-center">Data is Empty. </td>
+</tr>
 
+@endif
                   </tbody>
 
                 </table>
-
               </div>
 
             </div>
@@ -1722,93 +1513,34 @@
 
       <div class="investor-slider owl-carousel">
 
+  
+
+   
+@foreach ($INVESTORS as $key)
         <div class="investor-item text-center">
 
           <div class="thumb">
 
-            <img src="{{ url('new_front_asset/images/investors/1.png') }}" alt="image">
+          
+              @if($key->profile_pic)<img src="{{ url('uploads/Profile',$key->profile_pic) }}" alt="image">@else <img src="{{ url('uploads/Profile/images.png') }}" alt="image"> @endif
 
-            <a href="#0" class="icon"><i class="fa fa-linkedin"></i></a>
+            <!-- <a href="#0" class="icon"><i class="fa fa-linkedin"></i></a> -->
 
           </div>
 
           <div class="content">
 
-            <h4 class="name"><a href="#0">Sean Obrien</a></h4>
+            <h4 class="name"><a href="#0">{{$key->name}}</a></h4>
 
-            <span class="amount">$50,000.00</span>
+            <span class="amount">${{$key->sum}}</span>
 
             <p>Pain by <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon"></p>
 
           </div>
 
         </div>
-
-        <div class="investor-item text-center">
-
-          <div class="thumb">
-
-            <img src="{{ url('new_front_asset/images/investors/2.png') }}" alt="image">
-
-            <a href="#0" class="icon"><i class="fa fa-linkedin"></i></a>
-
-          </div>
-
-          <div class="content">
-
-            <h4 class="name"><a href="#0">Naomi White</a></h4>
-
-            <span class="amount">$43,500.00</span>
-
-            <p>Pain by <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon"></p>
-
-          </div>
-
-        </div>
-
-        <div class="investor-item text-center">
-
-          <div class="thumb">
-
-            <img src="{{ url('new_front_asset/images/investors/3.png') }}" alt="image">
-
-            <a href="#0" class="icon"><i class="fa fa-linkedin"></i></a>
-
-          </div>
-
-          <div class="content">
-
-            <h4 class="name"><a href="#0">Tom Barker</a></h4>
-
-            <span class="amount">$42,000.00</span>
-
-            <p>Pain by <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon"></p>
-
-          </div>
-
-        </div>
-
-        <div class="investor-item text-center">
-
-          <div class="thumb">
-
-            <img src="{{ url('new_front_asset/images/investors/1.png') }}" alt="image">
-
-            <a href="#0" class="icon"><i class="fa fa-linkedin"></i></a>
-
-          </div>
-
-          <div class="content">
-
-            <h4 class="name"><a href="#0">Sean Obrien</a></h4>
-
-            <span class="amount">$50,000.00</span>
-
-            <p>Pain by <img src="{{ url('new_front_asset/images/icons/withdraw/bitcoin.png') }}" alt="icon"></p>
-
-          </div>
-
-        </div>
+@endforeach
+   
 
       </div>
 

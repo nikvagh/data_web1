@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 03, 2020 at 01:23 PM
+-- Generation Time: Nov 04, 2020 at 01:11 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `charity` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `charity`
@@ -209,16 +209,15 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`Contac_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contactus`
 --
 
 INSERT INTO `contactus` (`Contac_id`, `name`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'demo1', 'test@gmail.com', 'testing', '1111', '2020-09-25 19:35:15', NULL),
-(2, 'demo1', 'test@gmail.com', 'testing', '11111', '2020-09-27 22:59:22', NULL),
-(3, 'test', 'test@gmail.com', 'testing', 'testing', '2020-10-01 01:45:50', NULL);
+(3, 'test', 'test@gmail.com', 'testing', 'testing', '2020-10-01 01:45:50', NULL),
+(4, 'jay dev', 'viola.reichel@example.net', 'testing', 'demo test', '2020-11-04 00:49:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -505,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   PRIMARY KEY (`id`),
   KEY `customer_customer_id_foreign` (`customer_id`),
   KEY `customer_agent_id_foreign` (`agent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customer`
@@ -514,11 +513,12 @@ CREATE TABLE IF NOT EXISTS `customer` (
 INSERT INTO `customer` (`id`, `customer_id`, `agent_id`, `address`, `abn`, `name`, `profile_pic`, `created_at`, `updated_at`, `wallet`) VALUES
 (1, 2, 3, 'testing', '3', 'test', '160077437191.png', NULL, NULL, 0.00),
 (6, 14, 3, 'address', 'abn', 'demo', NULL, NULL, NULL, 0.00),
-(7, 16, 3, 'address', 'abn', 'testing', NULL, NULL, NULL, 0.00),
+(7, 13, 3, 'address', 'abn', 'testing', NULL, NULL, NULL, 0.00),
 (10, 27, NULL, 'surat', 'abn', '', NULL, '2020-10-21 01:42:31', '2020-10-21 01:42:31', 0.00),
 (9, 26, NULL, 'surat', '12345678', '', NULL, '2020-10-21 01:41:24', '2020-10-21 01:41:24', 0.00),
 (11, 28, NULL, 'surat', 'sad', '', NULL, '2020-10-21 01:45:54', '2020-10-21 01:45:54', 0.00),
-(12, 29, NULL, 'surat', 'abn', '', NULL, '2020-10-21 01:47:20', '2020-10-21 01:47:20', 0.00);
+(12, 29, NULL, 'surat', 'abn', '', NULL, '2020-10-21 01:47:20', '2020-10-21 01:47:20', 0.00),
+(13, 32, NULL, 'surat', 'abn', '', NULL, '2020-11-04 02:00:18', '2020-11-04 02:00:18', 0.00);
 
 -- --------------------------------------------------------
 
@@ -578,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -601,7 +601,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (77, '2020_09_28_090548_order_user', 10),
 (78, '2020_09_28_102356_package_user', 11),
 (75, '2020_09_30_104811_charity', 9),
-(84, '2020_11_02_122639_create_agent_commission_rules_table', 13);
+(84, '2020_11_02_122639_create_agent_commission_rules_table', 13),
+(85, '2020_11_04_044224_create_subscribes_table', 14);
 
 -- --------------------------------------------------------
 
@@ -821,6 +822,28 @@ INSERT INTO `settings` (`settings_id`, `company_name`, `Email`, `mobile_number`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subscribes`
+--
+
+DROP TABLE IF EXISTS `subscribes`;
+CREATE TABLE IF NOT EXISTS `subscribes` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subscribes`
+--
+
+INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'test@gamil.com', '2020-11-03 23:19:59', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transactions`
 --
 
@@ -844,8 +867,8 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 --
 
 INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amount`, `type`, `deposittype`, `agentcommission`, `commission`, `created_at`, `updated_at`) VALUES
-(2, 2, 1, 90.00, 'd', '2', '10', '10', '2019-06-13 05:39:16', NULL),
-(3, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-03-19 05:56:20', NULL),
+(2, 2, 1, 90.00, 'w', '2', '10', '10', '2020-11-04 04:25:41', NULL),
+(3, 14, 3, 18000.00, 'w', '2', '2000', '10', '2020-11-02 04:25:50', NULL),
 (4, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:43:24', NULL),
 (5, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:43:48', NULL),
 (6, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 00:45:11', NULL),
@@ -854,7 +877,6 @@ INSERT INTO `transactions` (`transactions_id`, `customer_id`, `agent_id`, `amoun
 (9, 13, 3, 8568.00, 'd', '2', '952', '10', '2020-09-25 01:55:53', NULL),
 (10, 14, 3, 18000.00, 'd', '2', '2000', '10', '2020-09-25 05:20:26', NULL),
 (11, 14, 3, 1800.00, 'd', '2', '200', '10', '2020-09-25 05:21:17', NULL),
-(13, 0, 3, 20000.00, 'w', '3', '0', '0', '2020-10-25 06:31:26', NULL),
 (15, 0, 3, 200.00, 'w', '3', '0', '0', '2020-09-25 06:38:53', NULL),
 (16, 0, 3, 20.00, 'w', '3', '0', '0', '2020-09-25 06:51:22', NULL),
 (17, 2, 1, 81000.00, 'd', '2', '9000', '10', '2020-09-24 20:02:48', NULL),
@@ -929,7 +951,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -937,7 +959,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'NGo8oHBeBkky5mwcYzgVXKZBLpqKlF3UiEQElvO8n4NSbOvhpf1y3qpgI4uK', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'UGMpaZ1qd3DU57RiInZfWZDzswc7P60FZNtAmSmNUUPnZrqphHaO6lgx06QT', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'HU678mRihJNQVrdsZZto3vLVudWzd9OUQTBrbmeUKn7qaR0RsMJQijwTdy1k', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
 (3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'AuaO9U3JXZ1gbDCMrQ6fC5RrAZjgydyog9oEcYEmeSm7Z5f5lGfeT1mvtbhc', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
@@ -950,7 +972,8 @@ INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`
 (14, 'demo1', '1234567890', 'testa@gmail.com', 4, NULL, '$2y$10$Am9dlZ.P68jQpWNVeUVlHuP6.eTKX1fppdoJmmOovbaxba6dzMBE2', NULL, NULL, '2020-09-25 00:42:18', '2020-09-24 20:17:17'),
 (16, 'demo1', '1234567890', 'tesasst@gmail.com', 4, NULL, '$2y$10$zv895VSRfE30jxPJ/YxohOZZE5ETlpr4Fxiyb1wF3Hsg4qPjJKyhK', NULL, NULL, '2020-09-24 20:17:00', '2020-10-06 03:12:56'),
 (18, 'Trevor Emmerich', NULL, 'marvin.zachery@example.net', 2, '2020-10-01 05:41:34', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'Xwcu0HTzoq', '2020-10-01 05:41:34', '2020-10-01 05:41:34'),
-(19, 'Pasquale Jakubowski', NULL, 'hoppe.jalyn@example.org', 2, '2020-10-01 05:59:14', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'jgzEmA4lVV', '2020-10-01 05:59:14', '2020-10-01 05:59:14');
+(19, 'Pasquale Jakubowski', NULL, 'hoppe.jalyn@example.org', 2, '2020-10-01 05:59:14', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'jgzEmA4lVV', '2020-10-01 05:59:14', '2020-10-01 05:59:14'),
+(32, 'jay dev', NULL, 'viola.reichel@example.netasassadsasa', 4, NULL, '$2y$10$kO69NAuXbqp/LL4TeZFLcelrN8DrrU.GSGErm8EJTCT8Iq5XoagXG', NULL, NULL, '2020-11-04 02:00:18', '2020-11-04 02:00:18');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="{{ url('new_front_asset/css/style.css') }}">
 
   <link rel="stylesheet" href="{{ url('new_front_asset/css/responsive.css') }}">
+   
  @yield('css')
 </head>
 
@@ -69,9 +70,9 @@
   </div>
 
   <!-- preloader end -->
-
-
-
+ <?php $settings = DB::table('settings')
+          ->where('settings_id', '1')
+          ->get()->first(); ?>
     <!-- signin-area start -->
 
     <div class="modal fade" id="signInModal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -128,7 +129,7 @@
 
             </form>
 
-            <div class="signin-wrapper-footer">
+            <div class="signin-wrapper-footer" id="#footer">
 
               <p class="bottom-text">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signUpModal" data-dismiss="modal" aria-label="Close">Sign Up Now</a></p>
 
@@ -254,7 +255,7 @@
 
   <!--  header-section start  -->
 
-  <header class="header-section">
+  <header class="header-section transparent--header">
 
     <div class="header-top">
 
@@ -303,19 +304,19 @@
                     </select>
 
                   </div>
-
+ @if(Auth::user() && Auth::user()->role=="4")
                   <div class="header-cart-count">
 
-                      <a href="checkout.html">
+                      <a href="{{url('getcart')}}">
 
                         <i class="fa fa-shopping-cart"></i>
 
-                        <span>My cart (0)</span>
+                        <span>My cart ({{Cart::session(Auth::user()->id)->getContent()->count()}})</span>
 
                       </a>
 
                   </div>
-
+@endif
               </div>
 
           </div>
@@ -344,97 +345,82 @@
 
             <ul class="navbar-nav main-menu ml-auto">
 
-              <li class="active menu_has_children"><a href="#0">Home</a>
+              <li class="{{ (request()->segment(1) == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
 
-              <ul class="sub-menu">
-
-                  <li><a href="home-one.html">Home One</a></li>
-
-                  <li><a href="home-two.html">Home Two</a></li>
-
-                  <li><a href="home-three.html">Home Three</a></li>
-
-                  <li><a href="home-four.html">Home Four</a></li>
-
-                  <li><a href="home-five.html">Home Five</a></li>
-
-              </ul>
-
-              </li>
-
-              <li><a href="about.html">about</a></li>
+              <li class="{{ (request()->segment(1) == 'About_us') ? 'active' : '' }}"><a href="{{URL('About_us')}}">About</a></li>
 
             
 
-              <li class="menu_has_children"><a href="#0">Investment</a>
+             <li class="{{ (request()->segment(1) == 'gallery') ? 'active' : '' }}"><a href="{{URL('gallery')}}">Gallery</a></li>
+          <li class="{{ (request()->segment(1) == 'product') ? 'active' : '' }}"><a href="{{URL('product')}}">Product</a></li>
+          <li class="{{ (request()->segment(1) == 'Charity') ? 'active' : '' }}"><a href="{{URL('Charity')}}">Charity</a></li>
+          <li class="{{ (request()->segment(1) == 'contact_us') ? 'active' : '' }}"><a href="{{URL('contact_us')}}">Contact</a></li>
 
-                <ul class="sub-menu">
+              
 
-                    <li><a href="product.html">Products</a></li>
+             
+              @if(Auth::user())
+            @if(Auth::user()->role=="2")
+                              <li class="menu_has_children">
+                                  <a  href="#" data-toggle="dropdown" data-hover="dropdown">console</a>
+                                 <ul class="sub-menu">
+                                     <li><a  href="{{url('admin')}}">Dashboard</a>
+                                      <li><a  href="{{url('admin/customer')}}">Customer</a></li>
+                                      <li><a  href="{{url('admin/agent')}}">Agents</a></li>
+                                      <li><a  href="{{url('admin/product')}}">Products</a></li>
+                                      <li><a  href="{{url('admin/package')}}">Packages</a></li>
+                                      <li><a  href="{{url('Gallery/Videos')}}">Trading Videos</a></li>
+                                      <li><a  href="{{url('Gallery/Trading_screenshots')}}">Trading Screenshots</a></li>
+                                      <li><a  href="{{url('admin/agent_commission_rules')}}">New Rules</a></li>
+                                       <li><a  href="{{url('admin/settings')}}">Settings</a> </li>
 
-                    <li><a href="investment.html">Investment Plan $5000</a></li>
+                                  </ul>
+                              </li>
+                            
 
-                    <li><a href="investment-two.html">Investment Plan $10000</a></li>
+                              @elseif(Auth::user()->role=="3")
+                              <li class="menu_has_children">
+                                  <a  href="#" data-toggle="dropdown" data-hover="dropdown">console</a>
+                                 <ul class="sub-menu">
+                                     <li><a  href="{{url('agent')}}">Dashboard</a></li>
+                                     <li> <a  href="{{url('customerlist')}}">Customer</a></li>
+                                      <li><a  href="{{url('taranjesonlist')}}">Transaction Customer</a></li>
+                                      <!-- <a  href="{{url('/agent/commission')}}">Commission</a> -->
+                                     <li> <a  href="{{url('package')}}">Packages</a></li>
+                                      <li><a  href="{{url('withdraw')}}">withdraw</a></li>
+                                      <li ><a href="{{url('agent/profile')}}">Profile</a></li>
+                                  </ul>
+                              </li>
+                             
 
-                    <li><a href="investment-three.html">Investment Plan $20000</a></li>
 
-                    <li><a href="investment-four.html">Investment Plan $50000</a></li>
+                              @elseif(Auth::user()->role=="4")
+                              <li class="menu_has_children">
+                                  <a  href="#" data-toggle="dropdown" data-hover="dropdown">console</a>
+                                 <ul class="sub-menu">
+                                    <li> <a  href="{{url('customer')}}">Dashboard</a></li>
+                                     <li> <a  href="{{url('transaction')}}">Transaction</a></li>
+                                      <li><a  href="{{url('customers/packag')}}">Packages</a></li>
+                                      <li ><a href="{{url('profile')}}">Profile</a></li>
+                                  </ul>
+                              </li>
 
-                    <li><a href="investment-five.html">Investment Plan $100000</a></li>
+                              @endif
+                                
+                                 
+                                 
+                                </li>
+                              
+                               <li > <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a></li>
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf </form>
+                                   
+                               @else
+                               <li><a  href="{{url('login')}}">Login</a></li>
+                              <li><a  href="{{url('customer_register')}}">Register </a></li>
+                          
+                              @endif
 
-                    <li><a href="investment-six.html">Investment Plan $200000</a></li>
-
-                    <li><a href="investment-seven.html">Investment Plan $500000</a></li>
-
-                    <li><a href="investment-eight.html">Investment Plan $1000000</a></li>
-
-                </ul>
-
-              </li>
-
-              <li class="menu_has_children"><a href="#0">Pages</a>
-
-                <ul class="sub-menu">
-
-                    <li><a href="gallery.html">Gallery</a></li>
-
-                    <li><a href="product.html">Product</a></li>
-
-                    <li><a href="charity.html">Charity</a></li>
-
-                    <li><a href="portfolio.html">Portfolio</a></li>
-
-                    <li><a href="about.html">About us</a></li>
-
-                    <li><a href="login.html">Login</a></li>
-
-                    <li><a href="register.html">Register</a></li>
-
-                    <li><a href="contact.html">Contact us</a></li>
-
-                </ul>
-
-              </li>
-
-              <li class="menu_has_children"><a href="#0">blog</a>
-
-                <ul class="sub-menu">
-
-                    <li><a href="blog-grid.html">Blog Grid</a></li>
-
-                    <li><a href="blog-list.html">Blog List</a></li>
-
-                    <li><a href="blog-single.html">Blog Single</a></li>
-
-                </ul>
-
-              </li>
-
-              <li><a href="contact.html">contact us</a></li>
-
-              <li><a href="register.html">Register</a></li>
-
-              <li><a href="login.html">Login</a></li>
+                                   
 
           </ul>
 
@@ -491,10 +477,12 @@
 
               <span class="icon wow zoomIn" data-wow-duration="0.3s" data-wow-delay="0.5s"><img src="{{ url('new_front_asset/images/icons/subscribe.png') }}" alt="icon"></span>
 
-              <form class="subscribe-form">
+              <form class="subscribe-form" method="post" action="{{ url('subscribe_uesr') }}">@csrf
 
-                <input type="text" name="subs_name" id="subs_name" placeholder="Your Email Address">
-
+                <input type="email" name="subs_name" id="subs_name" placeholder="Your Email Address">
+                 @error('subs_name')
+                        <small class="form-text text-danger" > {{ $message }}</small>
+                        @enderror
                 <button type="submit" class="subs-btn">subscribe<span class="btn-icon"><img src="{{ url('new_front_asset/images/icons/paper-plane.png') }}" alt="icon"></span></button>
 
               </form>
@@ -507,63 +495,31 @@
 
         <div class="row mb-none-30">
 
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-4 col-sm-6">
 
             <div class="footer-widget mb-30">
 
               <h3 class="widget-title">About Behoof</h3>
 
-              <ul class="footer-menu-list">
-
-                <li><a href="#0">About us</a></li>
-
-                <li><a href="#0">Contact Us</a></li>
-
-                <li><a href="#0">Latest Blog</a></li>
-
-                <li><a href="#0">Authenticity Guarantee</a></li>
-
-                <li><a href="#0">Customer Reviews</a></li>
-
-                <li><a href="#0">Privacy Policy</a></li>
-
-                <li><a href="#0">Business License</a></li>
-
-              </ul>
-
+            
+               <p class="widget-title">
+             {{ $settings->address }}<br> 
+              <strong>Phone:</strong>  {{ $settings->mobile_number }}<br>
+              <strong>Email:</strong> {{ $settings->Email }}<br>
+            </p>
+             <div class=" d-flex sociyal">
+        <h3><a href="{{ url($settings->twitter)  }}" class="twitter text-light"><i class="icofont-twitter"></i></a></h3>
+        <h3><a href="{{ url($settings->facebook) }}" class="facebook text-light"><i class="icofont-facebook"></i></a></h3>
+        <h3><a href="{{ url($settings->instagram) }}" class="instagram text-light"><i class="icofont-instagram"></i></a></h3>
+        <h3><a href="{{ url($settings->skype) }}" class="skype text-light"><i class="icofont-skype"></i></a></h3>
+        <h3><a href="{{ url($settings->linkedin) }}" class="linkedin text-light"><i class="icofont-linkedin"></i></i></a></h3>
+            <h3>   <a href="#" class="linkedin"><i class="bx bxl-linkedin text-light"></i></a></h3>
+            </div>
             </div>
 
           </div><!-- footer-widget end -->
 
-          <div class="col-lg-3 col-sm-6">
-
-            <div class="footer-widget mb-30">
-
-              <h3 class="widget-title">My Account</h3>
-
-              <ul class="footer-menu-list">
-
-                <li><a href="#0">Manage Your Account</a></li>
-
-                <li><a href="#0">How to Deposit</a></li>
-
-                <li><a href="#0">How to Withdraw</a></li>
-
-                <li><a href="#0">Account Varification</a></li>
-
-                <li><a href="#0">Safety & Security</a></li>
-
-                <li><a href="#0">Investments</a></li>
-
-                <li><a href="#0">Membership Level</a></li>
-
-              </ul>
-
-            </div>
-
-          </div><!-- footer-widget end -->
-
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-4 col-sm-6">
 
             <div class="footer-widget mb-30">
 
@@ -571,19 +527,13 @@
 
               <ul class="footer-menu-list">
 
-                <li><a href="#0">Investor help centre</a></li>
+               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/About_us') }}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/gallery') }}">Gallery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/Charity') }}">Charity</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/Product') }}">Product</a></li>
 
-                <li><a href="#0">Entrepreneur help centre</a></li>
-
-                <li><a href="#0">FAQ</a></li>
-
-                <li><a href="#0">Quick Start Guide</a></li>
-
-                <li><a href="#0">Associate Blog</a></li>
-
-                <li><a href="#0">Tutorials</a></li>
-
-                <li><a href="#0">Returns & Claims</a></li>
+               
 
               </ul>
 
@@ -591,31 +541,24 @@
 
           </div><!-- footer-widget end -->
 
-          <div class="col-lg-3 col-sm-6">
+
+          <div class="col-lg-4 col-sm-6">
 
             <div class="footer-widget mb-30">
 
-              <h3 class="widget-title">legal info</h3>
+              <h3 class="widget-title">My Account</h3>
 
               <ul class="footer-menu-list">
 
-                <li><a href="#0">Risk Warnings</a></li>
-
-                <li><a href="#0">Privacy Notice</a></li>
-
-                <li><a href="#0">Security</a></li>
-
-                <li><a href="#0">Terms of Service</a></li>
-
-                <li><a href="#0">Become Affiliate</a></li>
-
-                <li><a href="#0">Complaints Policy</a></li>
+                 <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/agent_register') }}">Agent Register</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/customer_register') }}">Customer Register</a></li>
 
               </ul>
 
             </div>
 
           </div><!-- footer-widget end -->
+
 
         </div>
 
@@ -653,7 +596,7 @@
 
           <div class="col-md-6">
 
-            <div class="card-list text-md-right text-center">
+          <!--   <div class="card-list text-md-right text-center">
 
               <a href="#0"><img src="{{ url('new_front_asset/images/icons/card-options/americanexpress.png') }}" alt="image"></a>
 
@@ -665,7 +608,7 @@
 
               <a href="#0"><img src="{{ url('new_front_asset/images/icons/card-options/mastercard.png') }}" alt="image"></a>
 
-            </div>
+            </div> -->
 
           </div>
 
@@ -718,6 +661,12 @@
   <script src="{{ url('new_front_asset/js/jquery.paroller.min.js') }}"></script>
 
   <script src="{{ url('new_front_asset/js/main.js') }}"></script>
+   <script type="text/javascript">
+      setTimeout(function () {
+          $("#msg").fadeOut("fast");
+      }, 5000); // <-- time in milliseconds
+  </script>
+
  @yield('js')
 </body>
 
