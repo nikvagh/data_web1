@@ -41,10 +41,11 @@ class SettingsController extends Controller
             'map_key' => ['required'],
             'map_ip1' => ['required'],
             'map_ip2' => ['required'],
+            'copyright' => ['required'],
 
             ]); 
        
-        $data = ['company_name' =>$request->input('company_name')  ,  'Email' =>$request->input('Email') ,'mobile_number' =>$request->input('mobile_number') ,'address' =>$request->input('address') ,'terms_conditions' =>$request->input('terms_conditions'),'twitter' =>$request->input('twitter') ,'facebook' =>$request->input('facebook') ,'instagram' =>$request->input('instagram') ,'skype' =>$request->input('skype') ,'linkedin' =>$request->input('linkedin') ,'map_key' =>$request->input('map_key') ,'map_ip1' =>$request->input('map_ip1') ,'map_ip2' =>$request->input('map_ip2') , ];
+        $data = ['company_name' =>$request->input('company_name')  ,  'Email' =>$request->input('Email') ,'mobile_number' =>$request->input('mobile_number') ,'address' =>$request->input('address') ,'terms_conditions' =>$request->input('terms_conditions'),'twitter' =>$request->input('twitter') ,'facebook' =>$request->input('facebook') ,'instagram' =>$request->input('instagram') ,'skype' =>$request->input('skype') ,'linkedin' =>$request->input('linkedin') ,'map_key' =>$request->input('map_key') ,'map_ip1' =>$request->input('map_ip1') ,'map_ip2' =>$request->input('map_ip2') ,'copyright' =>$request->input('copyright') ];
       
 
         // echo "<pre>";

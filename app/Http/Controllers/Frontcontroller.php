@@ -195,18 +195,19 @@ class Frontcontroller extends Controller
     }
     public function subscribe_uesr()
     {
+       
          request()->validate([
-            'subs_name' => 'required|email',
+            'email' => 'required|email|unique',
             
         ]);
-         // print_r(request()->input('subs_name'));
+         // print_r(request()->input('email'));
          // exit();
                  DB::table('subscribes')->insert(
-                         ['email' => request()->input('subs_name'),
+                         ['email' => request()->input('email'),
                          'created_at' =>  date('Y-m-d H:i:s'),
                          ]  
                      );
-                 return redirect('/');
+        
 
 
     }

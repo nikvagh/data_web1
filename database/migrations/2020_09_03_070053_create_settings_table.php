@@ -30,6 +30,8 @@ class CreateSettingsTable extends Migration
             $table->string('map_key');
             $table->string('map_ip1');
             $table->string('map_ip2');
+            $table->string('copyright');
+
         });
         // }
     }

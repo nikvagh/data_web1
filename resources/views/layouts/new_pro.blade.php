@@ -255,7 +255,7 @@
 
   <!--  header-section start  -->
 
-  <header class="header-section transparent--header">
+  <header class="header-section {{ (!request()->segment(1) == '') ? 'transparent--header' : '' }} ">
 
     <div class="header-top">
 
@@ -269,13 +269,13 @@
 
               <div class="support-part">
 
-                  <a href="tel:+1234567890123"><i class="fa fa-headphones"></i>Support</a>
+                  <a href="tel:+1234567890123"><i class="fa fa-phone"></i>{{ $settings->mobile_number }}</a>
 
               </div>
 
               <div class="email-part">
 
-                  <a href="mailto:info@autounit.com"><i class="fa fa-envelope"></i>info@autounit.com</a>
+                  <a href="mailto:info@autounit.com"><i class="fa fa-envelope"></i>{{ $settings->Email }}</a>
 
               </div>
 
@@ -287,7 +287,7 @@
 
               <div class="header-top-right d-flex align-items-center justify-content-end">
 
-                  <div class="language-part">
+                <!--   <div class="language-part">
 
                     <i class="fa fa-globe"></i>
 
@@ -303,7 +303,7 @@
 
                     </select>
 
-                  </div>
+                  </div> -->
  @if(Auth::user() && Auth::user()->role=="4")
                   <div class="header-cart-count">
 
@@ -461,7 +461,7 @@
 
               <h2 class="section-title">For Newsletter</h2>
 
-              <p>Join 14,000+ satisfied Fast Invest customers! <a href="#0">Register</a> and Subscribe to our newsletter to receive all the latest news and updates. </p>
+              <p>Join 14,000+ satisfied Fast Invest customers! <a href="{{ URL('customer_register') }}">Register</a> and Subscribe to our newsletter to receive all the latest news and updates. </p>
 
             </div>
 
@@ -470,20 +470,23 @@
         </div>
 
         <div class="row">
-
           <div class="col-lg-12">
+
+<!-- <div class="alert alert-info" id='msg' role="alert">
+  This is a info alert—check it out!
+</div> -->
 
             <div class="subscribe-wrapper">
 
               <span class="icon wow zoomIn" data-wow-duration="0.3s" data-wow-delay="0.5s"><img src="{{ url('new_front_asset/images/icons/subscribe.png') }}" alt="icon"></span>
 
-              <form class="subscribe-form" method="post" action="{{ url('subscribe_uesr') }}">@csrf
+              <form class="subscribe-form" id="contactForm"  method="post" >@csrf
 
-                <input type="email" name="subs_name" id="subs_name" placeholder="Your Email Address">
+                <input type="email" name="subs_name" id="email" placeholder="Your Email Address">
                  @error('subs_name')
                         <small class="form-text text-danger" > {{ $message }}</small>
                         @enderror
-                <button type="submit" class="subs-btn">subscribe<span class="btn-icon"><img src="{{ url('new_front_asset/images/icons/paper-plane.png') }}" alt="icon"></span></button>
+                <button type="submit" id="submit" class="subs-btn">subscribe<span class="btn-icon"><img src="{{ url('new_front_asset/images/icons/paper-plane.png') }}" alt="icon"></span></button>
 
               </form>
 
@@ -590,7 +593,7 @@
 
           <div class="col-md-6">
 
-            <p class="copy-right-text text-md-left text-center mb-md-0 mb-3">Copyright © 2020.All Rights Reserved By <a href="home-one.html">Auto Unit</a></p>
+            <p class="copy-right-text text-md-left text-center mb-md-0 mb-3">{{ $settings->copyright }} </p>
 
           </div>
 
@@ -666,6 +669,36 @@
           $("#msg").fadeOut("fast");
       }, 5000); // <-- time in milliseconds
   </script>
+
+
+ <script type="text/javascript">
+
+    $('#contactForm').on('submit',function(event){
+        event.preventDefault();
+
+        email = $('#email').val();
+     
+
+        $.ajax({
+          url: '/subscribe_uesr',
+          type:"POST",
+          data:{
+            "_token": "{{ csrf_token() }}",
+           
+            email:email,
+          },
+          success:function(response){
+            // console.log(response);
+   if(data.status == 'success'){
+        alert("Thank you for subscribing!");
+    }else if(data.status == 'error'){
+        alert("Error on query!");
+    }
+          },
+         });
+        });
+      </script>
+
 
  @yield('js')
 </body>

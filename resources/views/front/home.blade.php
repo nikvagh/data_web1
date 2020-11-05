@@ -1011,13 +1011,13 @@
 
             <li class="nav-item">
 
-              <a class="nav-link active" id="daily-tab" data-toggle="tab" href="#daily" role="tab" aria-controls="daily" aria-selected="true">Daily</a>
+              <a class="nav-link " id="daily-tab" data-toggle="tab" href="#daily" role="tab" aria-controls="daily" aria-selected="true">Daily</a>
 
             </li>
 
             <li class="nav-item">
 
-              <a class="nav-link" id="monthly-tab" data-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="false">Monthly</a>
+              <a class="nav-link active" id="monthly-tab" data-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="false">Monthly</a>
 
             </li>
 
@@ -1025,7 +1025,7 @@
 
           <div class="tab-content" id="transactionTabContent">
 
-            <div class="tab-pane fade show active" id="daily" role="tabpanel" aria-labelledby="daily-tab">
+            <div class="tab-pane fade" id="daily" role="tabpanel" aria-labelledby="daily-tab">
 
               <div class="withdraw-table-area">
 
@@ -1096,7 +1096,7 @@
 
             
 
-            <div class="tab-pane fade" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
+            <div class="tab-pane fade  show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
 
               <div class="withdraw-table-area">
 

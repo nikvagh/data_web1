@@ -88,7 +88,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="appending_div"></div>
+                        <!-- <div class="appending_div"></div> -->
 
                         @if($errors->all())
                         <?php
@@ -98,9 +98,11 @@
                         <div class="col-lg-7 login-box">
                             <input type="text" name="Member_names[]" class="input-text" placeholder="Member Names" id="Member_names" value="{{$value}}" />
                         </div>
-
+                            
                         @endforeach
                         <div class="col-lg-7 login-box">
+                            <div class="appending_div"></div>
+
                             <i class="icofont-plus btn btn-primary add" style="display: inline;">+</i>
                         </div>
 
@@ -108,12 +110,14 @@
 
                         <div class="col-lg-7 login-box">
                             <input type="text" name="Member_names[]" placeholder="Member Names"  id="Member_names" value="" /><br />
-                            <i class="icofont-plus btn btn-primary add" style="display: inline;">+</i>
+
                             @error('Member_names[]')
                             <small class="form-text text-left text-danger"> {{ $message }}</small>
                         </div>
                         @enderror
-                        <!-- <div class="appending_div"></div> -->
+                        
+                        <div class="appending_div"></div>
+                            <i class="icofont-plus btn btn-primary add" style="display: inline;">+</i>
 
                         @endif
 
@@ -139,7 +143,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".add").on("click", function () {
-                    var field = ' <div class="col-lg-7 login-box"><input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names"  /></div>';
+                    var field = ' <div class="col-lg-12 login-box"><input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names"  /></div>';
                     $(".appending_div").append(field);
                 });
             });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 04, 2020 at 01:11 PM
+-- Generation Time: Nov 05, 2020 at 10:43 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `charity` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `charity`
@@ -578,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -588,7 +588,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (52, '2014_10_12_000000_create_users_table', 1),
 (53, '2014_10_12_100000_create_password_resets_table', 1),
 (54, '2019_08_19_000000_create_failed_jobs_table', 1),
-(74, '2020_09_03_070053_create_settings_table', 8),
+(86, '2020_09_03_070053_create_settings_table', 15),
 (56, '2020_09_17_113702_create_transactions_table', 1),
 (80, '2020_09_17_115045_create_customer_tabel', 12),
 (63, '2020_09_17_115108_create_agent_tabel', 2),
@@ -809,6 +809,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `map_key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `map_ip1` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `map_ip2` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `copyright` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`settings_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -816,8 +817,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`settings_id`, `company_name`, `Email`, `mobile_number`, `address`, `agentcommission`, `terms_conditions`, `twitter`, `facebook`, `instagram`, `skype`, `linkedin`, `map_key`, `map_ip1`, `map_ip2`) VALUES
-(1, 'Data Web', 'dataweb@gmail.com', '+ 1234567890', 'A108 Adam Street\r\nNew York, NY 535022\r\nUnited States', '10', '<p>testing</p>', 'https://twitter.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://in.linkedin.com/', 'AIzaSyBOX0wpm3iQ5107OdI-bB3YJ3Q27nkBurU', '40.7127837', '-74.0059413');
+INSERT INTO `settings` (`settings_id`, `company_name`, `Email`, `mobile_number`, `address`, `agentcommission`, `terms_conditions`, `twitter`, `facebook`, `instagram`, `skype`, `linkedin`, `map_key`, `map_ip1`, `map_ip2`, `copyright`) VALUES
+(1, 'Data Web', 'dataweb@gmail.com', '+ 1234567890', 'A108 ADAM STREET NEW YORK, NY 535022 UNITED STATES', '10', '<h2>testing</h2>', 'https://twitter.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://in.linkedin.com/', 'AIzaSyBOX0wpm3iQ5107OdI-bB3YJ3Q27nkBurU', '40.7127837', '-74.0059413', 'Copyright © 2020.All Rights Reserved By Data Web.');
 
 -- --------------------------------------------------------
 
@@ -832,14 +833,16 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `subscribes`
 --
 
 INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'test@gamil.com', '2020-11-03 23:19:59', NULL);
+(1, 'test@gamil.com', '2020-11-03 23:19:59', NULL),
+(2, 'test@gamil.com', '2020-11-04 22:34:07', NULL),
+(3, 'test@gamil.com', '2020-11-04 22:34:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -958,9 +961,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'NGo8oHBeBkky5mwcYzgVXKZBLpqKlF3UiEQElvO8n4NSbOvhpf1y3qpgI4uK', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'HU678mRihJNQVrdsZZto3vLVudWzd9OUQTBrbmeUKn7qaR0RsMJQijwTdy1k', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'AuaO9U3JXZ1gbDCMrQ6fC5RrAZjgydyog9oEcYEmeSm7Z5f5lGfeT1mvtbhc', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'KHL173qEbFtBWXLyiBkfEOYnHLGh0IlSUMYjaXOH63wTGAX6JEfioT8wat7S', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'q0TCbUyfrkaOgMa2nui7r4bBB8RvmPnGdzjgChUxYLhCwnXE2GQehcIEdn5n', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'b066XV2GhWosaX5fABsNRuWYWZyJAhFvzQCaUs8m9X6m30Kn4DrZ1fM1ojCi', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
