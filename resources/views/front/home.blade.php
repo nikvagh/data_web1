@@ -2009,6 +2009,7 @@
                   $( "#monthlyProfit" ).text('$'+response.month.toFixed(2));
 
                 }
+                
 
 
 

@@ -1,8 +1,41 @@
-@extends('layouts.new') @section('content')
+@extends('layouts.new_pro') @section('content')
 
 
+  <section class="inner-page-banner-section gradient-bg">
 
-<div class="container">
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/contact.png') }}" alt="image-illustration"></div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="inner-page-content-area">
+<!-- 
+                    <h2 class="page-title">{{ $title }}
+                      </h2> -->
+                 <!--    <ol class="breadcrumb">
+
+                          
+
+                            <li>Control panel</li>
+
+                        </ol> -->
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </section>
+    <div class="container pt-120 pb-120">
  <section class="invoice">
       <!-- title row -->
       <div class="row">
@@ -106,7 +139,7 @@
           <div class="table-responsive">
             <table class="table ">
               <tr>
-                <th style="float: left; width:50%">Subtotal:</th>
+                <th class="float-right">Subtotal:</th>
                 <td> {{ $data->sum('amount') }}</td>
               </tr>
             <!--   <tr>

@@ -472,23 +472,23 @@
         <div class="row">
           <div class="col-lg-12">
 
-<!-- <div class="alert alert-info" id='msg' role="alert">
-  This is a info alert—check it out!
-</div> -->
+
 
             <div class="subscribe-wrapper">
-
               <span class="icon wow zoomIn" data-wow-duration="0.3s" data-wow-delay="0.5s"><img src="{{ url('new_front_asset/images/icons/subscribe.png') }}" alt="icon"></span>
 
               <form class="subscribe-form" id="contactForm"  method="post" >@csrf
 
-                <input type="email" name="subs_name" id="email" placeholder="Your Email Address">
-                 @error('subs_name')
-                        <small class="form-text text-danger" > {{ $message }}</small>
-                        @enderror
+                <input type="text" name="subs_name" id="email" placeholder="Your Email Address">
+                  @error('subs_name')
+                    <small class="form-text text-danger" > {{ $message }}</small>
+                  @enderror
                 <button type="submit" id="submit" class="subs-btn">subscribe<span class="btn-icon"><img src="{{ url('new_front_asset/images/icons/paper-plane.png') }}" alt="icon"></span></button>
 
               </form>
+              <div id="sub_success" class="text-success"></div>
+              <div id="sub_error" class="text-danger"></div>
+
 
             </div>
 
@@ -676,24 +676,30 @@
     $('#contactForm').on('submit',function(event){
         event.preventDefault();
 
-        email = $('#email').val();
-     
+        $("#sub_error").html('');
+        $("#sub_success").html('');
 
+        email = $('#email').val();
         $.ajax({
           url: '/subscribe_uesr',
           type:"POST",
           data:{
             "_token": "{{ csrf_token() }}",
-           
             email:email,
           },
+           dataType: "json",
           success:function(response){
-            // console.log(response);
-   if(data.status == 'success'){
-        alert("Thank you for subscribing!");
-    }else if(data.status == 'error'){
-        alert("Error on query!");
-    }
+
+            if(response.status == 310){
+              $("#sub_error").html(response.message);
+            }
+            if(response.status == 320){
+              $("#sub_error").html(response.message);
+            }
+            if(response.status == 200){
+              $("#sub_success").html(response.message);
+            }
+
           },
          });
         });

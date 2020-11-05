@@ -65,6 +65,7 @@
 
            <form method="POST" action="{{ route('login') }}">
                   @csrf
+                  <input type="hidden" name="redirect" value="{{ $redirect }}">
 
               <div class="row">
 
@@ -97,7 +98,7 @@
 </div>
                 <div class="col-lg-12 text-center">
 
-                  <button type="submit" class="btn btn-primary text-center">Login Now</button>
+                  <button type="submit" class="btn btn-primary text-center">Login Now</button><br><br>
 
                 </div>
                 <div class="col-lg-12 text-center">

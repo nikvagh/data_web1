@@ -12,6 +12,8 @@ use DB;
 use Auth;
 use Cart;
 use Session;
+use Validator;
+    
 
 class Frontcontroller extends Controller
 {
@@ -195,20 +197,18 @@ class Frontcontroller extends Controller
     }
     public function subscribe_uesr()
     {
-       
-         request()->validate([
-            'email' => 'required|email|unique',
-            
+        $validator = Validator::make(request()->all(), [
+                'email' => 'required|email|unique:subscribes'
         ]);
-         // print_r(request()->input('email'));
-         // exit();
-                 DB::table('subscribes')->insert(
-                         ['email' => request()->input('email'),
-                         'created_at' =>  date('Y-m-d H:i:s'),
-                         ]  
-                     );
-        
+        if ($validator->fails()) {
+            return response()->json(['status' => '310', 'message' => $validator->errors()->first()]);
+        }
 
+        if(DB::table('subscribes')->insert(
+            ['email' => request()->input('email'),'created_at' =>  date('Y-m-d H:i:s'),]  
+        )){
+            return response()->json(['status' => '200', 'message' => 'Email subscribe successfully.']);
+        }
 
     }
 }

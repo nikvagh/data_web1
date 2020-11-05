@@ -50,7 +50,7 @@ class LoginController extends Controller
             case 4:
                 $location = '/customer';
                 if($redirect == 'front'){
-                    $location = '/Product';
+                    $location = '/product';
                 }
                 $this->redirectTo = $location;
                 return $this->redirectTo;
