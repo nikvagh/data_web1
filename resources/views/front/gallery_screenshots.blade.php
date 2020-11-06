@@ -1,91 +1,102 @@
-@extends('layouts.new')
+@extends('layouts.new_pro')
 @section('css')
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
 @endsection
 
  @section('content')
     
-  <!-- ======= Hero Section ======= -->
- 
 
-  <main id="main">
+  <!-- inner-page-banner-section start -->
 
-    <!-- ======= About Us Section ======= -->
-   
-   
+  <section class="inner-page-banner-section gradient-bg">
 
-    <!-- ======= Our Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="illustration-img"><img src="{{ url('new_front_asset/images/inner-page-banner-illustrations/blog.png') }}" alt="image-illustration"></div>
 
-        <div class="section-title">
-          <h2>Our Gallery</h2>
-          <br>
-          <br>
-          <h2>Trading Screen Shot</h2>
-        </div>
+    <div class="container">
 
-       
+        <div class="row">
 
-        <div class="row portfolio-container">
+            <div class="col-lg-6">
 
-  @foreach ($data as $key)
+                <div class="inner-page-content-area">
 
-          <div class="col-lg-3 col-md-6 portfolio-item ">
-            <div class="portfolio-wrap">
-              <img src="{{ asset('/uploads/Videos/thumb/').'/'.'300X300_'.$key->video }}" class="img-responsive imggallery">
-              <div class="portfolio-info">
-                
-                <div class="portfolio-links">
-                 <a href="{{ asset('/uploads/Videos/').'/'.$key->video }}" data-lightbox='{{$key->video}}' ><i class="icofont-eye"></i></a>
-                 
+                    <h2 class="page-title">Gallery</h2>
+
+                    <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+
+                       <!--  <ol class="breadcrumb">
+
+                            <li class="breadcrumb-item"><a href="home-one.html">Home</a></li>
+
+                            <li class="breadcrumb-item">Blog 01</li>
+
+                        </ol> -->
+
+                    </nav>
+
                 </div>
-              </div>
+
             </div>
-          </div>
 
-         @endforeach
-
-          
-
-        
         </div>
 
-         <div class="section-title">
+    </div>
 
-          <br>
-          <br>
-        
-          <h2>Trading Video Shot</h2>
+  </section>
+
+  <!-- inner-page-banner-section end -->
+
+<section class="blog-section pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-area">
+                    <h3>Trading Screen Shot</h3>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                            <div class="row mb-none-30">
+                                @foreach ($data as $key)
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="blog-item blog-grid mb-30">
+                                        <a href="{{ asset('/uploads/Videos/').'/'.$key->video }}" data-lightbox="{{$key->video}}">
+                                            <img src="{{ asset('/uploads/Videos/thumb/').'/'.'300X300_'.$key->video }}" />
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
+                <div class="row">
+            <div class="col-lg-12">
+                <div class="main-area">
+                    <h3>Trading Video Shot</h3>
 
-           @foreach ($video as $key)
-
-<video width="400" controls >
-<source src="{{ asset('/uploads/Videos/').'/'.$key->video }}" type="video/mp4">
-</video>
-         
-          @endforeach
-
-
-             
-          </div>
-
-          <br>
-          <br>
-
-         
-
-      </div>
-    </section><!-- End Our Portfolio Section -->
-
-    <!-- ======= Our Team Section ======= -->
-   
-
-  </main><!-- End #main -->
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                            <div class="row mb-none-30">
+ @foreach ($video as $key)
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="blog-item blog-grid mb-30">
+                                        <video controls style="    max-height: 22vh;" >
+                             <source src="{{ asset('/uploads/Videos/').'/'.$key->video }}" type="video/mp4">
+                            </video>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 @endsection

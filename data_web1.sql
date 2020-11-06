@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 05, 2020 at 10:43 AM
+-- Generation Time: Nov 06, 2020 at 01:03 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -739,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('viola.reichel@example.net', '$2y$10$u0YvV6lzoMcDPl2Avavxte6YGkzpuEN7eOtBQr0/VR9d78.JSG4Ue', '2020-10-23 00:59:21');
+('viola.reichel@example.net', '$2y$10$GWncTIxj8S5Ynifi0p5mCuArUVoVruq81jLUViH13e1UfzXezU.8G', '2020-11-05 06:46:05');
 
 -- --------------------------------------------------------
 
@@ -833,7 +833,7 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `subscribes`
@@ -842,7 +842,15 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
 INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (1, 'test@gamil.com', '2020-11-03 23:19:59', NULL),
 (2, 'test@gamil.com', '2020-11-04 22:34:07', NULL),
-(3, 'test@gamil.com', '2020-11-04 22:34:16', NULL);
+(8, 'test@gamil.comasss', '2020-11-05 05:40:36', NULL),
+(7, 'test@gamil.comass', '2020-11-05 05:40:22', NULL),
+(6, 'test@gamil.comas', '2020-11-05 05:39:00', NULL),
+(9, 'test@gamil.comsdasd', '2020-11-05 05:40:46', NULL),
+(10, 'test@gamil.comassadd', '2020-11-05 05:42:27', NULL),
+(11, 'test@gamil.comdasdd', '2020-11-05 05:43:12', NULL),
+(12, 'fxcgbfgdfgdgffdg@dh.fghfgh', '2020-11-05 06:22:42', NULL),
+(13, 'vcvchbhf@dsf.hk', '2020-11-05 06:28:00', NULL),
+(14, 'dgdfgdfg@sdf.ghjtyg', '2020-11-05 06:28:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -961,9 +969,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `role`, `email_verified_at`, `password`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'KHL173qEbFtBWXLyiBkfEOYnHLGh0IlSUMYjaXOH63wTGAX6JEfioT8wat7S', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
-(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'q0TCbUyfrkaOgMa2nui7r4bBB8RvmPnGdzjgChUxYLhCwnXE2GQehcIEdn5n', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
-(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'b066XV2GhWosaX5fABsNRuWYWZyJAhFvzQCaUs8m9X6m30Kn4DrZ1fM1ojCi', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(1, 'Valerie Schaden', NULL, 'sim.doyle@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'BsgOj68kbgtqY258CrXFjyAFKrI0zfFpIsW2ZHT7YhY2sgH84sQuldiadcjs', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
+(2, 'test', '0987456321', 'viola.reichel@example.net', 4, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'NgdbMNjiLYI5LyTPTRTO5fgtVtV0AUar6XEbOFwKHQUOziTPlrryVJUzCQgm', '2020-09-24 05:17:45', '2020-10-06 03:12:37'),
+(3, 'Brycen Schuppe', NULL, 'becker.garett@example.org', 3, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '7w8xgH3amCStvseYBpE5J0LMFvjtx0H3KskRYChNhaHRCX8Mptaq0MfHYPZK', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (4, 'Brent Mante II', NULL, 'waelchi.florida@example.com', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, '39jMbMzSbIJ5ow84SO9QCKfML24YDt7OzorCOy3egV8RNkkLf2ydmYD50Yee', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (5, 'Kennedi Swift', NULL, 'zaria.corkery@example.com', 1, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'X99fRmp6LE', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
 (6, 'Josue Hagenes Jr.', NULL, 'quinton02@example.net', 2, '2020-09-24 05:17:45', '$2y$10$aSy/DtP13rEnji0IqtzETupUmYPoEwCt.w0e612x5wmsdtFtL9vbS', NULL, 'ZGjEaRoxni', '2020-09-24 05:17:45', '2020-09-24 05:17:45'),
