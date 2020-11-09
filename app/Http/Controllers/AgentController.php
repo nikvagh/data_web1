@@ -402,7 +402,7 @@ class AgentController extends Controller
             ->where('agent_id', Auth::user()->id)
             ->update(['wallet' => $totalamount]);
 
-            return redirect('/withdraw')->with('success', 'Record Update successfully.');
+            return redirect('/withdraw')->with('success', 'withdraw successfully completed.');
 
           }
           else{

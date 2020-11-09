@@ -44,12 +44,10 @@
         <form role="form" method="post" action="{{ route('withdraw') }}" enctype="multipart/form-data">
        @csrf 
                  @if(session()->get('error'))
-            <div class="container-fluid" id="msg">
-                <div class="callout callout-danger">
+                <div class="alert alert-danger" id="msg">
                     <h4>Payment Failed!</h4>
                     <p>{{ session()->get('error') }}</p>
                 </div>
-            </div>
                 @endif 
                 @if(session()->get('success'))
                 <div class="container-fluid" id="msg" style="margin: 10px;">

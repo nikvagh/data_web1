@@ -43,7 +43,9 @@
   </section>
 <!-- start body -->
 <section class="card-body">
-        @if (Session::has('message_e'))
+      
+    <div class="container pt-120 pb-120">
+          @if (Session::has('message_e'))
         @include('partials.alert', ['type' => "danger",'message'=> Session::get('message_e') ])
     @endif
 
@@ -58,7 +60,6 @@
                     <h4><i class="icon fa fa-check"></i> Alert!</h4>
                    {{ session()->get('success') }} </div>
     @endif
-    <div class="container pt-120 pb-120">
        <!-- <h4>{{ $title }}</h4> -->
     <div class="col-md-12">
         <div class="text-right m-2">
