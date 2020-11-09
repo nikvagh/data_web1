@@ -333,7 +333,7 @@
 
         <nav class="navbar navbar-expand-xl">
 
-          <a class="site-logo site-title" href="home-one.html"><img src="{{ url('new_front_asset/images/au.png') }}" alt="site-logo"></a>
+          <a class="site-logo site-title" href="{{ url('/') }}"><img src="{{ url('new_front_asset/images/au.png') }}" alt="site-logo"></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -371,7 +371,7 @@
                                       <li><a  href="{{url('admin/package')}}">Packages</a></li>
                                       <li><a  href="{{url('Gallery/Videos')}}">Trading Videos</a></li>
                                       <li><a  href="{{url('Gallery/Trading_screenshots')}}">Trading Screenshots</a></li>
-                                      <li><a  href="{{url('admin/agent_commission_rules')}}">New Rules</a></li>
+                                      <li><a  href="{{url('admin/agent_commission_rules')}}">Agent Commission <!-- Rules --></a></li>
                                        <li><a  href="{{url('admin/settings')}}">Settings</a> </li>
 
                                   </ul>
@@ -569,13 +569,13 @@
 
           <div class="col-lg-12">
 
-            <div class="btn-area text-center">
+       <!--      <div class="btn-area text-center">
 
               <a href="#0" class="wow zoomIn" data-wow-duration="0.3s" data-wow-delay="0.5s"><img src="{{ url('new_front_asset/images/buttons/google.png') }}" alt="button"></a>
 
               <a href="#0" class="wow zoomIn" data-wow-duration="0.7s" data-wow-delay="0.5s"><img src="{{ url('new_front_asset/images/buttons/apple.png') }}" alt="button"></a>
 
-            </div>
+            </div> -->
 
           </div>
 

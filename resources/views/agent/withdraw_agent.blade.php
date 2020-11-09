@@ -49,7 +49,9 @@
                     <h4>Payment Failed!</h4>
                     <p>{{ session()->get('error') }}</p>
                 </div>
-                @endif @if(session()->get('success'))
+            </div>
+                @endif 
+                @if(session()->get('success'))
                 <div class="container-fluid" id="msg" style="margin: 10px;">
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
