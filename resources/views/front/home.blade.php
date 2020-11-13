@@ -5,7 +5,7 @@
 
   <section class="banner-section">
 
-    <div class="banner-elements-image anim-bounce"><img src="{{ url('new_front_asset/images/elements/banner.png') }}" alt="image"></div>
+    <div class="banner-elements-image anim-bounce"><img src="{{ url('new_front_asset/images/elements/ban10.png') }}" alt="image"></div>
 
     <div class="container">
 
@@ -188,7 +188,7 @@
 
           <div class="feature-thumb anim-bounce">
 
-            <img src="{{ url('new_front_asset/images/elements/features.png') }}" alt="image">
+            <img src="{{ url('new_front_asset/images/elements/ban11.png') }}" alt="image">
 
           </div>
 
@@ -202,7 +202,7 @@
 
               <div class="icon-inner">
 
-                <img src="{{ url('new_front_asset/images/icons/investment/1.svg') }}" alt="icon">
+                <img src="{{ url('new_front_asset/images/icons/investment/signup.svg') }}" alt="icon">
 
               </div>
 
@@ -226,7 +226,7 @@
 
               <div class="icon-inner">
 
-                <img src="{{ url('new_front_asset/images/icons/investment/2.svg') }}" alt="icon">
+                <img src="{{ url('new_front_asset/images/icons/investment/profits.svg') }}" alt="icon">
 
               </div>
 
@@ -250,7 +250,7 @@
 
               <div class="icon-inner">
 
-                <img src="{{ url('new_front_asset/images/icons/investment/3.svg') }}" alt="icon">
+                <img src="{{ url('new_front_asset/images/icons/investment/growing.svg') }}" alt="icon">
 
               </div>
 
@@ -711,7 +711,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/card.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/card2.svg') }}" alt="image" id="creditcard"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -719,7 +719,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/paypal.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/paypal3.svg') }}" alt="image"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -727,7 +727,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/bitcoin.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/bitcoin1.svg') }}" alt="image" id="bitcoin"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -735,7 +735,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/litecoin.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/litecoin1.svg') }}" alt="image" id="creditcard"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -743,7 +743,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/ethereum.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/ethereum1.svg') }}" alt="image" id="ethereum"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -751,7 +751,7 @@
 
             <a href="#0" class="card-item">
 
-              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/ripple.svg') }}" alt="image"></span>
+              <span class="icon"><img src="{{ url('new_front_asset/images/icons/payment-option/ripple1.svg') }}" alt="image" id="ripple"></span>
 
               <span class="caption">Credit Card</span>
 
@@ -771,7 +771,7 @@
 
               <div class="icon-inner">
 
-                <img src="{{ url('new_front_asset/images/icons/payment-option/ft1.svg') }}" alt="icon">
+                <img src="{{ url('new_front_asset/images/icons/payment-option/nolimit.svg') }}" alt="icon">
 
               </div>
 
@@ -793,7 +793,7 @@
 
               <div class="icon-inner">
 
-                <img src="{{ url('new_front_asset/images/icons/payment-option/ft2.svg') }}" alt="icon">
+                <img src="{{ url('new_front_asset/images/icons/payment-option/atm.svg') }}" alt="icon">
 
               </div>
 
@@ -933,19 +933,19 @@
 
                   <div class="users-area">
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s1.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/1.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s2.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/2.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s3.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/3.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s4.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/4.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s5.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/5.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s6.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/6.jpg') }}" alt="image"></span>
 
-                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/s7.png') }}" alt="image"></span>
+                    <span class="user-img"><img src="{{ url('new_front_asset/images/users/3.jpg') }}" alt="image"></span>
 
                     <a href="#" class="btn btn-primary btn-round">see all</a>
 
@@ -1311,7 +1311,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/1.jpg') }}" alt="image">
 
               </div>
 
@@ -1333,7 +1333,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/2.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/2.jpg') }}" alt="image">
 
               </div>
 
@@ -1355,7 +1355,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/3.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/3.jpg') }}" alt="image">
 
               </div>
 
@@ -1377,7 +1377,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/4.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/4.jpg') }}" alt="image">
 
               </div>
 
@@ -1399,7 +1399,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/5.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/5.jpg') }}" alt="image">
 
               </div>
 
@@ -1421,7 +1421,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/testimonial/6.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/testimonial/6.jpg') }}" alt="image">
 
               </div>
 
@@ -1550,7 +1550,7 @@
 
  
 
-<!--   <section class="contest-winner-section pt-120 pb-120">
+  <section class="contest-winner-section pt-120 pb-120">
 
     <div class="shape"><img src="{{ url('new_front_asset/images/elements/contest-shape.png') }}" alt="image"></div>
 
@@ -1586,7 +1586,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/contest-winner/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/contest-winner/winnerr.jpg') }}" alt="image">
 
                 <span class="icon"><img src="{{ url('new_front_asset/images/icons/contest-winner/trophy.svg') }}" alt="icon"></span>
 
@@ -1602,7 +1602,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/contest-winner/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/contest-winner/winnerr.jpg') }}" alt="image">
 
                 <span class="icon"><img src="{{ url('new_front_asset/images/icons/contest-winner/trophy.svg') }}" alt="icon"></span>
 
@@ -1618,7 +1618,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/contest-winner/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/contest-winner/winnerr.jpg') }}" alt="image">
 
                 <span class="icon"><img src="{{ url('new_front_asset/images/icons/contest-winner/trophy.svg') }}" alt="icon"></span>
 
@@ -1634,7 +1634,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/contest-winner/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/contest-winner/winnerr.jpg') }}" alt="image">
 
                 <span class="icon"><img src="{{ url('new_front_asset/images/icons/contest-winner/trophy.svg') }}" alt="icon"></span>
 
@@ -1650,7 +1650,7 @@
 
               <div class="thumb">
 
-                <img src="{{ url('new_front_asset/images/contest-winner/1.png') }}" alt="image">
+                <img src="{{ url('new_front_asset/images/contest-winner/winnerr.jpg') }}" alt="image">
 
                 <span class="icon"><img src="{{ url('new_front_asset/images/icons/contest-winner/trophy.svg') }}" alt="icon"></span>
 
@@ -1670,7 +1670,7 @@
 
     </div>
 
-  </section> -->
+  </section>
 
   <!-- contest-winner-section end  -->
 
@@ -1770,7 +1770,7 @@
 
 
 
- <section class="choose-us-section pt-120 pb-120 bg_img" data-background="{{ url('new_front_asset/images/elements/choose-us-bg-shape.png') }}">
+ <section class="choose-us-section  pb-120 bg_img" data-background="{{ url('new_front_asset/images/elements/choose-us-bg-shape.png') }}">
 
     <div class="container">
 
@@ -1808,7 +1808,7 @@
 
     </div>
 
-<!--     <div class="container-fluid p-0">
+    <div class="container-fluid p-0">
 
       <div class="row m-0">
 
@@ -1820,7 +1820,7 @@
 
                 <div class="choose-thumb">
 
-                  <img src="{{ url('new_front_asset/images/choose-us/1.png') }}" alt="image">
+                  <img src="{{ url('new_front_asset/images/choose-us/money.jpg') }}" alt="image">
 
                 </div>
 
@@ -1840,7 +1840,7 @@
 
                 <div class="choose-thumb">
 
-                  <img src="{{ url('new_front_asset/images/choose-us/2.png') }}" alt="image">
+                  <img src="{{ url('new_front_asset/images/choose-us/atm.jpg') }}" alt="image">
 
                 </div>
 
@@ -1860,7 +1860,7 @@
 
                 <div class="choose-thumb">
 
-                  <img src="{{ url('new_front_asset/images/choose-us/3.png') }}" alt="image">
+                  <img src="{{ url('new_front_asset/images/choose-us/server.jpg') }}" alt="image">
 
                 </div>
 
@@ -1942,7 +1942,7 @@
 
       </div>
 
-    </div> -->
+    </div>
 
   </section>
 

@@ -138,6 +138,10 @@
             </div>
         </div>
     </div>
+
+
+        @endsection
+        @section('js')
 </section>
         @endsection @section('js')
         <script type="text/javascript">
@@ -148,5 +152,4 @@
                 });
             });
         </script>
-
         @endsection
