@@ -194,7 +194,8 @@ Route::post('/Charity', [App\Http\Controllers\CharityController::class, 'Charity
 
 Route::get('/paypal', [App\Http\Controllers\PaypalController::class, 'index']);
 // Route::get('/paypal/success', [App\Http\Controllers\PaypalController::class, 'success'])->name('paypal.success');
-Route::get('/paypal/cancel', [App\Http\Controllers\PaymentController::class, 'payment_cancel'])->name('paypal.cancel');
+Route::get('/payment/cancel', [App\Http\Controllers\PaymentController::class, 'payment_cancel'])->name('payment_cancel');
+Route::get('/payment/testing', [App\Http\Controllers\PaymentController::class, 'payment_testing'])->name('payment_testing');
 
 Route::post('/subscribe_uesr', [App\Http\Controllers\Frontcontroller::class, 'subscribe_uesr']);
 
@@ -211,3 +212,4 @@ Route::get('/fuser', [App\Http\Controllers\FackController::class, 'fuser']);
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Route::get('/home', 'AcademicController@index')->name('home');
+

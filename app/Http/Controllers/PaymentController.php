@@ -106,4 +106,9 @@ class PaymentController extends Controller
         return redirect('/checkout');
        
     }
+    public function payment_testing()
+    {
+         Session::flash('message_e','Polipay testing mode... You can not pay more than 1000 at a time.');
+        return redirect('/checkout');
+    }
 }

@@ -174,14 +174,53 @@ class Frontcontroller extends Controller
         $payment = $request->get('Payment_Meaning');
         if ($payment == "Paypal") {
                 // Paypal URL
-        
                 return redirect('/paypal');
-
-
         }
          elseif ($payment == "Polipay") {
-        // Polipay URL
-            echo "Polipay";
+              // Polipay URL
+                $total= $request->get('total');
+                // $total= '50';
+                $SuccessURL= url('payment_successful');
+                $CancellationURL= url('/payment/cancel');
+                $json_builder = '{
+                    "Amount":"'.$total.'",
+                    "CurrencyCode":"AUD",
+                    "MerchantReference":"CustomerRef12345",
+                    "MerchantHomepageURL":"https://www.mycompany.com",
+                    "SuccessURL":"'.$SuccessURL.'",
+                    "FailureURL":"'.$CancellationURL.'",
+                    "CancellationURL":"'.$CancellationURL.'",
+                    "NotificationURL":"'.url('/').'" 
+                }';
+              
+                $auth = $_ENV['Authorization'];
+                $header = array();
+                $header[] = 'Content-Type: application/json';
+                $header[] = 'Authorization: Basic '.$auth;
+                 
+                $ch = curl_init("https://poliapi.apac.paywithpoli.com/api/v2/Transaction/Initiate");
+                //See the cURL documentation for more information: http://curl.haxx.se/docs/sslcerts.html
+                //We recommend using this bundle: https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
+                curl_setopt( $ch, CURLOPT_CAINFO, "ca-bundle.crt");
+                curl_setopt( $ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+                curl_setopt( $ch, CURLOPT_HTTPHEADER, $header);
+                curl_setopt( $ch, CURLOPT_HEADER, 0);
+                curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+                curl_setopt( $ch, CURLOPT_POST, 1);
+                // curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, $json_builder);
+                curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 0);
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+                $response = curl_exec($ch);
+                curl_close ($ch);
+                $json = json_decode($response, true);
+                if (isset($json['NavigateURL'])) {
+                   return redirect($json["NavigateURL"]);
+                }else{
+                   return redirect('payment/testing');
+                }
+               
+                 
         }
          else {
             $wallet_balance = substr($request->get('Payment_Meaning'), 7);
