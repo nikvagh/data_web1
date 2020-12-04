@@ -29,6 +29,7 @@
   <link href="{{asset('front_asset/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
   <link href="{{asset('front_asset/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('front_asset/assets/style.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{asset('front_asset/assets/css/style.css')}}" rel="stylesheet">

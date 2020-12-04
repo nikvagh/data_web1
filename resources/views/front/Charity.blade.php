@@ -98,7 +98,7 @@
                         <div class="col-lg-7 login-box">
                             <input type="text" name="Member_names[]" class="input-text" placeholder="Member Names" id="Member_names" value="{{$value}}" />
                         </div>
-                            
+
                         @endforeach
                         <div class="col-lg-7 login-box">
                             <div class="appending_div"></div>
@@ -109,19 +109,19 @@
                         @else
 
                         <div class="col-lg-7 login-box">
-                            <input type="text" name="Member_names[]" placeholder="Member Names"  id="Member_names" value="" /><br />
+                            <input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names" value="" /><br />
 
                             @error('Member_names[]')
                             <small class="form-text text-left text-danger"> {{ $message }}</small>
                         </div>
                         @enderror
-                        
+
                         <div class="appending_div"></div>
-                            <i class="icofont-plus btn btn-primary add" style="display: inline;">+</i>
+                        <i class="icofont-plus btn btn-primary add float-right" style="display: inline;">+</i>
 
                         @endif
 
-                        <div class="col-md-7 login-box">
+                        <div class="col-md-12 login-box">
                             <div><label class="form-check-label"> Background Check</label></div>
 
                             <input type="checkbox" value="yes" name="background_check" class="form-check-inline" /><label class="form-check-label">Yes</label>
@@ -139,17 +139,15 @@
         </div>
     </div>
 
-
-        @endsection
-        @section('js')
 </section>
-        @endsection @section('js')
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".add").on("click", function () {
-                    var field = ' <div class="col-lg-12 login-box"><input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names"  /></div>';
-                    $(".appending_div").append(field);
-                });
-            });
-        </script>
-        @endsection
+    @endsection
+ @section('js')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".add").on("click", function () {
+            var field = ' <div class="col-lg-12 login-box"><input type="text" name="Member_names[]" placeholder="Member Names" id="Member_names"  /></div>';
+            $(".appending_div").append(field);
+        });
+    });
+</script>
+@endsection

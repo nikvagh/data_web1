@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="{{ url('new_front_asset/css/style.css') }}">
 
   <link rel="stylesheet" href="{{ url('new_front_asset/css/responsive.css') }}">
+  <link href="{{asset('front_asset/assets/style.css')}}" rel="stylesheet">
    
  @yield('css')
 </head>

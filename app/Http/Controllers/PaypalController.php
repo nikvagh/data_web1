@@ -33,7 +33,7 @@ class PaypalController extends Controller
         $data['invoice_id'] = 1;
         $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
         $data['return_url'] = route('paypal.success');
-        $data['cancel_url'] = route('paypal.cancel');
+        $data['cancel_url'] = route('payment_cancel');
         // print_r($price);
         // exit();
         $data['total'] = $price;
