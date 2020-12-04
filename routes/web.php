@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\Frontcontroller::class, 'home'])->name('/');
 Route::get('/config_clear', function() {
     Artisan::call('cache:clear');
-    Artisan::call('config:cache');
+    Artisan::call('config:clear');
 });
 
 Route::get('/view_clear', function() {
