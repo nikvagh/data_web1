@@ -193,7 +193,7 @@ class Frontcontroller extends Controller
                     "NotificationURL":"'.url('/').'" 
                 }';
               
-                $auth = $_ENV['Authorization'];
+                $auth = env('Authorization');
                 $header = array();
                 $header[] = 'Content-Type: application/json';
                 $header[] = 'Authorization: Basic '.$auth;
