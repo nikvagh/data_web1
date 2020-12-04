@@ -180,7 +180,7 @@ class Frontcontroller extends Controller
 
         }
          elseif ($payment == "Polipay") {
- // Polipay URL
+        // Polipay URL
             echo "Polipay";
         }
          else {

@@ -37,17 +37,16 @@ class AppServiceProvider extends ServiceProvider
              {
                 // echo "string";
                   if (substr($Payment_Meaning,7) >= $total) {
-                     return true;
-                  }
-                  else{
-                        return false;
+                    return true;
+                  }else{
+                    return false;
                   }  
              }
              else{
                  return true;
              }
              // exit();
-             
+            
         });
 
        

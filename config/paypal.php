@@ -3,14 +3,14 @@
 return [
     'mode'    => env('PAYPAL_MODE', 'sandbox'), // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
     'sandbox' => [
-        'client_id'         => env('PAYPAL_SANDBOX_CLIENT_ID', ''),
-        'client_secret'     => env('PAYPAL_SANDBOX_CLIENT_SECRET', ''),
-        'app_id'            => 'APP-80W284485P519543T',
+        // 'client_id'         => env('PAYPAL_SANDBOX_CLIENT_ID', ''),
+        // 'client_secret'     => env('PAYPAL_SANDBOX_CLIENT_SECRET', ''),
+        // 'app_id'            => 'APP-80W284485P519543T',
 
         'username' => env('PAYPAL_SANDBOX_API_USERNAME', ''),
         'password' => env('PAYPAL_SANDBOX_API_PASSWORD', ''),
         'secret' => env('PAYPAL_SANDBOX_API_SECRET', ''),
-        'certificate' => env('PAYPAL_LIVE_API_CERTIFICATE', ''),
+        'certificate' => env('PAYPAL_SANDBOX_API_CERTIFICATE', ''),
 
     ],
     'live' => [
