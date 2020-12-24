@@ -108,7 +108,9 @@ $('#container').highcharts({
      // chart: {
      //   type: 'column'
      // },
-    
+      title: {
+        text: ''
+    },
        xAxis: {
        categories: data_year
      },
