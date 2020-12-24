@@ -17,6 +17,7 @@ class CustomerController extends Controller
     {
     	   $deposit =  DB::table('transactions')
              ->where('type', 'd')
+             ->where('customer_id', Auth::user()->id)
             ->select(DB::raw("SUM(amount) as count"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("Month(created_at)"))
@@ -24,6 +25,8 @@ class CustomerController extends Controller
             $deposit = array_column($deposit, 'count');
 
             $year =  DB::table('transactions')
+             ->where('customer_id', Auth::user()->id)
+            
                 ->select(DB::raw("created_at as count"))
             ->orderBy("created_at")
             ->groupBy(DB::raw("Month(created_at)"))

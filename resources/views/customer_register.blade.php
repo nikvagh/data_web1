@@ -106,7 +106,9 @@
                 </div>
 <div class="col-md-7 login-box">
    
-     <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+     <label class="form-check-label">
+      <input type="checkbox" name="tearms" required="required" @if( old("tearms") ) checked="" @endif> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
+    </label>
    
 </div>
                 <div class="col-lg-12 text-center">

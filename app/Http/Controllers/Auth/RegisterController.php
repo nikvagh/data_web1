@@ -34,6 +34,7 @@ class RegisterController extends Controller
     protected $redirectTo;
     public function redirectTo()
     {
+   
         switch(Auth::user()->role){
             case 2:
                 $this->redirectTo = '/admin';

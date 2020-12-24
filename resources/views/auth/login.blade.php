@@ -56,7 +56,16 @@
               <h2 class="section-title">Login</h2>
 
               <!-- <p>Have questions? We don't bite! Just shoot us a message and we'll get back to you as soon as possible!</p> -->
+              @if(session()->get('message_s'))
+              <div  id="msg">
+                  <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                      {{ session()->get('message_s') }}
+                  </div>
+              </div>
 
+              @endif
             </div>
 
           </div>

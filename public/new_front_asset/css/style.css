@@ -15338,3 +15338,7 @@ margin: auto;
 .error{
   color: red;
 }
+
+.login-box input[type='checkbox']{
+width: auto;
+}

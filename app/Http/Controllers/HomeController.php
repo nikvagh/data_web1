@@ -120,7 +120,7 @@ class HomeController extends Controller
         // exit;
 
         $request->session()->flash('message_s','Account register Successfully!');
-        return redirect('/customer_register');
+        return redirect('/login');
 
         // print_r($Request->all());
 
